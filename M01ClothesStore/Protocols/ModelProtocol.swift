@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ModelProtocol {
-    
+    func parseProducts(products: String, completion: () -> ());
 }

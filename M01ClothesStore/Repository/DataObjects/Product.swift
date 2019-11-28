@@ -12,7 +12,15 @@ import Foundation
  Represents a product that can be bought
  */
 
-struct Product: Codable {
+struct Product: Codable, Hashable {
+    var id: Int;
+    var name: String;
+    var category: String;
+    var price: Double;
+    var stock: Int;
+    
+    // MARK: - <Codable>
+    
     enum CodingKeys: String, CodingKey {
         case id = "productId"
         case name
@@ -21,9 +29,9 @@ struct Product: Codable {
         case stock
     }
     
-    var id: Int;
-    var name: String;
-    var category: String;
-    var price: Double;
-    var stock: Int;
+    // MARK: - <Hashable>
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }

@@ -10,4 +10,19 @@ import Foundation
 
 class Model: ModelProtocol {
     
+    var Catalogue: [Product] = []
+    var Wishlist: [Product] = []
+    var Cart: [Product : Int] = [:]
+    
+    private struct Products: Codable {
+        var products: [Product]
+    }
+    
+    
+    func parseProducts(products: String, completion: () -> ()) {
+        
+        
+        
+        completion()
+    }
 }

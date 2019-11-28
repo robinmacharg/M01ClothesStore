@@ -34,5 +34,17 @@ class Repository {
     class func shared() -> Repository {
         return sharedRepository
     }
+    
+    func getProducts(completion: @escaping () -> ()) {
+        assertInitialized()
+        
+        API?.GETProducts { response in 
+            self.Model?.parseProducts(products: "", completion: completion)
+        }
+    }
 
+    func assertInitialized() {
+        assert(API != nil)
+        assert(Model != nil)
+    }
 }

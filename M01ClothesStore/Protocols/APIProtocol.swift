@@ -9,7 +9,7 @@
 import Foundation
 
 protocol APIProtocol {
-    func GETProducts();
+    func GETProducts(completion: @escaping (_ response: HTTPURLResponse) -> ());
     func GETProductDetails();
     func POSTToCart(product: Product);
     func DELETEFromCart(product: Product);
