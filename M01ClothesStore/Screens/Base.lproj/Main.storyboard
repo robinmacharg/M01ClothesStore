@@ -10,7 +10,7 @@
         <!--Wishlist-->
         <scene sceneID="O9q-Yb-iak">
             <objects>
-                <viewController id="ltc-uE-Ypg" sceneMemberID="viewController">
+                <viewController id="ltc-uE-Ypg" customClass="WishlistViewController" customModule="M01ClothesStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jcm-85-IMK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
         <!--Catalogue-->
         <scene sceneID="h0H-yu-bIJ">
             <objects>
-                <viewController id="jhZ-j5-UJi" sceneMemberID="viewController">
+                <viewController id="jhZ-j5-UJi" customClass="CatalogueViewController" customModule="M01ClothesStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EWk-ji-0nR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,7 +62,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="M01ClothesStore" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CartViewController" customModule="M01ClothesStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
