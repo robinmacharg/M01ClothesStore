@@ -12,10 +12,11 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        Repository.shared().API = API(root: "https://private-anon-b14e15b3c2-ddshop.apiary-mock.com")
+        Repository.shared().Model = Model()
+        
         return true
     }
 
