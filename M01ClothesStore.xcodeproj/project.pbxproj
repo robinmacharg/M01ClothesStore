@@ -101,6 +101,8 @@
 		48BE92C1238ECABA00A89EF4 /* M01ClothesStore */ = {
 			isa = PBXGroup;
 			children = (
+				48BE92F6238FB3AF00A89EF4 /* Repository */,
+				48BE92F5238FB39A00A89EF4 /* Screens */,
 				48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */,
 				48BE92C4238ECABA00A89EF4 /* SceneDelegate.swift */,
 				48BE92C6238ECABA00A89EF4 /* ViewController.swift */,
@@ -129,6 +131,20 @@
 				48BE92E9238ECABC00A89EF4 /* Info.plist */,
 			);
 			path = M01ClothesStoreUITests;
+			sourceTree = "<group>";
+		};
+		48BE92F5238FB39A00A89EF4 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		48BE92F6238FB3AF00A89EF4 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
