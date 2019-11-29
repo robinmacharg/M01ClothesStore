@@ -9,5 +9,5 @@
 import Foundation
 
 protocol Model {
-//    func parseProducts(products: String, completion: () -> ());
+    func addProductToCart(productID: Int);
 }

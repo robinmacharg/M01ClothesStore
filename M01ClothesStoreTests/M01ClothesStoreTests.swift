@@ -63,7 +63,7 @@ class M01ClothesStoreTests: XCTestCase {
 
     func testRetrieveAndParseCatalogue() {
         Repository.shared.GETProducts { (_) in
-            XCTAssertEqual(Repository.shared.Catalogue?.count, 13)
+            XCTAssertEqual(Repository.shared.Catalogue.count, 13)
         }
     }
     
@@ -90,7 +90,7 @@ class M01ClothesStoreTests: XCTestCase {
             price: 3.14,
             stock: 42)
         
-        Repository.shared.POSTToCart(product: product) { response in
+        Repository.shared.POSTToCart(productId: product.id) { response in
             responseCode = response.statusCode
             expectation.fulfill()
         }
