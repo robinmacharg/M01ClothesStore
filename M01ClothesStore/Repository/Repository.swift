@@ -37,6 +37,7 @@ public class Repository {
     var APIroot: String?
     
     var Catalogue: [Product]? = []
+    var Cart: [Int:Product] = [:]
 
     // MARK: - Utility
     

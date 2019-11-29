@@ -39,6 +39,13 @@ struct Product: Codable, Hashable {
 typealias CatalogueResponse = [Product]
 
 // A shopping cart item to be POSTED to the API
-struct CartItem: Encodable {
+struct CartItem: Codable {
     var productId: Int;
+    var count: Int = 0;
+    
+    // MARK: - <Codable>
+    // We only want to POST the product ID
+    enum CodingKeys: CodingKey {
+        case productId
+    }
 }

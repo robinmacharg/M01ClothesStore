@@ -54,4 +54,3 @@ extension CatalogueViewController: UITableViewDelegate {
         return 100
     }
 }
-
