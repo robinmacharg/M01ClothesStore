@@ -11,6 +11,6 @@ import Foundation
 protocol API {
     func GETProducts(completion: @escaping (_ response: HTTPURLResponse) -> ());
 //    func GETProductDetails();
-//    func POSTToCart(product: Product);
+    func POSTToCart(productId: Int, completion: @escaping (HTTPURLResponse) -> ());
 //    func DELETEFromCart(product: Product);
 }

@@ -63,15 +63,39 @@ class M01ClothesStoreTests: XCTestCase {
 
     func testRetrieveAndParseCatalogue() {
         Repository.shared.GETProducts { (_) in
-            XCTAssertEqual(Repository.shared.Catalogue?.count, 13)
+            XCTAssertEqual(Repository.shared.Catalogue.count, 13)
         }
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    // Test that the carttem codable only encodes the Product ID
+    func testCartItemCodable() {
+        
+        // Create, encode, decode, check count is default value
+        let cartItem = CartItem(productId: 123, count: 7)
+        let cartItemJsonOut = String(data: try! encoder.encode(cartItem), encoding: .utf8)!
+        let cartItem2 = try! decoder.decode(CartItem.self, from: cartItemJsonOut.data(using: .utf8)!)
+        
+        XCTAssert(cartItem.count == 7)
+        XCTAssert(cartItem2.count == 0)
     }
-
+    
+    func testCanPOSTToCart() {
+        let expectation = self.expectation(description: "POST works")
+        var responseCode: Int?
+        
+        let product = Product(
+            id: 123,
+            name: "MyProduct",
+            category: "MyCategory",
+            price: 3.14,
+            stock: 42)
+        
+        Repository.shared.POSTToCart(productId: product.id) { response in
+            responseCode = response.statusCode
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertTrue(responseCode == 201)
+    }
 }

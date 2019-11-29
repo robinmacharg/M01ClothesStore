@@ -51,6 +51,17 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0s-41-hfk" userLabel="Add Product">
+                        <rect key="frame" x="351" y="36" width="43" height="53"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="53" id="eWk-qq-Bmt"/>
+                            <constraint firstAttribute="width" constant="43" id="sJt-4z-Pmc"/>
+                        </constraints>
+                        <state key="normal" image="plus" catalog="system"/>
+                        <connections>
+                            <action selector="AddProduct:" destination="WvY-RH-nyC" eventType="touchUpInside" id="VEv-05-6Dt"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="DH4-ho-URf" secondAttribute="trailing" constant="20" id="0Ci-1E-XW2"/>
@@ -58,8 +69,10 @@
                     <constraint firstItem="1sh-Js-Byh" firstAttribute="top" secondItem="zDY-VA-lVi" secondAttribute="top" constant="8" id="Afw-6R-FqN"/>
                     <constraint firstAttribute="trailing" secondItem="1Nu-tw-OsT" secondAttribute="trailing" constant="20" id="Gtc-gB-QLz"/>
                     <constraint firstAttribute="trailing" secondItem="wvD-KP-gdD" secondAttribute="trailing" constant="20" id="JoI-aF-hNm"/>
+                    <constraint firstAttribute="bottom" secondItem="G0s-41-hfk" secondAttribute="bottom" constant="11" id="Xvu-ff-RxB"/>
                     <constraint firstItem="1Nu-tw-OsT" firstAttribute="leading" secondItem="zDY-VA-lVi" secondAttribute="leading" constant="20" id="a6L-GW-x4d"/>
                     <constraint firstItem="DH4-ho-URf" firstAttribute="leading" secondItem="1sh-Js-Byh" secondAttribute="trailing" constant="8" id="her-wc-Xm4"/>
+                    <constraint firstAttribute="trailing" secondItem="G0s-41-hfk" secondAttribute="trailing" constant="20" id="j2j-hj-Sjd"/>
                     <constraint firstItem="1sh-Js-Byh" firstAttribute="leading" secondItem="zDY-VA-lVi" secondAttribute="leading" constant="20" id="jFa-9Y-og4"/>
                     <constraint firstItem="wvD-KP-gdD" firstAttribute="leading" secondItem="zDY-VA-lVi" secondAttribute="leading" constant="20" id="q56-E9-xoZ"/>
                     <constraint firstItem="wvD-KP-gdD" firstAttribute="top" secondItem="1sh-Js-Byh" secondAttribute="bottom" constant="8" id="ueR-pF-7St"/>
@@ -67,6 +80,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="AddProductButton" destination="G0s-41-hfk" id="qae-Dr-w0g"/>
                 <outlet property="AvailabilityLabel" destination="1Nu-tw-OsT" id="8iO-G2-rTG"/>
                 <outlet property="CategoryLabel" destination="wvD-KP-gdD" id="wV8-gS-aWn"/>
                 <outlet property="PriceLabel" destination="DH4-ho-URf" id="Xgb-og-bGO"/>
@@ -75,4 +89,7 @@
             <point key="canvasLocation" x="131.8840579710145" y="172.09821428571428"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="plus" catalog="system" width="64" height="56"/>
+    </resources>
 </document>
