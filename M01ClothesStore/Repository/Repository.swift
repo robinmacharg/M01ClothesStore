@@ -126,9 +126,11 @@ extension Repository: API {
         dataTask.resume()
     }
 
-//    func DELETEFromCart(product: Product) {
-//        
-//    }
+    func DELETEFromCart(product: Product) {
+        assertInitialized()
+        
+        
+    }
 }
 
 // MARK: - <Model>

@@ -12,5 +12,5 @@ protocol API {
     func GETProducts(completion: @escaping (_ response: HTTPURLResponse) -> ());
 //    func GETProductDetails();
     func POSTToCart(productId: Int, completion: @escaping (HTTPURLResponse) -> ());
-//    func DELETEFromCart(product: Product);
+    func DELETEFromCart(product: Product);
 }
