@@ -61,6 +61,12 @@ class M01ClothesStoreTests: XCTestCase {
         XCTAssertEqual(product1.stock, product2.stock)
     }
 
+    func testRetrieveAndParseCatalogue() {
+        Repository.shared.GETProducts { (_) in
+            XCTAssertEqual(Repository.shared.Catalogue?.count, 13)
+        }
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

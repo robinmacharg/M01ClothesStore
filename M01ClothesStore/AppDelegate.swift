@@ -14,8 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        Repository.shared().API = API()
-        Repository.shared().Model = Model()
+        Repository.shared.APIroot = "https://private-anon-b14e15b3c2-ddshop.apiary-mock.com"
         
         return true
     }

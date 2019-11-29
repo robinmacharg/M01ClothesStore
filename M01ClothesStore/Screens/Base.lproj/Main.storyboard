@@ -30,14 +30,33 @@
                     <view key="view" contentMode="scaleToFill" id="EWk-ji-0nR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zze-58-lMi">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="jhZ-j5-UJi" id="f2r-x4-Whn"/>
+                                    <outlet property="delegate" destination="jhZ-j5-UJi" id="A3T-R2-HXd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Zze-58-lMi" firstAttribute="top" secondItem="x4h-ub-u0m" secondAttribute="top" id="4MF-Yv-Sjh"/>
+                            <constraint firstItem="Zze-58-lMi" firstAttribute="trailing" secondItem="x4h-ub-u0m" secondAttribute="trailing" id="6Mg-5i-Psw"/>
+                            <constraint firstItem="Zze-58-lMi" firstAttribute="leading" secondItem="x4h-ub-u0m" secondAttribute="leading" id="URw-xY-yKj"/>
+                            <constraint firstItem="Zze-58-lMi" firstAttribute="bottom" secondItem="x4h-ub-u0m" secondAttribute="bottom" id="hNr-fg-7WI"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="x4h-ub-u0m"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Catalogue" image="book" catalog="system" id="JDA-xB-Pxn"/>
+                    <connections>
+                        <outlet property="TableView" destination="Zze-58-lMi" id="n3W-4j-BTd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pu-st-Ew8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2559" y="869"/>
+            <point key="canvasLocation" x="-2559.4202898550725" y="868.52678571428567"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1qu-TG-VOb">
@@ -61,7 +80,6 @@
         <!--Cart-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="CartViewController" customModule="M01ClothesStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -71,6 +89,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Cart" image="bag" catalog="system" id="4od-UY-JTj"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-859" y="869"/>
         </scene>
