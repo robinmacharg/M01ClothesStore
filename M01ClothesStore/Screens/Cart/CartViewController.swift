@@ -34,12 +34,17 @@ extension CartViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell
         {
             let product = Repository.shared.Cart[indexPath.row]
+            cell.row = indexPath.row
             cell.ID = product.id
             cell.ProductNameLabel.text = product.name
             cell.CategoryLabel.text = product.category
             cell.PriceLabel.isHidden = true
             cell.AvailabilityLabel.isHidden = true
-            cell.AddProductButton.isHidden = true
+//            cell.AddProductButton.isHidden = true
+            
+            cell.AddProductButton.setImage(UIImage(systemName: "cart.badge.minus"), for: .normal)
+            
+            cell.delegate = self
             
             return cell
         }
@@ -55,6 +60,16 @@ extension CartViewController: UITableViewDataSource {
 extension CartViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+}
+
+// MARK: - <ProductCellDelegate>
+
+extension CartViewController: ProductCellDelegate {
+    func ProductCellButtonTapped(productID: Int) {
+        Repository.shared.removeProductFromCart(index: index) {
+            self.TableView.reloadData() // TODO: correct BeginUpdates animation
+        }
     }
 }
 
