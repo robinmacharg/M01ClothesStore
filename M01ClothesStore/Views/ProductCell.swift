@@ -9,5 +9,8 @@
 import UIKit
 
 class ProductCell: UITableViewCell {
-    @IBOutlet weak var Label: UILabel!
+    @IBOutlet weak var ProductNameLabel: UILabel!
+    @IBOutlet weak var CategoryLabel: UILabel!
+    @IBOutlet weak var PriceLabel: UILabel!
+    @IBOutlet weak var AvailabilityLabel: UILabel!
 }

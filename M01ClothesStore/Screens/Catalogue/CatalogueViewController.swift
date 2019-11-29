@@ -34,7 +34,10 @@ extension CatalogueViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell,
            let product = Repository.shared.Catalogue?[indexPath.row]
         {
-            cell.Label.text = product.name
+            cell.ProductNameLabel.text = product.name
+            cell.CategoryLabel.text = product.category
+            cell.PriceLabel.text = "£\(String(format: "%.2f", product.price))"
+            cell.AvailabilityLabel.text = "\(product.stock) Available"
             return cell
         }
             
@@ -47,6 +50,8 @@ extension CatalogueViewController: UITableViewDataSource {
 // MARK: - <UITableViewDelegate>
 
 extension CatalogueViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }
 
