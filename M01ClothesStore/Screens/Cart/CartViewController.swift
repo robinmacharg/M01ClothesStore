@@ -31,15 +31,14 @@ extension CartViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let productId = Repository.shared.orderedCartKeys[indexPath.row]
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell,
-            let product = Repository.shared.Catalogue[productId]
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell
         {
+            let product = Repository.shared.Cart[indexPath.row]
             cell.ID = product.id
             cell.ProductNameLabel.text = product.name
             cell.CategoryLabel.text = product.category
             cell.PriceLabel.isHidden = true
-            cell.AvailabilityLabel.text = "\(Repository.shared.Cart[productId]?.count ?? 0) items"
+            cell.AvailabilityLabel.isHidden = true
             cell.AddProductButton.isHidden = true
             
             return cell

@@ -37,7 +37,7 @@ public class Repository {
     var APIroot: String?
     
     var Catalogue: [Int:Product] = [:]
-    var Cart: [Int:CartItem] = [:]
+    var Cart: [Product] = []
 
     // MARK: - Utility
     
@@ -48,12 +48,6 @@ public class Repository {
     var orderedCatalogueKeys: [Int] {
         get {
             return Catalogue.keys.sorted()
-        }
-    }
-    
-    var orderedCartKeys: [Int] {
-        get {
-            return Cart.keys.sorted()
         }
     }
 }
@@ -143,8 +137,9 @@ extension Repository: API {
 extension Repository: Model {
     func addProductToCart(productID: Int) {
         POSTToCart(productId: productID) { response in
-            self.Cart[productID] = self.Cart[productID] ?? CartItem(productId: productID, count: 0)
-            self.Cart[productID]?.count += 1
+            if let product = self.Catalogue[productID] {
+                self.Cart.append(product)
+            }
         }
     }
 }
