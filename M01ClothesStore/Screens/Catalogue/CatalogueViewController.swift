@@ -13,11 +13,11 @@ class CatalogueViewController: UIViewController {
     @IBOutlet weak var TableView: UITableView!
     
     override func viewDidLoad() {
-        TableView.register(UINib(nibName: "ProductCell", bundle: Bundle.main),
-                           forCellReuseIdentifier: Constants.UI.ProductCell)
+        TableView.register(
+            UINib(nibName: "ProductCell", bundle: Bundle.main),
+            forCellReuseIdentifier: Constants.UI.ProductCell)
         
         Repository.shared.GETProducts(completion: { response in
-            print("CatalogueViewController callback")
             self.TableView.reloadData()
         })
     }

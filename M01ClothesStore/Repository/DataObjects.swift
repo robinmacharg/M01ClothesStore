@@ -37,3 +37,8 @@ struct Product: Codable, Hashable {
 }
 
 typealias CatalogueResponse = [Product]
+
+// A shopping cart item to be POSTED to the API
+struct CartItem: Encodable {
+    var productId: Int;
+}

@@ -67,11 +67,23 @@ class M01ClothesStoreTests: XCTestCase {
         }
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testCanPOSTToCart() {
+        let expectation = self.expectation(description: "POST works")
+        var responseCode: Int?
+        
+        let product = Product(
+            id: 123,
+            name: "MyProduct",
+            category: "MyCategory",
+            price: 3.14,
+            stock: 42)
+        
+        Repository.shared.POSTToCart(product: product) { response in
+            responseCode = response.statusCode
+            expectation.fulfill()
         }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertTrue(responseCode == 201)
     }
-
 }
