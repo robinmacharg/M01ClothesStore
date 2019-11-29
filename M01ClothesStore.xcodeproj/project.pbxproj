@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4844DBAE239117E5008E6DD5 /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4844DBAD239117E5008E6DD5 /* ProductCell.xib */; };
+		4844DBB02391181B008E6DD5 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBAF2391181B008E6DD5 /* ProductCell.swift */; };
+		4844DBB223911A3E008E6DD5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBB123911A3E008E6DD5 /* Constants.swift */; };
 		48BE92C3238ECABA00A89EF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */; };
 		48BE92C5238ECABA00A89EF4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92C4238ECABA00A89EF4 /* SceneDelegate.swift */; };
 		48BE92CA238ECABA00A89EF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BE92C8238ECABA00A89EF4 /* Main.storyboard */; };
@@ -43,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4844DBAD239117E5008E6DD5 /* ProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
+		4844DBAF2391181B008E6DD5 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		4844DBB123911A3E008E6DD5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		48BE92BF238ECABA00A89EF4 /* M01ClothesStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = M01ClothesStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48BE92C4238ECABA00A89EF4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 				48BE9300238FB79600A89EF4 /* Misc */,
 				48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */,
 				48BE92C4238ECABA00A89EF4 /* SceneDelegate.swift */,
+				4844DBB123911A3E008E6DD5 /* Constants.swift */,
 				48BE92D3238ECABB00A89EF4 /* Info.plist */,
 			);
 			path = M01ClothesStore;
@@ -212,6 +219,8 @@
 		48BE930F238FCF7500A89EF4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4844DBAD239117E5008E6DD5 /* ProductCell.xib */,
+				4844DBAF2391181B008E6DD5 /* ProductCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -322,6 +331,7 @@
 			files = (
 				48BE92D2238ECABB00A89EF4 /* LaunchScreen.storyboard in Resources */,
 				48BE92CF238ECABB00A89EF4 /* Assets.xcassets in Resources */,
+				4844DBAE239117E5008E6DD5 /* ProductCell.xib in Resources */,
 				48BE9311238FCFA600A89EF4 /* README.md in Resources */,
 				48BE92CA238ECABA00A89EF4 /* Main.storyboard in Resources */,
 			);
@@ -349,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48BE9304238FBDC800A89EF4 /* API.swift in Sources */,
+				4844DBB02391181B008E6DD5 /* ProductCell.swift in Sources */,
 				48BE9302238FB81900A89EF4 /* Repository.swift in Sources */,
 				48BE92FD238FB6E300A89EF4 /* WishlistViewController.swift in Sources */,
 				48BE92FF238FB6EF00A89EF4 /* CartViewController.swift in Sources */,
@@ -358,6 +369,7 @@
 				48BE92C3238ECABA00A89EF4 /* AppDelegate.swift in Sources */,
 				48BE92FB238FB6CF00A89EF4 /* CatalogueViewController.swift in Sources */,
 				48BE92C5238ECABA00A89EF4 /* SceneDelegate.swift in Sources */,
+				4844DBB223911A3E008E6DD5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
