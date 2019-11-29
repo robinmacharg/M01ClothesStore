@@ -19,11 +19,9 @@
 		48BE92FD238FB6E300A89EF4 /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92FC238FB6E300A89EF4 /* WishlistViewController.swift */; };
 		48BE92FF238FB6EF00A89EF4 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92FE238FB6EF00A89EF4 /* CartViewController.swift */; };
 		48BE9302238FB81900A89EF4 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE9301238FB81900A89EF4 /* Repository.swift */; };
-		48BE9304238FBDC800A89EF4 /* APIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE9303238FBDC800A89EF4 /* APIProtocol.swift */; };
-		48BE9306238FBDD900A89EF4 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE9305238FBDD900A89EF4 /* ModelProtocol.swift */; };
-		48BE9308238FBDF500A89EF4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE9307238FBDF500A89EF4 /* API.swift */; };
-		48BE930A238FBE0A00A89EF4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE9309238FBE0A00A89EF4 /* Model.swift */; };
-		48BE930E238FBEB600A89EF4 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE930D238FBEB600A89EF4 /* Product.swift */; };
+		48BE9304238FBDC800A89EF4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE9303238FBDC800A89EF4 /* API.swift */; };
+		48BE9306238FBDD900A89EF4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE9305238FBDD900A89EF4 /* Model.swift */; };
+		48BE930E238FBEB600A89EF4 /* DataObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE930D238FBEB600A89EF4 /* DataObjects.swift */; };
 		48BE9311238FCFA600A89EF4 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 48BE9310238FCFA600A89EF4 /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -63,11 +61,9 @@
 		48BE92FC238FB6E300A89EF4 /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		48BE92FE238FB6EF00A89EF4 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		48BE9301238FB81900A89EF4 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
-		48BE9303238FBDC800A89EF4 /* APIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProtocol.swift; sourceTree = "<group>"; };
-		48BE9305238FBDD900A89EF4 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
-		48BE9307238FBDF500A89EF4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		48BE9309238FBE0A00A89EF4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		48BE930D238FBEB600A89EF4 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		48BE9303238FBDC800A89EF4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		48BE9305238FBDD900A89EF4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		48BE930D238FBEB600A89EF4 /* DataObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataObjects.swift; sourceTree = "<group>"; };
 		48BE9310238FCFA600A89EF4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,10 +160,8 @@
 		48BE92F6238FB3AF00A89EF4 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				48BE930B238FBE8800A89EF4 /* DataObjects */,
+				48BE930D238FBEB600A89EF4 /* DataObjects.swift */,
 				48BE9301238FB81900A89EF4 /* Repository.swift */,
-				48BE9307238FBDF500A89EF4 /* API.swift */,
-				48BE9309238FBE0A00A89EF4 /* Model.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -206,19 +200,11 @@
 			path = Misc;
 			sourceTree = "<group>";
 		};
-		48BE930B238FBE8800A89EF4 /* DataObjects */ = {
-			isa = PBXGroup;
-			children = (
-				48BE930D238FBEB600A89EF4 /* Product.swift */,
-			);
-			path = DataObjects;
-			sourceTree = "<group>";
-		};
 		48BE930C238FBE9200A89EF4 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				48BE9303238FBDC800A89EF4 /* APIProtocol.swift */,
-				48BE9305238FBDD900A89EF4 /* ModelProtocol.swift */,
+				48BE9303238FBDC800A89EF4 /* API.swift */,
+				48BE9305238FBDD900A89EF4 /* Model.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -362,16 +348,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48BE9304238FBDC800A89EF4 /* APIProtocol.swift in Sources */,
+				48BE9304238FBDC800A89EF4 /* API.swift in Sources */,
 				48BE9302238FB81900A89EF4 /* Repository.swift in Sources */,
 				48BE92FD238FB6E300A89EF4 /* WishlistViewController.swift in Sources */,
 				48BE92FF238FB6EF00A89EF4 /* CartViewController.swift in Sources */,
-				48BE9308238FBDF500A89EF4 /* API.swift in Sources */,
-				48BE930E238FBEB600A89EF4 /* Product.swift in Sources */,
-				48BE9306238FBDD900A89EF4 /* ModelProtocol.swift in Sources */,
+				48BE930E238FBEB600A89EF4 /* DataObjects.swift in Sources */,
+				48BE9306238FBDD900A89EF4 /* Model.swift in Sources */,
 				48BE92CD238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld in Sources */,
 				48BE92C3238ECABA00A89EF4 /* AppDelegate.swift in Sources */,
-				48BE930A238FBE0A00A89EF4 /* Model.swift in Sources */,
 				48BE92FB238FB6CF00A89EF4 /* CatalogueViewController.swift in Sources */,
 				48BE92C5238ECABA00A89EF4 /* SceneDelegate.swift in Sources */,
 			);

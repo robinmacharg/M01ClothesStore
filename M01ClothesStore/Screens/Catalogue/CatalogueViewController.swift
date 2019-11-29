@@ -11,8 +11,8 @@ import UIKit
 class CatalogueViewController: UIViewController {
     
     override func viewDidLoad() {
-        Repository.shared().getProducts {
+        Repository.shared.GETProducts(completion: { response in
             print("CatalogueViewController callback")
-        }
+        })
     }
 }

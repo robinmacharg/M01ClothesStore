@@ -8,9 +8,9 @@
 
 import Foundation
 
-protocol APIProtocol {
+protocol API {
     func GETProducts(completion: @escaping (_ response: HTTPURLResponse) -> ());
-    func GETProductDetails();
-    func POSTToCart(product: Product);
-    func DELETEFromCart(product: Product);
+//    func GETProductDetails();
+//    func POSTToCart(product: Product);
+//    func DELETEFromCart(product: Product);
 }

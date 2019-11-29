@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ModelProtocol {
-    func parseProducts(products: String, completion: () -> ());
+protocol Model {
+//    func parseProducts(products: String, completion: () -> ());
 }

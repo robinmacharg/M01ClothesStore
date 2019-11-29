@@ -35,3 +35,5 @@ struct Product: Codable, Hashable {
         hasher.combine(id)
     }
 }
+
+typealias CatalogueResponse = [Product]
