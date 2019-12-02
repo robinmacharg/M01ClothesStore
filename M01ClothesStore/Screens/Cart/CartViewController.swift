@@ -13,16 +13,28 @@ class CartViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cartTotalLabel: UILabel!
     
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         tableView.register(
             UINib(nibName: "ProductCell", bundle: Bundle.main),
             forCellReuseIdentifier: Constants.UI.ProductCell)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+        updateCartTotal()
     }
+    
+    // MARK: - Helpers
+    
+    func updateCartTotal() {
+        var items = Repository.shared.Cart.count
+        var itemText = items == 1 ? "item" : "items"
+        cartTotalLabel.text = "Cart Total (\(items) \(itemText)): £\(Repository.shared.cartTotal)"
+    }
+    
 }
 
 // MARK: - <UITableViewDataSource>
@@ -40,14 +52,10 @@ extension CartViewController: UITableViewDataSource {
             cell.ID = product.id
             cell.productNameLabel.text = product.name
             cell.categoryLabel.text = product.category
-            cell.priceLabel.isHidden = true
+            cell.priceLabel.text = "£\(String(format: "%.2f", product.price))"
             cell.availabilityLabel.isHidden = true
-//            cell.AddProductButton.isHidden = true
-            
             cell.addProductButton.setImage(UIImage(systemName: "cart.badge.minus"), for: .normal)
-            
             cell.delegate = self
-            
             return cell
         }
     
@@ -73,6 +81,9 @@ extension CartViewController: ProductCellDelegate {
             Repository.shared.removeProductFromCart(index: index) {
                 
                 // Async completion block:
+
+                // Update the header total
+                self.updateCartTotal()
                 
                 // Animate deletions
                 self.tableView.beginUpdates()
