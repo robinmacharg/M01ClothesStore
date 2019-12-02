@@ -27,7 +27,6 @@ class CatalogueViewController: UIViewController {
         if Repository.shared.dirtyCatalogue {
             self.tableView.reloadData()
         }
-        
     }
 }
 
@@ -42,6 +41,13 @@ extension CatalogueViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell,
             let product = Repository.shared.Catalogue[Repository.shared.orderedCatalogueKeys[ indexPath.row]]
         {
+            // Visibility
+            
+            cell.addProductButton.isHidden = false
+            cell.wishlistButton.isHidden = false
+
+            // Values
+
             cell.rowIndex = indexPath.row
             cell.ID = product.id
             cell.productNameLabel.text = product.name
@@ -49,6 +55,7 @@ extension CatalogueViewController: UITableViewDataSource {
             cell.priceLabel.text = "£\(String(format: "%.2f", product.price))"
             cell.availabilityLabel.text = "\(product.stock) Available"
             cell.addProductButton.setImage(UIImage(systemName: "cart.badge.plus"), for: .normal)
+            cell.wishlistButton.setImage(UIImage(systemName: "star"), for: .normal)
             cell.delegate = self
             
             cell.addProductButton.isEnabled = !(product.stock == 0)
@@ -78,6 +85,12 @@ extension CatalogueViewController: ProductCellDelegate {
             if let rowIndex = sender.rowIndex {
                 self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)
             }
+        }
+    }
+    
+    func wishlistButtonTapped(sender: ProductCell, productID: Int) {
+        Repository.shared.toggleWishlistInclusion(productId: productID) {
+            
         }
     }
 }

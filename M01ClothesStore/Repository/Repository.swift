@@ -38,9 +38,10 @@ public class Repository {
     
     var Catalogue: [Int:Product] = [:]
     var Cart: [Product] = []
+    var Wishlist: [Int:Product] = [:]
     
     var dirtyCatalogue: Bool = false;
-//    var dirtyCart: Bool = false; // TODO: remove or implement
+    var dirtyCart: Bool = false; // TODO: remove or implement
     
     // MARK: - Utility
     
@@ -190,5 +191,9 @@ extension Repository: Model {
 
             completion?()
         }
+    }
+    
+    func toggleWishlistInclusion(productId: Int, _ completion: (() -> ())? = nil) {
+        
     }
 }

@@ -14,14 +14,33 @@
                     <view key="view" contentMode="scaleToFill" id="jcm-85-IMK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zuD-xT-KrV">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ltc-uE-Ypg" id="wwU-zZ-j6A"/>
+                                    <outlet property="delegate" destination="ltc-uE-Ypg" id="JAE-Ou-Mqd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zuD-xT-KrV" firstAttribute="trailing" secondItem="Ll9-A4-9sp" secondAttribute="trailing" id="2A1-b7-Y52"/>
+                            <constraint firstItem="zuD-xT-KrV" firstAttribute="leading" secondItem="Ll9-A4-9sp" secondAttribute="leading" id="7LD-Av-DSP"/>
+                            <constraint firstItem="zuD-xT-KrV" firstAttribute="top" secondItem="Ll9-A4-9sp" secondAttribute="top" id="ae8-bL-HZI"/>
+                            <constraint firstItem="zuD-xT-KrV" firstAttribute="bottom" secondItem="Ll9-A4-9sp" secondAttribute="bottom" id="d0l-H2-wjV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ll9-A4-9sp"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Wishlist" image="bookmark" catalog="system" id="NU3-C4-QDx"/>
+                    <connections>
+                        <outlet property="tableView" destination="zuD-xT-KrV" id="vgV-Fy-K0I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9t4-tp-zwF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1701" y="869"/>
+            <point key="canvasLocation" x="-1701.449275362319" y="868.52678571428567"/>
         </scene>
         <!--Catalogue-->
         <scene sceneID="h0H-yu-bIJ">

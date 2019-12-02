@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -61,6 +62,17 @@
                             <action selector="cartButtonTapped:" destination="WvY-RH-nyC" eventType="touchUpInside" id="VEv-05-6Dt"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYq-q1-dg5" userLabel="Add to Wishlist">
+                        <rect key="frame" x="300" y="36" width="43" height="53"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="53" id="Z5C-aK-zfG"/>
+                            <constraint firstAttribute="width" constant="43" id="xGp-j6-zuh"/>
+                        </constraints>
+                        <state key="normal" image="plus" catalog="system"/>
+                        <connections>
+                            <action selector="wishlistButtonTapped:" destination="WvY-RH-nyC" eventType="touchUpInside" id="14P-pW-9ue"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="DH4-ho-URf" secondAttribute="trailing" constant="20" id="0Ci-1E-XW2"/>
@@ -68,11 +80,13 @@
                     <constraint firstItem="1sh-Js-Byh" firstAttribute="top" secondItem="zDY-VA-lVi" secondAttribute="top" constant="8" id="Afw-6R-FqN"/>
                     <constraint firstAttribute="trailing" secondItem="1Nu-tw-OsT" secondAttribute="trailing" constant="20" id="Gtc-gB-QLz"/>
                     <constraint firstAttribute="trailing" secondItem="wvD-KP-gdD" secondAttribute="trailing" constant="20" id="JoI-aF-hNm"/>
+                    <constraint firstItem="G0s-41-hfk" firstAttribute="centerY" secondItem="ZYq-q1-dg5" secondAttribute="centerY" id="XRo-bS-MRW"/>
                     <constraint firstAttribute="bottom" secondItem="G0s-41-hfk" secondAttribute="bottom" constant="11" id="Xvu-ff-RxB"/>
                     <constraint firstItem="1Nu-tw-OsT" firstAttribute="leading" secondItem="zDY-VA-lVi" secondAttribute="leading" constant="20" id="a6L-GW-x4d"/>
                     <constraint firstItem="DH4-ho-URf" firstAttribute="leading" secondItem="1sh-Js-Byh" secondAttribute="trailing" constant="8" id="her-wc-Xm4"/>
                     <constraint firstAttribute="trailing" secondItem="G0s-41-hfk" secondAttribute="trailing" constant="20" id="j2j-hj-Sjd"/>
                     <constraint firstItem="1sh-Js-Byh" firstAttribute="leading" secondItem="zDY-VA-lVi" secondAttribute="leading" constant="20" id="jFa-9Y-og4"/>
+                    <constraint firstItem="G0s-41-hfk" firstAttribute="leading" secondItem="ZYq-q1-dg5" secondAttribute="trailing" constant="8" id="mMV-0M-6iE"/>
                     <constraint firstItem="wvD-KP-gdD" firstAttribute="leading" secondItem="zDY-VA-lVi" secondAttribute="leading" constant="20" id="q56-E9-xoZ"/>
                     <constraint firstItem="wvD-KP-gdD" firstAttribute="top" secondItem="1sh-Js-Byh" secondAttribute="bottom" constant="8" id="ueR-pF-7St"/>
                     <constraint firstItem="DH4-ho-URf" firstAttribute="centerY" secondItem="1sh-Js-Byh" secondAttribute="centerY" id="vwd-IE-2SR"/>
@@ -84,6 +98,7 @@
                 <outlet property="categoryLabel" destination="wvD-KP-gdD" id="wV8-gS-aWn"/>
                 <outlet property="priceLabel" destination="DH4-ho-URf" id="Xgb-og-bGO"/>
                 <outlet property="productNameLabel" destination="1sh-Js-Byh" id="UHS-ZX-2Me"/>
+                <outlet property="wishlistButton" destination="ZYq-q1-dg5" id="LPk-0X-bWR"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="172.09821428571428"/>
         </tableViewCell>

@@ -48,6 +48,12 @@ extension CartViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell
         {
             let product = Repository.shared.Cart[indexPath.row]
+            
+            // Visibility
+            
+            cell.addProductButton.isHidden = false
+            cell.wishlistButton.isHidden = true
+            
             cell.rowIndex = indexPath.row
             cell.ID = product.id
             cell.productNameLabel.text = product.name
