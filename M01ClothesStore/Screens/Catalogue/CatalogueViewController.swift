@@ -54,8 +54,8 @@ extension CatalogueViewController: UITableViewDataSource {
             cell.categoryLabel.text = product.category
             cell.priceLabel.text = "£\(String(format: "%.2f", product.price))"
             cell.availabilityLabel.text = "\(product.stock) Available"
-            cell.addProductButton.setImage(UIImage(systemName: "cart.badge.plus"), for: .normal)
-            cell.wishlistButton.setImage(UIImage(systemName: "star"), for: .normal)
+            cell.addProductButton.setImage(UIImage(named: "cart-plus"), for: .normal)
+            cell.wishlistButton.setImage(UIImage(named: "star-empty"), for: .normal)
             cell.delegate = self
             
             cell.addProductButton.isEnabled = !(product.stock == 0)

@@ -47,7 +47,7 @@ extension WishlistViewController: UITableViewDataSource {
             cell.categoryLabel.text = product.category
             cell.priceLabel.text = "£\(String(format: "%.2f", product.price))"
             cell.availabilityLabel.text = "\(product.stock) Available"
-            cell.addProductButton.setImage(UIImage(systemName: "star"), for: .normal)
+            cell.addProductButton.setImage(UIImage(named: "star-empty"), for: .normal)
             cell.delegate = self
             
             return cell

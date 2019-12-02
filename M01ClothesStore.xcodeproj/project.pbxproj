@@ -12,7 +12,6 @@
 		4844DBB223911A3E008E6DD5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBB123911A3E008E6DD5 /* Constants.swift */; };
 		4844DBB4239136D5008E6DD5 /* ProductCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBB3239136D5008E6DD5 /* ProductCellDelegate.swift */; };
 		48BE92C3238ECABA00A89EF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */; };
-		48BE92C5238ECABA00A89EF4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92C4238ECABA00A89EF4 /* SceneDelegate.swift */; };
 		48BE92CA238ECABA00A89EF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BE92C8238ECABA00A89EF4 /* Main.storyboard */; };
 		48BE92CD238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92CB238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld */; };
 		48BE92CF238ECABB00A89EF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48BE92CE238ECABB00A89EF4 /* Assets.xcassets */; };
@@ -372,7 +371,6 @@
 				48BE92C3238ECABA00A89EF4 /* AppDelegate.swift in Sources */,
 				4844DBB4239136D5008E6DD5 /* ProductCellDelegate.swift in Sources */,
 				48BE92FB238FB6CF00A89EF4 /* CatalogueViewController.swift in Sources */,
-				48BE92C5238ECABA00A89EF4 /* SceneDelegate.swift in Sources */,
 				4844DBB223911A3E008E6DD5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,8 +545,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LN7L8M6G75;
+				DEVELOPMENT_TEAM = 63Q5U6V79A;
 				INFOPLIST_FILE = M01ClothesStore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -565,8 +564,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LN7L8M6G75;
+				DEVELOPMENT_TEAM = 63Q5U6V79A;
 				INFOPLIST_FILE = M01ClothesStore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -586,7 +586,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LN7L8M6G75;
 				INFOPLIST_FILE = M01ClothesStoreTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -608,7 +608,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LN7L8M6G75;
 				INFOPLIST_FILE = M01ClothesStoreTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -629,6 +629,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LN7L8M6G75;
 				INFOPLIST_FILE = M01ClothesStoreUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -649,6 +650,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LN7L8M6G75;
 				INFOPLIST_FILE = M01ClothesStoreUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

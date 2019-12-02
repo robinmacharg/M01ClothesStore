@@ -60,7 +60,7 @@ extension CartViewController: UITableViewDataSource {
             cell.categoryLabel.text = product.category
             cell.priceLabel.text = "£\(String(format: "%.2f", product.price))"
             cell.availabilityLabel.isHidden = true
-            cell.addProductButton.setImage(UIImage(systemName: "cart.badge.minus"), for: .normal)
+            cell.addProductButton.setImage(UIImage(named: "cart-minus"), for: .normal)
             cell.delegate = self
             return cell
         }

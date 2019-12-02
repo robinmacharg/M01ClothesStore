@@ -114,7 +114,7 @@ extension Repository: API {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "content-type")
-        let cartItem = CartItem(productId: productId)
+        let cartItem = CartItem(productId: productId, count: 0)
         let cartItemJSON = try! encoder.encode(cartItem)
         request.httpBody = cartItemJSON
         
