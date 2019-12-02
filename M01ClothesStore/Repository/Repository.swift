@@ -162,11 +162,14 @@ extension Repository: API {
 // Data Access convenience functions
 
 extension Repository: Model {
-    func addProductToCart(productID: Int) {
+    func addProductToCart(productID: Int, _ completion: (() -> ())? = nil) {
         POSTToCart(productId: productID) { response in
             if let product = self.Catalogue[productID] {
+                var product = self.Catalogue[productID]!
+                self.Catalogue[productID]!.stock -= 1
                 self.Cart.append(product)
             }
+            completion?()
         }
     }
     

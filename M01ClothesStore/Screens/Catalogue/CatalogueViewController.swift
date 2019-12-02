@@ -34,16 +34,14 @@ extension CatalogueViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell,
             let product = Repository.shared.Catalogue[Repository.shared.orderedCatalogueKeys[ indexPath.row]]
         {
+            cell.rowIndex = indexPath.row
             cell.ID = product.id
             cell.productNameLabel.text = product.name
             cell.categoryLabel.text = product.category
             cell.priceLabel.text = "£\(String(format: "%.2f", product.price))"
             cell.availabilityLabel.text = "\(product.stock) Available"
-            
             cell.addProductButton.setImage(UIImage(systemName: "cart.badge.plus"), for: .normal)
-            
             cell.delegate = self
-            
             return cell
         }
             
@@ -65,6 +63,10 @@ extension CatalogueViewController: UITableViewDelegate {
 
 extension CatalogueViewController: ProductCellDelegate {
     func cartButtonTapped(sender: ProductCell, productID: Int) {
-        Repository.shared.addProductToCart(productID: productID)
+        Repository.shared.addProductToCart(productID: productID) {
+            if let rowIndex = sender.rowIndex {
+                self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)
+            }
+        }
     }
 }
