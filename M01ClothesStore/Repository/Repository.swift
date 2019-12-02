@@ -152,7 +152,8 @@ extension Repository: API {
 }
 
 // MARK: - <Model>
-// Data Access convenience functions, if required
+//
+// Data Access convenience functions
 
 extension Repository: Model {
     func addProductToCart(productID: Int) {

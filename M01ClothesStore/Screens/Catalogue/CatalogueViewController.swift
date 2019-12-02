@@ -57,14 +57,14 @@ extension CatalogueViewController: UITableViewDataSource {
 
 extension CatalogueViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 100 // TODO: Extract from XIB
     }
 }
 
 // MARK: - <ProductCellDelegate>
 
 extension CatalogueViewController: ProductCellDelegate {
-    func ProductCellButtonTapped(productID: Int) {
+    func cartButtonTapped(sender: ProductCell, productID: Int) {
         Repository.shared.addProductToCart(productID: productID)
     }
 }
