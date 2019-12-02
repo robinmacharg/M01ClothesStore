@@ -51,7 +51,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Catalogue" image="book" catalog="system" id="JDA-xB-Pxn"/>
                     <connections>
-                        <outlet property="TableView" destination="Zze-58-lMi" id="n3W-4j-BTd"/>
+                        <outlet property="tableView" destination="Zze-58-lMi" id="n3W-4j-BTd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pu-st-Ew8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -86,26 +86,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dqc-xc-vg0">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="121" width="414" height="692"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="jCU-2M-0m4"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="CyI-vF-WVP"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vvb-Q3-LPL">
+                                <rect key="frame" x="0.0" y="44" width="414" height="77"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SpH-38-NSG" userLabel="Cart Total Label">
+                                        <rect key="frame" x="364" y="28" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="SpH-38-NSG" firstAttribute="centerY" secondItem="Vvb-Q3-LPL" secondAttribute="centerY" id="R1Q-pI-NCs"/>
+                                    <constraint firstAttribute="height" constant="77" id="ocy-QJ-I1H"/>
+                                    <constraint firstAttribute="trailing" secondItem="SpH-38-NSG" secondAttribute="trailing" constant="8" id="onj-zw-UkH"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dqc-xc-vg0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="21X-y4-BFR"/>
+                            <constraint firstItem="Vvb-Q3-LPL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5VE-ex-XH9"/>
                             <constraint firstItem="dqc-xc-vg0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Fig-gc-xU4"/>
-                            <constraint firstItem="dqc-xc-vg0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="VWx-Ud-rm8"/>
+                            <constraint firstItem="Vvb-Q3-LPL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ITW-wF-KRd"/>
+                            <constraint firstItem="dqc-xc-vg0" firstAttribute="top" secondItem="Vvb-Q3-LPL" secondAttribute="bottom" id="RBt-VJ-fx7"/>
+                            <constraint firstItem="Vvb-Q3-LPL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="USJ-d9-dpN"/>
                             <constraint firstItem="dqc-xc-vg0" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="b88-Xp-FuN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Cart" image="bag" catalog="system" id="4od-UY-JTj"/>
                     <connections>
-                        <outlet property="TableView" destination="dqc-xc-vg0" id="qHn-8w-Zpz"/>
+                        <outlet property="cartTotalLabel" destination="SpH-38-NSG" id="991-pN-V6D"/>
+                        <outlet property="tableView" destination="dqc-xc-vg0" id="qHn-8w-Zpz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

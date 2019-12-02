@@ -79,11 +79,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="AddProductButton" destination="G0s-41-hfk" id="qae-Dr-w0g"/>
-                <outlet property="AvailabilityLabel" destination="1Nu-tw-OsT" id="8iO-G2-rTG"/>
-                <outlet property="CategoryLabel" destination="wvD-KP-gdD" id="wV8-gS-aWn"/>
-                <outlet property="PriceLabel" destination="DH4-ho-URf" id="Xgb-og-bGO"/>
-                <outlet property="ProductNameLabel" destination="1sh-Js-Byh" id="UHS-ZX-2Me"/>
+                <outlet property="addProductButton" destination="G0s-41-hfk" id="qae-Dr-w0g"/>
+                <outlet property="availabilityLabel" destination="1Nu-tw-OsT" id="8iO-G2-rTG"/>
+                <outlet property="categoryLabel" destination="wvD-KP-gdD" id="wV8-gS-aWn"/>
+                <outlet property="priceLabel" destination="DH4-ho-URf" id="Xgb-og-bGO"/>
+                <outlet property="productNameLabel" destination="1sh-Js-Byh" id="UHS-ZX-2Me"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="172.09821428571428"/>
         </tableViewCell>

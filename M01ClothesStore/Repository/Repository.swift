@@ -50,6 +50,12 @@ public class Repository {
             return Catalogue.keys.sorted()
         }
     }
+    
+    var cartTotal: Double {
+        get { return Cart.reduce(0) { (result, product) -> Double in
+            return result + product.price
+        }}
+    }
 }
 
 // MARK: - <API>
