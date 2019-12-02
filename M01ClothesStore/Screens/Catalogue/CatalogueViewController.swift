@@ -10,15 +10,15 @@ import UIKit
 
 class CatalogueViewController: UIViewController {
     
-    @IBOutlet weak var TableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
-        TableView.register(
+        tableView.register(
             UINib(nibName: "ProductCell", bundle: Bundle.main),
             forCellReuseIdentifier: Constants.UI.ProductCell)
         
         Repository.shared.GETProducts(completion: { response in
-            self.TableView.reloadData()
+            self.tableView.reloadData()
         })
     }
 }
@@ -35,12 +35,12 @@ extension CatalogueViewController: UITableViewDataSource {
             let product = Repository.shared.Catalogue[Repository.shared.orderedCatalogueKeys[ indexPath.row]]
         {
             cell.ID = product.id
-            cell.ProductNameLabel.text = product.name
-            cell.CategoryLabel.text = product.category
-            cell.PriceLabel.text = "£\(String(format: "%.2f", product.price))"
-            cell.AvailabilityLabel.text = "\(product.stock) Available"
+            cell.productNameLabel.text = product.name
+            cell.categoryLabel.text = product.category
+            cell.priceLabel.text = "£\(String(format: "%.2f", product.price))"
+            cell.availabilityLabel.text = "\(product.stock) Available"
             
-            cell.AddProductButton.setImage(UIImage(systemName: "cart.badge.plus"), for: .normal)
+            cell.addProductButton.setImage(UIImage(systemName: "cart.badge.plus"), for: .normal)
             
             cell.delegate = self
             

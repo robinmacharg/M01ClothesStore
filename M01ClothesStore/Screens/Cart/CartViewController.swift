@@ -10,16 +10,18 @@ import UIKit
 
 class CartViewController: UIViewController {
     
-    @IBOutlet weak var TableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var cartTotalLabel: UILabel!
+    
     
     override func viewDidLoad() {
-        TableView.register(
+        tableView.register(
             UINib(nibName: "ProductCell", bundle: Bundle.main),
             forCellReuseIdentifier: Constants.UI.ProductCell)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        TableView.reloadData()
+        tableView.reloadData()
     }
 }
 
@@ -36,13 +38,13 @@ extension CartViewController: UITableViewDataSource {
             let product = Repository.shared.Cart[indexPath.row]
             cell.rowIndex = indexPath.row
             cell.ID = product.id
-            cell.ProductNameLabel.text = product.name
-            cell.CategoryLabel.text = product.category
-            cell.PriceLabel.isHidden = true
-            cell.AvailabilityLabel.isHidden = true
+            cell.productNameLabel.text = product.name
+            cell.categoryLabel.text = product.category
+            cell.priceLabel.isHidden = true
+            cell.availabilityLabel.isHidden = true
 //            cell.AddProductButton.isHidden = true
             
-            cell.AddProductButton.setImage(UIImage(systemName: "cart.badge.minus"), for: .normal)
+            cell.addProductButton.setImage(UIImage(systemName: "cart.badge.minus"), for: .normal)
             
             cell.delegate = self
             
@@ -73,18 +75,18 @@ extension CartViewController: ProductCellDelegate {
                 // Async completion block:
                 
                 // Animate deletions
-                self.TableView.beginUpdates()
-                self.TableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
                 
                 // Decrement index of every - visible - row above deletion index
                 // Addition of new items (via Catalogue VC) will cause a complete reload
-                for case let cell as ProductCell in self.TableView.visibleCells {
+                for case let cell as ProductCell in self.tableView.visibleCells {
                     if let cellIndex = cell.rowIndex, cellIndex > index {
                         cell.rowIndex! -= 1
                     }
                 }
                 
-                self.TableView.endUpdates()
+                self.tableView.endUpdates()
             }
         }
     }

@@ -14,11 +14,11 @@ class ProductCell: UITableViewCell {
     var ID: Int?
     var rowIndex: Int?
     
-    @IBOutlet weak var ProductNameLabel: UILabel!
-    @IBOutlet weak var CategoryLabel: UILabel!
-    @IBOutlet weak var PriceLabel: UILabel!
-    @IBOutlet weak var AvailabilityLabel: UILabel!
-    @IBOutlet weak var AddProductButton: UIButton!
+    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var availabilityLabel: UILabel!
+    @IBOutlet weak var addProductButton: UIButton!
     
     @IBAction func cartButtonTapped(_ sender: Any) {
         delegate?.cartButtonTapped(
