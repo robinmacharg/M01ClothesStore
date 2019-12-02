@@ -8,6 +8,7 @@
 
 import Foundation
 
-protocol ModelProtocol {
-    func parseProducts(products: String, completion: () -> ());
+protocol Model {
+    func addProductToCart(productID: Int, _ completion: (() -> ())?);
+    func removeProductFromCart(index: Int, _ completion: (() -> ())?);
 }

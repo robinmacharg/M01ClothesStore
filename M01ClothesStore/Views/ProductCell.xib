@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="WvY-RH-nyC" customClass="ProductCell" customModule="M01ClothesStore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WvY-RH-nyC" id="zDY-VA-lVi">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sh-Js-Byh">
+                        <rect key="frame" x="20" y="8" width="110" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Q7o-YG-j3W"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvD-KP-gdD">
+                        <rect key="frame" x="20" y="37" width="374" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="4Sw-p9-UzK"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DH4-ho-URf">
+                        <rect key="frame" x="138" y="8" width="256" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="XZ5-ux-AZL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Availability" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Nu-tw-OsT">
+                        <rect key="frame" x="20" y="66" width="374" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="8TE-80-DHD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0s-41-hfk" userLabel="Add Product">
+                        <rect key="frame" x="351" y="36" width="43" height="53"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="53" id="eWk-qq-Bmt"/>
+                            <constraint firstAttribute="width" constant="43" id="sJt-4z-Pmc"/>
+                        </constraints>
+                        <state key="normal" image="plus" catalog="system"/>
+                        <connections>
+                            <action selector="cartButtonTapped:" destination="WvY-RH-nyC" eventType="touchUpInside" id="VEv-05-6Dt"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="DH4-ho-URf" secondAttribute="trailing" constant="20" id="0Ci-1E-XW2"/>
+                    <constraint firstItem="1Nu-tw-OsT" firstAttribute="top" secondItem="wvD-KP-gdD" secondAttribute="bottom" constant="8" id="0O4-2m-L1H"/>
+                    <constraint firstItem="1sh-Js-Byh" firstAttribute="top" secondItem="zDY-VA-lVi" secondAttribute="top" constant="8" id="Afw-6R-FqN"/>
+                    <constraint firstAttribute="trailing" secondItem="1Nu-tw-OsT" secondAttribute="trailing" constant="20" id="Gtc-gB-QLz"/>
+                    <constraint firstAttribute="trailing" secondItem="wvD-KP-gdD" secondAttribute="trailing" constant="20" id="JoI-aF-hNm"/>
+                    <constraint firstAttribute="bottom" secondItem="G0s-41-hfk" secondAttribute="bottom" constant="11" id="Xvu-ff-RxB"/>
+                    <constraint firstItem="1Nu-tw-OsT" firstAttribute="leading" secondItem="zDY-VA-lVi" secondAttribute="leading" constant="20" id="a6L-GW-x4d"/>
+                    <constraint firstItem="DH4-ho-URf" firstAttribute="leading" secondItem="1sh-Js-Byh" secondAttribute="trailing" constant="8" id="her-wc-Xm4"/>
+                    <constraint firstAttribute="trailing" secondItem="G0s-41-hfk" secondAttribute="trailing" constant="20" id="j2j-hj-Sjd"/>
+                    <constraint firstItem="1sh-Js-Byh" firstAttribute="leading" secondItem="zDY-VA-lVi" secondAttribute="leading" constant="20" id="jFa-9Y-og4"/>
+                    <constraint firstItem="wvD-KP-gdD" firstAttribute="leading" secondItem="zDY-VA-lVi" secondAttribute="leading" constant="20" id="q56-E9-xoZ"/>
+                    <constraint firstItem="wvD-KP-gdD" firstAttribute="top" secondItem="1sh-Js-Byh" secondAttribute="bottom" constant="8" id="ueR-pF-7St"/>
+                    <constraint firstItem="DH4-ho-URf" firstAttribute="centerY" secondItem="1sh-Js-Byh" secondAttribute="centerY" id="vwd-IE-2SR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="addProductButton" destination="G0s-41-hfk" id="qae-Dr-w0g"/>
+                <outlet property="availabilityLabel" destination="1Nu-tw-OsT" id="8iO-G2-rTG"/>
+                <outlet property="categoryLabel" destination="wvD-KP-gdD" id="wV8-gS-aWn"/>
+                <outlet property="priceLabel" destination="DH4-ho-URf" id="Xgb-og-bGO"/>
+                <outlet property="productNameLabel" destination="1sh-Js-Byh" id="UHS-ZX-2Me"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="172.09821428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="plus" catalog="system" width="64" height="56"/>
+    </resources>
+</document>
