@@ -38,7 +38,10 @@ public class Repository {
     
     var Catalogue: [Int:Product] = [:]
     var Cart: [Product] = []
-
+    
+    var dirtyCatalogue: Bool = false;
+//    var dirtyCart: Bool = false; // TODO: remove or implement
+    
     // MARK: - Utility
     
     func assertInitialized() {
@@ -165,9 +168,11 @@ extension Repository: Model {
     func addProductToCart(productID: Int, _ completion: (() -> ())? = nil) {
         POSTToCart(productId: productID) { response in
             if let product = self.Catalogue[productID] {
-                var product = self.Catalogue[productID]!
                 self.Catalogue[productID]!.stock -= 1
                 self.Cart.append(product)
+                
+                Repository.shared.dirtyCatalogue = true
+                Repository.shared.dirtyCart = true
             }
             completion?()
         }
@@ -175,7 +180,14 @@ extension Repository: Model {
     
     func removeProductFromCart(index: Int, _ completion: (() -> ())? = nil) {
         DELETEFromCart { response in
+            if self.Catalogue[self.Cart[index].id] != nil {
+                self.Catalogue[self.Cart[index].id]?.stock += 1
+                Repository.shared.dirtyCatalogue = true
+            }
             self.Cart.remove(at: index)
+
+            Repository.shared.dirtyCart = true
+
             completion?()
         }
     }

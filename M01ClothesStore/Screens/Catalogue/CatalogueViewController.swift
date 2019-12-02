@@ -21,6 +21,14 @@ class CatalogueViewController: UIViewController {
             self.tableView.reloadData()
         })
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // Hack - in absence of Reactive implementation - to handle items deleted from the cart
+        if Repository.shared.dirtyCatalogue {
+            self.tableView.reloadData()
+        }
+        
+    }
 }
 
 // MARK: - <UITableViewDataSource>
@@ -42,6 +50,9 @@ extension CatalogueViewController: UITableViewDataSource {
             cell.availabilityLabel.text = "\(product.stock) Available"
             cell.addProductButton.setImage(UIImage(systemName: "cart.badge.plus"), for: .normal)
             cell.delegate = self
+            
+            cell.addProductButton.isEnabled = !(product.stock == 0)
+            
             return cell
         }
             
