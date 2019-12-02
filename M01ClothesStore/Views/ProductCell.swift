@@ -12,6 +12,7 @@ class ProductCell: UITableViewCell {
     
     var delegate: ProductCellDelegate?
     var ID: Int?
+    var rowIndex: Int?
     
     @IBOutlet weak var ProductNameLabel: UILabel!
     @IBOutlet weak var CategoryLabel: UILabel!
@@ -19,7 +20,9 @@ class ProductCell: UITableViewCell {
     @IBOutlet weak var AvailabilityLabel: UILabel!
     @IBOutlet weak var AddProductButton: UIButton!
     
-    @IBAction func AddProduct(_ sender: Any) {
-        delegate?.productAdded(productID: self.ID ?? -1)
+    @IBAction func cartButtonTapped(_ sender: Any) {
+        delegate?.cartButtonTapped(
+            sender: self,
+            productID: self.ID ?? -1)
     }
 }

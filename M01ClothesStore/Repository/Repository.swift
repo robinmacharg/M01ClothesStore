@@ -126,13 +126,34 @@ extension Repository: API {
         dataTask.resume()
     }
 
-//    func DELETEFromCart(product: Product) {
-//        
-//    }
+    func DELETEFromCart(completion: @escaping (HTTPURLResponse) -> ()) {
+        assertInitialized()
+        
+        let url = URL(string: "\(APIroot!)/cart/1")! // TODO: store cart# from POST requests?
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        let dataTask = session.dataTask(with: request) {[weak self] data, response, error in
+            if let error = error {
+                print("DataTask error: \(error.localizedDescription)")
+            }
+            else if
+                let data = data,
+                let response = response as? HTTPURLResponse,
+                response.statusCode == 204
+            {
+                DispatchQueue.main.async {
+                    completion(response)
+                }
+            }
+        }
+        dataTask.resume()
+    }
 }
 
 // MARK: - <Model>
-// Data Access convenience functions, if required
+//
+// Data Access convenience functions
 
 extension Repository: Model {
     func addProductToCart(productID: Int) {
@@ -140,6 +161,13 @@ extension Repository: Model {
             if let product = self.Catalogue[productID] {
                 self.Cart.append(product)
             }
+        }
+    }
+    
+    func removeProductFromCart(index: Int, _ completion: (() -> ())? = nil) {
+        DELETEFromCart { response in
+            self.Cart.remove(at: index)
+            completion?()
         }
     }
 }

@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ProductCellDelegate {
-    func productAdded(productID: Int);
+    func cartButtonTapped(sender: ProductCell, productID: Int);
 }

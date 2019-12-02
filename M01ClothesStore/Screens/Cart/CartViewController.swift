@@ -34,12 +34,17 @@ extension CartViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell
         {
             let product = Repository.shared.Cart[indexPath.row]
+            cell.rowIndex = indexPath.row
             cell.ID = product.id
             cell.ProductNameLabel.text = product.name
             cell.CategoryLabel.text = product.category
             cell.PriceLabel.isHidden = true
             cell.AvailabilityLabel.isHidden = true
-            cell.AddProductButton.isHidden = true
+//            cell.AddProductButton.isHidden = true
+            
+            cell.AddProductButton.setImage(UIImage(systemName: "cart.badge.minus"), for: .normal)
+            
+            cell.delegate = self
             
             return cell
         }
@@ -55,6 +60,33 @@ extension CartViewController: UITableViewDataSource {
 extension CartViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+}
+
+// MARK: - <ProductCellDelegate>
+
+extension CartViewController: ProductCellDelegate {
+    func cartButtonTapped(sender: ProductCell, productID: Int) {
+        if let index = sender.rowIndex {
+            Repository.shared.removeProductFromCart(index: index) {
+                
+                // Async completion block:
+                
+                // Animate deletions
+                self.TableView.beginUpdates()
+                self.TableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                
+                // Decrement index of every - visible - row above deletion index
+                // Addition of new items (via Catalogue VC) will cause a complete reload
+                for case let cell as ProductCell in self.TableView.visibleCells {
+                    if let cellIndex = cell.rowIndex, cellIndex > index {
+                        cell.rowIndex! -= 1
+                    }
+                }
+                
+                self.TableView.endUpdates()
+            }
+        }
     }
 }
 

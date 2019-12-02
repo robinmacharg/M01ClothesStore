@@ -10,4 +10,5 @@ import Foundation
 
 protocol Model {
     func addProductToCart(productID: Int);
+    func removeProductFromCart(index: Int, _ completion: (() -> ())?);
 }

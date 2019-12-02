@@ -39,6 +39,9 @@ extension CatalogueViewController: UITableViewDataSource {
             cell.CategoryLabel.text = product.category
             cell.PriceLabel.text = "£\(String(format: "%.2f", product.price))"
             cell.AvailabilityLabel.text = "\(product.stock) Available"
+            
+            cell.AddProductButton.setImage(UIImage(systemName: "cart.badge.plus"), for: .normal)
+            
             cell.delegate = self
             
             return cell
@@ -54,14 +57,14 @@ extension CatalogueViewController: UITableViewDataSource {
 
 extension CatalogueViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 100 // TODO: Extract from XIB
     }
 }
 
 // MARK: - <ProductCellDelegate>
 
 extension CatalogueViewController: ProductCellDelegate {
-    func productAdded(productID: Int) {
+    func cartButtonTapped(sender: ProductCell, productID: Int) {
         Repository.shared.addProductToCart(productID: productID)
     }
 }

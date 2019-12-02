@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -59,7 +58,7 @@
                         </constraints>
                         <state key="normal" image="plus" catalog="system"/>
                         <connections>
-                            <action selector="AddProduct:" destination="WvY-RH-nyC" eventType="touchUpInside" id="VEv-05-6Dt"/>
+                            <action selector="cartButtonTapped:" destination="WvY-RH-nyC" eventType="touchUpInside" id="VEv-05-6Dt"/>
                         </connections>
                     </button>
                 </subviews>
