@@ -9,6 +9,6 @@
 import Foundation
 
 protocol Model {
-    func addProductToCart(productID: Int);
+    func addProductToCart(productID: Int, _ completion: (() -> ())?);
     func removeProductFromCart(index: Int, _ completion: (() -> ())?);
 }
