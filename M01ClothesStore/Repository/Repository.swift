@@ -40,7 +40,7 @@ public class Repository {
     var Cart: [Product] = []
     
     var dirtyCatalogue: Bool = false;
-//    var dirtyCart: Bool = false; // TODO: remove or implement
+    var dirtyCart: Bool = false; // TODO: remove or implement
     
     // MARK: - Utility
     
