@@ -14,14 +14,25 @@ class ProductCell: UITableViewCell {
     var ID: Int?
     var rowIndex: Int?
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var availabilityLabel: UILabel!
     @IBOutlet weak var addProductButton: UIButton!
+    @IBOutlet weak var wishlistButton: UIButton!
+    
+    // MARK: - Actions
     
     @IBAction func cartButtonTapped(_ sender: Any) {
-        delegate?.cartButtonTapped(
+        delegate?.button1Tapped(
+            sender: self,
+            productID: self.ID ?? -1)
+    }
+    
+    @IBAction func wishlistButtonTapped(_ sender: Any) {
+        delegate?.button2Tapped(
             sender: self,
             productID: self.ID ?? -1)
     }
