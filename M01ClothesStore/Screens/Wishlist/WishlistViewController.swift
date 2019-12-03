@@ -40,8 +40,8 @@ extension WishlistViewController: UITableViewDataSource {
         {
             // Visibility
                
-            cell.addProductButton.isHidden = false
-            cell.wishlistButton.isHidden = true
+            cell.RHSButton.isHidden = false
+            cell.LHSButton.isHidden = false
             
             // Values
             
@@ -50,8 +50,12 @@ extension WishlistViewController: UITableViewDataSource {
             cell.productNameLabel.text = product.name
             cell.categoryLabel.text = product.category
             cell.priceLabel.text = "£\(String(format: "%.2f", product.price))"
-            cell.availabilityLabel.text = "\(product.stock) Available"
-            cell.addProductButton.setImage(UIImage(named: "star-filled"), for: .normal)
+            cell.availabilityLabel.isHidden = true
+            cell.LHSButton.setImage(UIImage(named: Constants.Images.StarFilled), for: .normal)
+            cell.RHSButton.setImage(UIImage(named: Constants.Images.CartAdd), for: .normal)
+            
+            cell.RHSButton.isEnabled = !(product.stock == 0)
+            
             cell.delegate = self
             
             return cell
@@ -72,7 +76,27 @@ extension WishlistViewController: UITableViewDelegate {
 }
 
 extension WishlistViewController: ProductCellDelegate {
-    func button1Tapped(sender: ProductCell, productID: Int) {
+    
+    func RHSButtonTapped(sender: ProductCell, productID: Int) {
+        if let index = sender.rowIndex {
+            Repository.shared.moveFromWishlistToCart(productId: productID)
+            {
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                self.tableView.endUpdates()
+            
+                // Decrement index of every - visible - row above deletion index
+                // Addition of new items (via Catalogue VC) will cause a complete reload
+                for case let cell as ProductCell in self.tableView.visibleCells {
+                    if let cellIndex = cell.rowIndex, cellIndex > index {
+                        cell.rowIndex! -= 1
+                    }
+                }
+            }
+        }
+    }
+    
+    func LHSButtonTapped(sender: ProductCell, productID: Int) {
         if let index = sender.rowIndex {
             
             // Implicit removal

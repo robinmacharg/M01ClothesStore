@@ -20,19 +20,19 @@ class ProductCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var availabilityLabel: UILabel!
-    @IBOutlet weak var addProductButton: UIButton!
-    @IBOutlet weak var wishlistButton: UIButton!
+    @IBOutlet weak var RHSButton: UIButton!
+    @IBOutlet weak var LHSButton: UIButton!
     
     // MARK: - Actions
     
     @IBAction func cartButtonTapped(_ sender: Any) {
-        delegate?.button1Tapped(
+        delegate?.RHSButtonTapped(
             sender: self,
             productID: self.ID ?? -1)
     }
     
     @IBAction func wishlistButtonTapped(_ sender: Any) {
-        delegate?.button2Tapped(
+        delegate?.LHSButtonTapped(
             sender: self,
             productID: self.ID ?? -1)
     }

@@ -51,8 +51,8 @@ extension CartViewController: UITableViewDataSource {
             
             // Visibility
             
-            cell.addProductButton.isHidden = false
-            cell.wishlistButton.isHidden = true
+            cell.RHSButton.isHidden = false
+            cell.LHSButton.isHidden = true
             
             cell.rowIndex = indexPath.row
             cell.ID = product.id
@@ -60,7 +60,7 @@ extension CartViewController: UITableViewDataSource {
             cell.categoryLabel.text = product.category
             cell.priceLabel.text = "£\(String(format: "%.2f", product.price))"
             cell.availabilityLabel.isHidden = true
-            cell.addProductButton.setImage(UIImage(named: "cart-minus"), for: .normal)
+            cell.RHSButton.setImage(UIImage(named: Constants.Images.CartRemove), for: .normal)
             cell.delegate = self
             return cell
         }
@@ -82,7 +82,7 @@ extension CartViewController: UITableViewDelegate {
 // MARK: - <ProductCellDelegate>
 
 extension CartViewController: ProductCellDelegate {
-    func button1Tapped(sender: ProductCell, productID: Int) {
+    func RHSButtonTapped(sender: ProductCell, productID: Int) {
         if let index = sender.rowIndex {
             Repository.shared.removeProductFromCart(index: index) {
                 

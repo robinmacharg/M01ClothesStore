@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -92,12 +90,12 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="addProductButton" destination="G0s-41-hfk" id="qae-Dr-w0g"/>
+                <outlet property="LHSButton" destination="ZYq-q1-dg5" id="LPk-0X-bWR"/>
+                <outlet property="RHSButton" destination="G0s-41-hfk" id="qae-Dr-w0g"/>
                 <outlet property="availabilityLabel" destination="1Nu-tw-OsT" id="8iO-G2-rTG"/>
                 <outlet property="categoryLabel" destination="wvD-KP-gdD" id="wV8-gS-aWn"/>
                 <outlet property="priceLabel" destination="DH4-ho-URf" id="Xgb-og-bGO"/>
                 <outlet property="productNameLabel" destination="1sh-Js-Byh" id="UHS-ZX-2Me"/>
-                <outlet property="wishlistButton" destination="ZYq-q1-dg5" id="LPk-0X-bWR"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="172.09821428571428"/>
         </tableViewCell>

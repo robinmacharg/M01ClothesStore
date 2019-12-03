@@ -40,8 +40,8 @@ extension CatalogueViewController: UITableViewDataSource {
         {
             // Visibility
             
-            cell.addProductButton.isHidden = false
-            cell.wishlistButton.isHidden = false
+            cell.RHSButton.isHidden = false
+            cell.LHSButton.isHidden = false
 
             // Values
 
@@ -51,16 +51,16 @@ extension CatalogueViewController: UITableViewDataSource {
             cell.categoryLabel.text = product.category
             cell.priceLabel.text = "£\(String(format: "%.2f", product.price))"
             cell.availabilityLabel.text = "\(product.stock) Available"
-            cell.addProductButton.setImage(UIImage(named: "cart-plus"), for: .normal)
+            cell.RHSButton.setImage(UIImage(named: Constants.Images.CartAdd), for: .normal)
             if Repository.shared.wishlist.keys.contains(product.id) {
-                cell.wishlistButton.setImage(UIImage(named: "star-filled"), for: .normal)
+                cell.LHSButton.setImage(UIImage(named: Constants.Images.StarFilled), for: .normal)
             }
             else {
-                cell.wishlistButton.setImage(UIImage(named: "star-empty"), for: .normal)
+                cell.LHSButton.setImage(UIImage(named: Constants.Images.StarEmpty), for: .normal)
             }
             cell.delegate = self
             
-            cell.addProductButton.isEnabled = !(product.stock == 0)
+            cell.RHSButton.isEnabled = !(product.stock == 0)
             
             return cell
         }
@@ -84,7 +84,7 @@ extension CatalogueViewController: UITableViewDelegate {
 extension CatalogueViewController: ProductCellDelegate {
 
     // Add to cart
-    func button1Tapped(sender: ProductCell, productID: Int) {
+    func RHSButtonTapped(sender: ProductCell, productID: Int) {
         Repository.shared.addProductToCart(productID: productID) {
             if let rowIndex = sender.rowIndex {
                 self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)
@@ -93,7 +93,7 @@ extension CatalogueViewController: ProductCellDelegate {
     }
     
     // Add to wishlist
-    func button2Tapped(sender: ProductCell, productID: Int) {
+    func LHSButtonTapped(sender: ProductCell, productID: Int) {
         Repository.shared.toggleWishlistInclusion(productId: productID) {
             if let rowIndex = sender.rowIndex {
                 self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)

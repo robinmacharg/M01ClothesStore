@@ -96,10 +96,9 @@ extension Repository: API {
         dataTask.resume()
     }
 
-//    func GETProductDetails() {
-//        
-//    }
-//
+// Unused at present, not required for this exercise
+//    func GETProductDetails() {}
+
     /**
      POST the addition of a product to the shopping cart
      */
@@ -198,7 +197,15 @@ extension Repository: Model {
     func removeFromWishlist(productId: Int, _ completion: (() -> ())? = nil) {
         if wishlist.keys.contains(productId) {
             wishlist.removeValue(forKey: productId)
-            print("Removing from wishlist, count=\(wishlist.count)")
+        }
+        
+        completion?()
+    }
+    
+    func moveFromWishlistToCart(productId: Int, _ completion: (() -> ())? = nil) {
+        if wishlist.keys.contains(productId) {
+            removeFromWishlist(productId: productId)
+            addProductToCart(productID: productId)
         }
         
         completion?()

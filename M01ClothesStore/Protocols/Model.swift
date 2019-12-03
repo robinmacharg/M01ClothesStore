@@ -13,4 +13,5 @@ protocol Model {
     func removeProductFromCart(index: Int, _ completion: (() -> ())?)
     func toggleWishlistInclusion(productId: Int, _ completion: (() -> ())?)
     func removeFromWishlist(productId: Int, _ completion: (() -> ())?)
+    func moveFromWishlistToCart(productId: Int, _ completion: (() -> ())?)
 }
