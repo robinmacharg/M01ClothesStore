@@ -9,13 +9,13 @@
 import Foundation
 
 protocol ProductCellDelegate {
-    func cartButtonTapped(sender: ProductCell, productID: Int)
-    func wishlistButtonTapped(sender: ProductCell, productID: Int)
+    func button1Tapped(sender: ProductCell, productID: Int)
+    func button2Tapped(sender: ProductCell, productID: Int)
 }
 
 extension ProductCellDelegate {
 
     // Button actions are optional.
-    func cartButtonTapped(sender: ProductCell, productID: Int) {}
-    func wishlistButtonTapped(sender: ProductCell, productID: Int) {}
+    func button1Tapped(sender: ProductCell, productID: Int) {}
+    func button2Tapped(sender: ProductCell, productID: Int) {}
 }

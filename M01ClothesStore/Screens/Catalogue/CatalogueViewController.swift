@@ -82,7 +82,9 @@ extension CatalogueViewController: UITableViewDelegate {
 // MARK: - <ProductCellDelegate>
 
 extension CatalogueViewController: ProductCellDelegate {
-    func cartButtonTapped(sender: ProductCell, productID: Int) {
+
+    // Add to cart
+    func button1Tapped(sender: ProductCell, productID: Int) {
         Repository.shared.addProductToCart(productID: productID) {
             if let rowIndex = sender.rowIndex {
                 self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)
@@ -90,7 +92,8 @@ extension CatalogueViewController: ProductCellDelegate {
         }
     }
     
-    func wishlistButtonTapped(sender: ProductCell, productID: Int) {
+    // Add to wishlist
+    func button2Tapped(sender: ProductCell, productID: Int) {
         Repository.shared.toggleWishlistInclusion(productId: productID) {
             if let rowIndex = sender.rowIndex {
                 self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)

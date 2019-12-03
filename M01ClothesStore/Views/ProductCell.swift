@@ -26,13 +26,13 @@ class ProductCell: UITableViewCell {
     // MARK: - Actions
     
     @IBAction func cartButtonTapped(_ sender: Any) {
-        delegate?.cartButtonTapped(
+        delegate?.button1Tapped(
             sender: self,
             productID: self.ID ?? -1)
     }
     
     @IBAction func wishlistButtonTapped(_ sender: Any) {
-        delegate?.wishlistButtonTapped(
+        delegate?.button2Tapped(
             sender: self,
             productID: self.ID ?? -1)
     }

@@ -36,10 +36,10 @@ extension WishlistViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell,
-            let product = Repository.shared.catalogue[Repository.shared.orderedCatalogueKeys[ indexPath.row]]
+            let product = Repository.shared.wishlist[Repository.shared.wishlist.keys.sorted()[ indexPath.row]]
         {
             // Visibility
-                       
+               
             cell.addProductButton.isHidden = false
             cell.wishlistButton.isHidden = true
             
@@ -51,7 +51,7 @@ extension WishlistViewController: UITableViewDataSource {
             cell.categoryLabel.text = product.category
             cell.priceLabel.text = "£\(String(format: "%.2f", product.price))"
             cell.availabilityLabel.text = "\(product.stock) Available"
-            cell.addProductButton.setImage(UIImage(named: "star-empty"), for: .normal)
+            cell.addProductButton.setImage(UIImage(named: "star-filled"), for: .normal)
             cell.delegate = self
             
             return cell
@@ -72,8 +72,9 @@ extension WishlistViewController: UITableViewDelegate {
 }
 
 extension WishlistViewController: ProductCellDelegate {
-    func cartButtonTapped(sender: ProductCell, productID: Int) {
+    func button1Tapped(sender: ProductCell, productID: Int) {
         if let index = sender.rowIndex {
+            
             // Implicit removal
             Repository.shared.removeFromWishlist(productId: productID)
             {
@@ -84,7 +85,6 @@ extension WishlistViewController: ProductCellDelegate {
                 // Decrement index of every - visible - row above deletion index
                 // Addition of new items (via Catalogue VC) will cause a complete reload
                 for case let cell as ProductCell in self.tableView.visibleCells {
-                    print("Decrementing cell: \(cell)")
                     if let cellIndex = cell.rowIndex, cellIndex > index {
                         cell.rowIndex! -= 1
                     }

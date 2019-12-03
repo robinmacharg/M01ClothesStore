@@ -82,7 +82,7 @@ extension CartViewController: UITableViewDelegate {
 // MARK: - <ProductCellDelegate>
 
 extension CartViewController: ProductCellDelegate {
-    func cartButtonTapped(sender: ProductCell, productID: Int) {
+    func button1Tapped(sender: ProductCell, productID: Int) {
         if let index = sender.rowIndex {
             Repository.shared.removeProductFromCart(index: index) {
                 
