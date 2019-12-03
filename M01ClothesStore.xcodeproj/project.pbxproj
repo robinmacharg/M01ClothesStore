@@ -11,6 +11,7 @@
 		4844DBB02391181B008E6DD5 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBAF2391181B008E6DD5 /* ProductCell.swift */; };
 		4844DBB223911A3E008E6DD5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBB123911A3E008E6DD5 /* Constants.swift */; };
 		4844DBB4239136D5008E6DD5 /* ProductCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBB3239136D5008E6DD5 /* ProductCellDelegate.swift */; };
+		4844DBB623967757008E6DD5 /* Deloitte - Mobile Recruitment Case Study.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4844DBB523967757008E6DD5 /* Deloitte - Mobile Recruitment Case Study.pdf */; };
 		48BE92C3238ECABA00A89EF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */; };
 		48BE92CA238ECABA00A89EF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BE92C8238ECABA00A89EF4 /* Main.storyboard */; };
 		48BE92CD238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92CB238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld */; };
@@ -50,6 +51,7 @@
 		4844DBAF2391181B008E6DD5 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		4844DBB123911A3E008E6DD5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4844DBB3239136D5008E6DD5 /* ProductCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellDelegate.swift; sourceTree = "<group>"; };
+		4844DBB523967757008E6DD5 /* Deloitte - Mobile Recruitment Case Study.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Deloitte - Mobile Recruitment Case Study.pdf"; sourceTree = "<group>"; };
 		48BE92BF238ECABA00A89EF4 /* M01ClothesStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = M01ClothesStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48BE92C9238ECABA00A89EF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				48BE9310238FCFA600A89EF4 /* README.md */,
+				4844DBB523967757008E6DD5 /* Deloitte - Mobile Recruitment Case Study.pdf */,
 				48BE92C1238ECABA00A89EF4 /* M01ClothesStore */,
 				48BE92DB238ECABC00A89EF4 /* M01ClothesStoreTests */,
 				48BE92E6238ECABC00A89EF4 /* M01ClothesStoreUITests */,
@@ -122,6 +125,7 @@
 		48BE92C1238ECABA00A89EF4 /* M01ClothesStore */ = {
 			isa = PBXGroup;
 			children = (
+				48BE92CE238ECABB00A89EF4 /* Assets.xcassets */,
 				48BE92F5238FB39A00A89EF4 /* Screens */,
 				48BE930F238FCF7500A89EF4 /* Views */,
 				48BE92F6238FB3AF00A89EF4 /* Repository */,
@@ -155,7 +159,6 @@
 		48BE92F5238FB39A00A89EF4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				48BE92CE238ECABB00A89EF4 /* Assets.xcassets */,
 				48BE92C8238ECABA00A89EF4 /* Main.storyboard */,
 				48BE92F7238FB68F00A89EF4 /* Catalogue */,
 				48BE92F8238FB69800A89EF4 /* Wishlist */,
@@ -331,6 +334,7 @@
 			files = (
 				48BE92D2238ECABB00A89EF4 /* LaunchScreen.storyboard in Resources */,
 				48BE92CF238ECABB00A89EF4 /* Assets.xcassets in Resources */,
+				4844DBB623967757008E6DD5 /* Deloitte - Mobile Recruitment Case Study.pdf in Resources */,
 				4844DBAE239117E5008E6DD5 /* ProductCell.xib in Resources */,
 				48BE9311238FCFA600A89EF4 /* README.md in Resources */,
 				48BE92CA238ECABA00A89EF4 /* Main.storyboard in Resources */,
