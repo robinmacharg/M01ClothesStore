@@ -30,9 +30,9 @@ class CartViewController: UIViewController {
     // MARK: - Helpers
     
     func updateCartTotal() {
-        var items = Repository.shared.cart.count
-        var itemText = items == 1 ? "item" : "items"
-        cartTotalLabel.text = "Cart Total (\(items) \(itemText)): £\(Repository.shared.cartTotal)"
+        let items = Repository.shared.cart.count
+        let itemText = items == 1 ? "item" : "items"
+        cartTotalLabel.text = "Total (\(items) \(itemText)): £\(Repository.shared.cartTotal)"
     }
     
 }
