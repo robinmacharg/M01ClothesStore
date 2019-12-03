@@ -164,7 +164,7 @@ extension Repository: API {
 extension Repository: Model {
     func addProductToCart(productID: Int, _ completion: (() -> ())? = nil) {
         POSTToCart(productId: productID) { response in
-            if let product = self.catalogue[productID] {
+            if let product = self.catalogue[productID], product.stock > 0 {
                 self.catalogue[productID]!.stock -= 1
                 self.cart.append(product)
             }
