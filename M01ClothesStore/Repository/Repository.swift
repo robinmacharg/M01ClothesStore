@@ -198,6 +198,7 @@ extension Repository: Model {
     func removeFromWishlist(productId: Int, _ completion: (() -> ())? = nil) {
         if wishlist.keys.contains(productId) {
             wishlist.removeValue(forKey: productId)
+            print("Removing from wishlist, count=\(wishlist.count)")
         }
         
         completion?()

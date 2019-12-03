@@ -155,6 +155,7 @@
 		48BE92F5238FB39A00A89EF4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				48BE92CE238ECABB00A89EF4 /* Assets.xcassets */,
 				48BE92C8238ECABA00A89EF4 /* Main.storyboard */,
 				48BE92F7238FB68F00A89EF4 /* Catalogue */,
 				48BE92F8238FB69800A89EF4 /* Wishlist */,
@@ -199,7 +200,6 @@
 		48BE9300238FB79600A89EF4 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				48BE92CE238ECABB00A89EF4 /* Assets.xcassets */,
 				48BE92D0238ECABB00A89EF4 /* LaunchScreen.storyboard */,
 				48BE92CB238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld */,
 			);

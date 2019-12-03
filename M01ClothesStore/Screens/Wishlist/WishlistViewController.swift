@@ -77,19 +77,19 @@ extension WishlistViewController: ProductCellDelegate {
             // Implicit removal
             Repository.shared.removeFromWishlist(productId: productID)
             {
-                    self.tableView.beginUpdates()
-                    self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-                
-                    // Decrement index of every - visible - row above deletion index
-                    // Addition of new items (via Catalogue VC) will cause a complete reload
-                    for case let cell as ProductCell in self.tableView.visibleCells {
-                        if let cellIndex = cell.rowIndex, cellIndex > index {
-                            cell.rowIndex! -= 1
-                        }
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                self.tableView.endUpdates()
+            
+                // Decrement index of every - visible - row above deletion index
+                // Addition of new items (via Catalogue VC) will cause a complete reload
+                for case let cell as ProductCell in self.tableView.visibleCells {
+                    print("Decrementing cell: \(cell)")
+                    if let cellIndex = cell.rowIndex, cellIndex > index {
+                        cell.rowIndex! -= 1
                     }
-                
-                    self.tableView.endUpdates()
                 }
             }
+        }
     }
 }
