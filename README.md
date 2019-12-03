@@ -1,6 +1,8 @@
 # M01ClothesStore
 
-Technical Test for Deloitte.  See the included PDF for the full spec.  All required items have been completed; the spec has not been intentionally exceeded and this is by design.  This does mean some niceties have been omitted, e.g. count badging on cart/wishlist, selection animation, +/- UI, more nuanced UI etc.
+Technical Test for Deloitte.  See the included PDF for the full spec.  The reference implementation has been tagged `v1.0`.  Further enhancements that exceed the specification follow that tag chronologically. These notes refer to development up until `v1.0` unless explicitly otherwise noted. 
+
+All required items have been completed; the spec has not been intentionally exceeded and this is by design.  This does mean some niceties have been omitted, e.g. count badging on cart/wishlist, selection animation, +/- UI, more nuanced UI etc.
 
 ## Project structure.
 

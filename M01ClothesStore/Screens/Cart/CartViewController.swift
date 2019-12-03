@@ -103,7 +103,7 @@ extension CartViewController: ProductCellDelegate {
                 
                 self.tableView.endUpdates()
                 
-                (self.tabBarController as? TabBarController)?.updateAppearance()
+                self.controller?.updateAppearance()
             }
         }
     }
@@ -114,3 +114,4 @@ extension CartViewController: ProductCellDelegate {
 extension CartViewController: BadgeableTab {
     var badgeCount: Int? { Repository.shared.cart.count }
 }
+

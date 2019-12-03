@@ -6,8 +6,14 @@
 //  Copyright © 2019 MachargCorp. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-protocol BadgeableTab {
+protocol BadgeableTab where Self: UIViewController {
     var badgeCount: Int? { get }
+    var controller: BadgedTabsTabController? { get }
 }
+
+extension BadgeableTab {
+    var controller: BadgedTabsTabController? { self.tabBarController as? BadgedTabsTabController}
+}
+

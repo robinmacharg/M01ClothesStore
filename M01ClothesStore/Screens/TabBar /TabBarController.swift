@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+class TabBarController: UITabBarController, BadgedTabsTabController {
     
     // TODO: move this to a protocol
     // Iterate over tabs, requesting badge count from suitably conforming VCs

@@ -14,6 +14,7 @@
 		4844DBB623967757008E6DD5 /* Deloitte - Mobile Recruitment Case Study.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4844DBB523967757008E6DD5 /* Deloitte - Mobile Recruitment Case Study.pdf */; };
 		4844DBB923967FD0008E6DD5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBB823967FD0008E6DD5 /* TabBarController.swift */; };
 		4844DBBB239698CF008E6DD5 /* BadgeableTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBBA239698CF008E6DD5 /* BadgeableTab.swift */; };
+		4844DBBD23969F40008E6DD5 /* BadgedTabsTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBBC23969F40008E6DD5 /* BadgedTabsTabController.swift */; };
 		48BE92C3238ECABA00A89EF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */; };
 		48BE92CA238ECABA00A89EF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BE92C8238ECABA00A89EF4 /* Main.storyboard */; };
 		48BE92CD238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92CB238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld */; };
@@ -56,6 +57,7 @@
 		4844DBB523967757008E6DD5 /* Deloitte - Mobile Recruitment Case Study.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Deloitte - Mobile Recruitment Case Study.pdf"; sourceTree = "<group>"; };
 		4844DBB823967FD0008E6DD5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4844DBBA239698CF008E6DD5 /* BadgeableTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeableTab.swift; sourceTree = "<group>"; };
+		4844DBBC23969F40008E6DD5 /* BadgedTabsTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgedTabsTabController.swift; sourceTree = "<group>"; };
 		48BE92BF238ECABA00A89EF4 /* M01ClothesStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = M01ClothesStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48BE92C9238ECABA00A89EF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				48BE9305238FBDD900A89EF4 /* Model.swift */,
 				4844DBB3239136D5008E6DD5 /* ProductCellDelegate.swift */,
 				4844DBBA239698CF008E6DD5 /* BadgeableTab.swift */,
+				4844DBBC23969F40008E6DD5 /* BadgedTabsTabController.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				48BE92FD238FB6E300A89EF4 /* WishlistViewController.swift in Sources */,
 				48BE92FF238FB6EF00A89EF4 /* CartViewController.swift in Sources */,
 				48BE930E238FBEB600A89EF4 /* DataObjects.swift in Sources */,
+				4844DBBD23969F40008E6DD5 /* BadgedTabsTabController.swift in Sources */,
 				48BE9306238FBDD900A89EF4 /* Model.swift in Sources */,
 				48BE92CD238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld in Sources */,
 				48BE92C3238ECABA00A89EF4 /* AppDelegate.swift in Sources */,

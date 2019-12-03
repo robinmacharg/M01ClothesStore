@@ -101,7 +101,13 @@ extension CatalogueViewController: ProductCellDelegate {
                 self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)
             }
             
-            (self.tabBarController as? TabBarController)?.updateAppearance()
+            self.controller?.updateAppearance()
         }
     }
+}
+
+// MARK: - <BadgeableTab>
+
+extension CatalogueViewController: BadgeableTab {
+    var badgeCount: Int? { nil }
 }
