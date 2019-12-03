@@ -30,7 +30,7 @@ class CartViewController: UIViewController {
     // MARK: - Helpers
     
     func updateCartTotal() {
-        var items = Repository.shared.Cart.count
+        var items = Repository.shared.cart.count
         var itemText = items == 1 ? "item" : "items"
         cartTotalLabel.text = "Cart Total (\(items) \(itemText)): £\(Repository.shared.cartTotal)"
     }
@@ -41,20 +41,26 @@ class CartViewController: UIViewController {
 
 extension CartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Repository.shared.Cart.count
+        return Repository.shared.cart.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell
         {
-            let product = Repository.shared.Cart[indexPath.row]
+            let product = Repository.shared.cart[indexPath.row]
+            
+            // Visibility
+            
+            cell.RHSButton.isHidden = false
+            cell.LHSButton.isHidden = true
+            
             cell.rowIndex = indexPath.row
             cell.ID = product.id
             cell.productNameLabel.text = product.name
             cell.categoryLabel.text = product.category
             cell.priceLabel.text = "£\(String(format: "%.2f", product.price))"
             cell.availabilityLabel.isHidden = true
-            cell.addProductButton.setImage(UIImage(systemName: "cart.badge.minus"), for: .normal)
+            cell.RHSButton.setImage(UIImage(named: Constants.Images.CartRemove), for: .normal)
             cell.delegate = self
             return cell
         }
@@ -76,7 +82,7 @@ extension CartViewController: UITableViewDelegate {
 // MARK: - <ProductCellDelegate>
 
 extension CartViewController: ProductCellDelegate {
-    func cartButtonTapped(sender: ProductCell, productID: Int) {
+    func RHSButtonTapped(sender: ProductCell, productID: Int) {
         if let index = sender.rowIndex {
             Repository.shared.removeProductFromCart(index: index) {
                 

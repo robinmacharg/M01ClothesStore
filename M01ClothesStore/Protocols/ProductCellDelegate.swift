@@ -9,5 +9,13 @@
 import Foundation
 
 protocol ProductCellDelegate {
-    func cartButtonTapped(sender: ProductCell, productID: Int);
+    func RHSButtonTapped(sender: ProductCell, productID: Int)
+    func LHSButtonTapped(sender: ProductCell, productID: Int)
+}
+
+extension ProductCellDelegate {
+
+    // Button actions are optional.
+    func RHSButtonTapped(sender: ProductCell, productID: Int) {}
+    func LHSButtonTapped(sender: ProductCell, productID: Int) {}
 }

@@ -12,7 +12,6 @@
 		4844DBB223911A3E008E6DD5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBB123911A3E008E6DD5 /* Constants.swift */; };
 		4844DBB4239136D5008E6DD5 /* ProductCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBB3239136D5008E6DD5 /* ProductCellDelegate.swift */; };
 		48BE92C3238ECABA00A89EF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */; };
-		48BE92C5238ECABA00A89EF4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92C4238ECABA00A89EF4 /* SceneDelegate.swift */; };
 		48BE92CA238ECABA00A89EF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BE92C8238ECABA00A89EF4 /* Main.storyboard */; };
 		48BE92CD238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92CB238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld */; };
 		48BE92CF238ECABB00A89EF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48BE92CE238ECABB00A89EF4 /* Assets.xcassets */; };
@@ -53,7 +52,6 @@
 		4844DBB3239136D5008E6DD5 /* ProductCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellDelegate.swift; sourceTree = "<group>"; };
 		48BE92BF238ECABA00A89EF4 /* M01ClothesStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = M01ClothesStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		48BE92C4238ECABA00A89EF4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		48BE92C9238ECABA00A89EF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		48BE92CC238ECABA00A89EF4 /* M01ClothesStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = M01ClothesStore.xcdatamodel; sourceTree = "<group>"; };
 		48BE92CE238ECABB00A89EF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -130,7 +128,6 @@
 				48BE930C238FBE9200A89EF4 /* Protocols */,
 				48BE9300238FB79600A89EF4 /* Misc */,
 				48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */,
-				48BE92C4238ECABA00A89EF4 /* SceneDelegate.swift */,
 				4844DBB123911A3E008E6DD5 /* Constants.swift */,
 				48BE92D3238ECABB00A89EF4 /* Info.plist */,
 			);
@@ -158,6 +155,7 @@
 		48BE92F5238FB39A00A89EF4 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				48BE92CE238ECABB00A89EF4 /* Assets.xcassets */,
 				48BE92C8238ECABA00A89EF4 /* Main.storyboard */,
 				48BE92F7238FB68F00A89EF4 /* Catalogue */,
 				48BE92F8238FB69800A89EF4 /* Wishlist */,
@@ -202,7 +200,6 @@
 		48BE9300238FB79600A89EF4 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
-				48BE92CE238ECABB00A89EF4 /* Assets.xcassets */,
 				48BE92D0238ECABB00A89EF4 /* LaunchScreen.storyboard */,
 				48BE92CB238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld */,
 			);
@@ -372,7 +369,6 @@
 				48BE92C3238ECABA00A89EF4 /* AppDelegate.swift in Sources */,
 				4844DBB4239136D5008E6DD5 /* ProductCellDelegate.swift in Sources */,
 				48BE92FB238FB6CF00A89EF4 /* CatalogueViewController.swift in Sources */,
-				48BE92C5238ECABA00A89EF4 /* SceneDelegate.swift in Sources */,
 				4844DBB223911A3E008E6DD5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,6 +545,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LN7L8M6G75;
 				INFOPLIST_FILE = M01ClothesStore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -556,7 +553,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.macharg.M01ClothesStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -567,6 +564,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LN7L8M6G75;
 				INFOPLIST_FILE = M01ClothesStore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -574,7 +572,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.macharg.M01ClothesStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -586,7 +584,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LN7L8M6G75;
 				INFOPLIST_FILE = M01ClothesStoreTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -608,7 +606,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LN7L8M6G75;
 				INFOPLIST_FILE = M01ClothesStoreTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -629,6 +627,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LN7L8M6G75;
 				INFOPLIST_FILE = M01ClothesStoreUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -649,6 +648,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LN7L8M6G75;
 				INFOPLIST_FILE = M01ClothesStoreUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -12,4 +12,11 @@ struct Constants {
     struct UI {
         static let ProductCell = "ProductCell"
     }
+    struct Images {
+        static let Cart = "cart"
+        static let CartAdd = "cart-plus"
+        static let CartRemove = "cart-minus"
+        static let StarFilled = "star-filled"
+        static let StarEmpty = "star-empty"
+    }
 }

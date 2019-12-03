@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4PB-5z-a9r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,14 +15,33 @@
                     <view key="view" contentMode="scaleToFill" id="jcm-85-IMK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zuD-xT-KrV">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ltc-uE-Ypg" id="wwU-zZ-j6A"/>
+                                    <outlet property="delegate" destination="ltc-uE-Ypg" id="JAE-Ou-Mqd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zuD-xT-KrV" firstAttribute="trailing" secondItem="Ll9-A4-9sp" secondAttribute="trailing" id="2A1-b7-Y52"/>
+                            <constraint firstItem="zuD-xT-KrV" firstAttribute="leading" secondItem="Ll9-A4-9sp" secondAttribute="leading" id="7LD-Av-DSP"/>
+                            <constraint firstItem="zuD-xT-KrV" firstAttribute="top" secondItem="Ll9-A4-9sp" secondAttribute="top" id="ae8-bL-HZI"/>
+                            <constraint firstItem="zuD-xT-KrV" firstAttribute="bottom" secondItem="Ll9-A4-9sp" secondAttribute="bottom" id="d0l-H2-wjV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ll9-A4-9sp"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Wishlist" image="bookmark" catalog="system" id="NU3-C4-QDx"/>
+                    <tabBarItem key="tabBarItem" title="Wishlist" image="wishlist" id="NU3-C4-QDx"/>
+                    <connections>
+                        <outlet property="tableView" destination="zuD-xT-KrV" id="vgV-Fy-K0I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9t4-tp-zwF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1701" y="869"/>
+            <point key="canvasLocation" x="-1701.449275362319" y="868.52678571428567"/>
         </scene>
         <!--Catalogue-->
         <scene sceneID="h0H-yu-bIJ">
@@ -33,14 +53,14 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zze-58-lMi">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="jhZ-j5-UJi" id="f2r-x4-Whn"/>
                                     <outlet property="delegate" destination="jhZ-j5-UJi" id="A3T-R2-HXd"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Zze-58-lMi" firstAttribute="top" secondItem="x4h-ub-u0m" secondAttribute="top" id="4MF-Yv-Sjh"/>
                             <constraint firstItem="Zze-58-lMi" firstAttribute="trailing" secondItem="x4h-ub-u0m" secondAttribute="trailing" id="6Mg-5i-Psw"/>
@@ -49,7 +69,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x4h-ub-u0m"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Catalogue" image="book" catalog="system" id="JDA-xB-Pxn"/>
+                    <tabBarItem key="tabBarItem" title="Catalogue" image="catalogue" id="JDA-xB-Pxn"/>
                     <connections>
                         <outlet property="tableView" destination="Zze-58-lMi" id="n3W-4j-BTd"/>
                     </connections>
@@ -87,7 +107,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dqc-xc-vg0">
                                 <rect key="frame" x="0.0" y="121" width="414" height="692"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="jCU-2M-0m4"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="CyI-vF-WVP"/>
@@ -103,7 +123,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="SpH-38-NSG" firstAttribute="centerY" secondItem="Vvb-Q3-LPL" secondAttribute="centerY" id="R1Q-pI-NCs"/>
                                     <constraint firstAttribute="height" constant="77" id="ocy-QJ-I1H"/>
@@ -111,7 +131,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dqc-xc-vg0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="21X-y4-BFR"/>
                             <constraint firstItem="Vvb-Q3-LPL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5VE-ex-XH9"/>
@@ -123,7 +143,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Cart" image="bag" catalog="system" id="4od-UY-JTj"/>
+                    <tabBarItem key="tabBarItem" title="Cart" image="cart" id="4od-UY-JTj"/>
                     <connections>
                         <outlet property="cartTotalLabel" destination="SpH-38-NSG" id="991-pN-V6D"/>
                         <outlet property="tableView" destination="dqc-xc-vg0" id="qHn-8w-Zpz"/>
@@ -135,8 +155,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bag" catalog="system" width="64" height="64"/>
-        <image name="book" catalog="system" width="64" height="50"/>
-        <image name="bookmark" catalog="system" width="56" height="64"/>
+        <image name="cart" width="42.666667938232422" height="42.666667938232422"/>
+        <image name="catalogue" width="42.666667938232422" height="42.666667938232422"/>
+        <image name="wishlist" width="42.666667938232422" height="42.666667938232422"/>
     </resources>
 </document>

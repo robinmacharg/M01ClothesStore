@@ -50,15 +50,24 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0s-41-hfk" userLabel="Add Product">
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0s-41-hfk" userLabel="Add Product">
                         <rect key="frame" x="351" y="36" width="43" height="53"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="53" id="eWk-qq-Bmt"/>
                             <constraint firstAttribute="width" constant="43" id="sJt-4z-Pmc"/>
                         </constraints>
-                        <state key="normal" image="plus" catalog="system"/>
                         <connections>
                             <action selector="cartButtonTapped:" destination="WvY-RH-nyC" eventType="touchUpInside" id="VEv-05-6Dt"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYq-q1-dg5" userLabel="Add to Wishlist">
+                        <rect key="frame" x="300" y="36" width="43" height="53"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="53" id="Z5C-aK-zfG"/>
+                            <constraint firstAttribute="width" constant="43" id="xGp-j6-zuh"/>
+                        </constraints>
+                        <connections>
+                            <action selector="wishlistButtonTapped:" destination="WvY-RH-nyC" eventType="touchUpInside" id="14P-pW-9ue"/>
                         </connections>
                     </button>
                 </subviews>
@@ -68,18 +77,21 @@
                     <constraint firstItem="1sh-Js-Byh" firstAttribute="top" secondItem="zDY-VA-lVi" secondAttribute="top" constant="8" id="Afw-6R-FqN"/>
                     <constraint firstAttribute="trailing" secondItem="1Nu-tw-OsT" secondAttribute="trailing" constant="20" id="Gtc-gB-QLz"/>
                     <constraint firstAttribute="trailing" secondItem="wvD-KP-gdD" secondAttribute="trailing" constant="20" id="JoI-aF-hNm"/>
+                    <constraint firstItem="G0s-41-hfk" firstAttribute="centerY" secondItem="ZYq-q1-dg5" secondAttribute="centerY" id="XRo-bS-MRW"/>
                     <constraint firstAttribute="bottom" secondItem="G0s-41-hfk" secondAttribute="bottom" constant="11" id="Xvu-ff-RxB"/>
                     <constraint firstItem="1Nu-tw-OsT" firstAttribute="leading" secondItem="zDY-VA-lVi" secondAttribute="leading" constant="20" id="a6L-GW-x4d"/>
                     <constraint firstItem="DH4-ho-URf" firstAttribute="leading" secondItem="1sh-Js-Byh" secondAttribute="trailing" constant="8" id="her-wc-Xm4"/>
                     <constraint firstAttribute="trailing" secondItem="G0s-41-hfk" secondAttribute="trailing" constant="20" id="j2j-hj-Sjd"/>
                     <constraint firstItem="1sh-Js-Byh" firstAttribute="leading" secondItem="zDY-VA-lVi" secondAttribute="leading" constant="20" id="jFa-9Y-og4"/>
+                    <constraint firstItem="G0s-41-hfk" firstAttribute="leading" secondItem="ZYq-q1-dg5" secondAttribute="trailing" constant="8" id="mMV-0M-6iE"/>
                     <constraint firstItem="wvD-KP-gdD" firstAttribute="leading" secondItem="zDY-VA-lVi" secondAttribute="leading" constant="20" id="q56-E9-xoZ"/>
                     <constraint firstItem="wvD-KP-gdD" firstAttribute="top" secondItem="1sh-Js-Byh" secondAttribute="bottom" constant="8" id="ueR-pF-7St"/>
                     <constraint firstItem="DH4-ho-URf" firstAttribute="centerY" secondItem="1sh-Js-Byh" secondAttribute="centerY" id="vwd-IE-2SR"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="addProductButton" destination="G0s-41-hfk" id="qae-Dr-w0g"/>
+                <outlet property="LHSButton" destination="ZYq-q1-dg5" id="LPk-0X-bWR"/>
+                <outlet property="RHSButton" destination="G0s-41-hfk" id="qae-Dr-w0g"/>
                 <outlet property="availabilityLabel" destination="1Nu-tw-OsT" id="8iO-G2-rTG"/>
                 <outlet property="categoryLabel" destination="wvD-KP-gdD" id="wV8-gS-aWn"/>
                 <outlet property="priceLabel" destination="DH4-ho-URf" id="Xgb-og-bGO"/>
@@ -88,7 +100,4 @@
             <point key="canvasLocation" x="131.8840579710145" y="172.09821428571428"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="plus" catalog="system" width="64" height="56"/>
-    </resources>
 </document>

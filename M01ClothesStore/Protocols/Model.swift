@@ -9,6 +9,9 @@
 import Foundation
 
 protocol Model {
-    func addProductToCart(productID: Int, _ completion: (() -> ())?);
-    func removeProductFromCart(index: Int, _ completion: (() -> ())?);
+    func addProductToCart(productID: Int, _ completion: (() -> ())?)
+    func removeProductFromCart(index: Int, _ completion: (() -> ())?)
+    func toggleWishlistInclusion(productId: Int, _ completion: (() -> ())?)
+    func removeFromWishlist(productId: Int, _ completion: (() -> ())?)
+    func moveFromWishlistToCart(productId: Int, _ completion: (() -> ())?)
 }
