@@ -92,6 +92,8 @@ extension WishlistViewController: ProductCellDelegate {
                         cell.rowIndex! -= 1
                     }
                 }
+                
+                (self.tabBarController as? TabBarController)?.updateAppearance()
             }
         }
     }
@@ -113,7 +115,15 @@ extension WishlistViewController: ProductCellDelegate {
                         cell.rowIndex! -= 1
                     }
                 }
+                
+                (self.tabBarController as? TabBarController)?.updateAppearance()
             }
         }
     }
+}
+
+// MARK: - <BadgeableTab>
+
+extension WishlistViewController: BadgeableTab {
+    var badgeCount: Int? { Repository.shared.wishlist.count }
 }

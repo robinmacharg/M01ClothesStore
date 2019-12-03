@@ -89,6 +89,8 @@ extension CatalogueViewController: ProductCellDelegate {
             if let rowIndex = sender.rowIndex {
                 self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)
             }
+            
+            (self.tabBarController as? TabBarController)?.updateAppearance()
         }
     }
     
@@ -98,6 +100,8 @@ extension CatalogueViewController: ProductCellDelegate {
             if let rowIndex = sender.rowIndex {
                 self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)
             }
+            
+            (self.tabBarController as? TabBarController)?.updateAppearance()
         }
     }
 }

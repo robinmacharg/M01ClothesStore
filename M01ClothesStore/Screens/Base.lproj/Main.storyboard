@@ -121,7 +121,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="1qu-TG-VOb">
             <objects>
-                <tabBarController id="4PB-5z-a9r" sceneMemberID="viewController">
+                <tabBarController id="4PB-5z-a9r" customClass="TabBarController" customModule="M01ClothesStore" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="skY-tK-b71">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

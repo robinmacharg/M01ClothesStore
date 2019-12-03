@@ -85,8 +85,6 @@ extension CartViewController: ProductCellDelegate {
     func RHSButtonTapped(sender: ProductCell, productID: Int) {
         if let index = sender.rowIndex {
             Repository.shared.removeProductFromCart(index: index) {
-                
-                // Async completion block:
 
                 // Update the header total
                 self.updateCartTotal()
@@ -104,8 +102,15 @@ extension CartViewController: ProductCellDelegate {
                 }
                 
                 self.tableView.endUpdates()
+                
+                (self.tabBarController as? TabBarController)?.updateAppearance()
             }
         }
     }
 }
 
+// MARK: - <BadgeableTab>
+
+extension CartViewController: BadgeableTab {
+    var badgeCount: Int? { Repository.shared.cart.count }
+}
