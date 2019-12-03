@@ -36,12 +36,9 @@ public class Repository {
 
     var APIroot: String?
     
-    var Catalogue: [Int:Product] = [:]
-    var Cart: [Product] = []
-    var Wishlist: [Int:Product] = [:]
-    
-    var dirtyCatalogue: Bool = false;
-    var dirtyCart: Bool = false; // TODO: remove or implement
+    var catalogue: [Int:Product] = [:] // ID:Product
+    var cart: [Product] = []
+    var wishlist: [Int:Product] = [:] // ID:Product
     
     // MARK: - Utility
     
@@ -51,12 +48,12 @@ public class Repository {
     
     var orderedCatalogueKeys: [Int] {
         get {
-            return Catalogue.keys.sorted()
+            return catalogue.keys.sorted()
         }
     }
     
     var cartTotal: Double {
-        get { return Cart.reduce(0) { (result, product) -> Double in
+        get { return cart.reduce(0) { (result, product) -> Double in
             return result + product.price
         }}
     }
@@ -87,7 +84,7 @@ extension Repository: API {
                 let catalogue = try! Repository.shared.decoder.decode(CatalogueResponse.self, from: data)
                 
                 for product in catalogue {
-                    Repository.shared.Catalogue[product.id] = product
+                    Repository.shared.catalogue[product.id] = product
                 }
 
                 // Call the completion handler
@@ -168,12 +165,9 @@ extension Repository: API {
 extension Repository: Model {
     func addProductToCart(productID: Int, _ completion: (() -> ())? = nil) {
         POSTToCart(productId: productID) { response in
-            if let product = self.Catalogue[productID] {
-                self.Catalogue[productID]!.stock -= 1
-                self.Cart.append(product)
-                
-                Repository.shared.dirtyCatalogue = true
-                Repository.shared.dirtyCart = true
+            if let product = self.catalogue[productID] {
+                self.catalogue[productID]!.stock -= 1
+                self.cart.append(product)
             }
             completion?()
         }
@@ -181,19 +175,31 @@ extension Repository: Model {
     
     func removeProductFromCart(index: Int, _ completion: (() -> ())? = nil) {
         DELETEFromCart { response in
-            if self.Catalogue[self.Cart[index].id] != nil {
-                self.Catalogue[self.Cart[index].id]?.stock += 1
-                Repository.shared.dirtyCatalogue = true
+            if self.catalogue[self.cart[index].id] != nil {
+                self.catalogue[self.cart[index].id]?.stock += 1
             }
-            self.Cart.remove(at: index)
-
-            Repository.shared.dirtyCart = true
+            self.cart.remove(at: index)
 
             completion?()
         }
     }
     
     func toggleWishlistInclusion(productId: Int, _ completion: (() -> ())? = nil) {
+        if wishlist.keys.contains(productId) {
+            wishlist.removeValue(forKey: productId)
+        }
+        else {
+            wishlist[productId] = catalogue[productId]
+        }
         
+        completion?()
+    }
+    
+    func removeFromWishlist(productId: Int, _ completion: (() -> ())? = nil) {
+        if wishlist.keys.contains(productId) {
+            wishlist.removeValue(forKey: productId)
+        }
+        
+        completion?()
     }
 }

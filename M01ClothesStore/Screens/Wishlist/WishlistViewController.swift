@@ -21,18 +21,22 @@ class WishlistViewController: UIViewController {
             self.tableView.reloadData()
         })
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
 }
 
 // MARK: - <UITableViewDataSource>
 
 extension WishlistViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Repository.shared.Wishlist.count
+        return Repository.shared.wishlist.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell,
-            let product = Repository.shared.Catalogue[Repository.shared.orderedCatalogueKeys[ indexPath.row]]
+            let product = Repository.shared.catalogue[Repository.shared.orderedCatalogueKeys[ indexPath.row]]
         {
             // Visibility
                        
@@ -69,14 +73,23 @@ extension WishlistViewController: UITableViewDelegate {
 
 extension WishlistViewController: ProductCellDelegate {
     func cartButtonTapped(sender: ProductCell, productID: Int) {
-//        Repository.shared.addProductToCart(productID: productID) {
-//            if let rowIndex = sender.rowIndex {
-//                self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)
-//            }
-//        }
+        if let index = sender.rowIndex {
+            // Implicit removal
+            Repository.shared.removeFromWishlist(productId: productID)
+            {
+                    self.tableView.beginUpdates()
+                    self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                
+                    // Decrement index of every - visible - row above deletion index
+                    // Addition of new items (via Catalogue VC) will cause a complete reload
+                    for case let cell as ProductCell in self.tableView.visibleCells {
+                        if let cellIndex = cell.rowIndex, cellIndex > index {
+                            cell.rowIndex! -= 1
+                        }
+                    }
+                
+                    self.tableView.endUpdates()
+                }
+            }
     }
-    
-//    func wishlistButtonTapped(sender: ProductCell, productID: Int) {
-//
-//    }
 }
