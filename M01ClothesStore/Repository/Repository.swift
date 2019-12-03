@@ -71,7 +71,7 @@ extension Repository: API {
         
         let url = URL(string: "\(APIroot!)/products")
         
-        let dataTask = session.dataTask(with: url!) { [weak self] data, response, error in
+        let dataTask = session.dataTask(with: url!) { data, response, error in
             if let error = error {
                 print("DataTask error: \(error.localizedDescription)")
             }
@@ -114,12 +114,11 @@ extension Repository: API {
         let cartItemJSON = try! encoder.encode(cartItem)
         request.httpBody = cartItemJSON
         
-        let dataTask = session.dataTask(with: request) {[weak self] data, response, error in
+        let dataTask = session.dataTask(with: request) { _ , response, error in
             if let error = error {
                 print("DataTask error: \(error.localizedDescription)")
             }
             else if
-                let data = data,
                 let response = response as? HTTPURLResponse,
                 response.statusCode == 201
             {
@@ -139,12 +138,11 @@ extension Repository: API {
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
         
-        let dataTask = session.dataTask(with: request) {[weak self] data, response, error in
+        let dataTask = session.dataTask(with: request) { _ , response, error in
             if let error = error {
                 print("DataTask error: \(error.localizedDescription)")
             }
             else if
-                let data = data,
                 let response = response as? HTTPURLResponse,
                 response.statusCode == 204
             {
