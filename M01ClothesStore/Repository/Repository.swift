@@ -18,30 +18,18 @@ public class Repository {
     // MARK: - Singleton
     
     static let shared = Repository()
-    private init() {
-//        self.session = URLSession(configuration: .default)
-//        self.decoder = JSONDecoder()
-//        self.encoder = JSONEncoder()
-    }
+    private init() {}
     
     // MARK: - Properties
     
     // Private
     
     private var initialised: Bool = false
-//    private let session:  URLSession
-//    private let encoder: JSONEncoder
-//    private let decoder: JSONDecoder
-
     private var api: API? = nil
     private var model: Model? = nil
     
     // Public
-
-//    var APIroot: String?
-    
-//    var catalogue: [Int:Product] = [:] // ID:Product
-    var cart: [Product] = []
+//    var cart: [Product] = []
     var wishlist: [Int:Product] = [:] // ID:Product
     
     // MARK: - Initialisation
@@ -76,7 +64,9 @@ public class Repository {
 
 extension Repository {
     
-    var catalogueProductCount: Int { model?.catalogueProducts.count ?? 0 }
+    var catalogueProductCount: Int { return model?.catalogue.count ?? 0 }
+    var wishlistCount: Int { return model?.wishlist.count ?? 0 }
+    var cartCount: Int { return model?.cart.count ?? 0 }
     
     func loadCatalogue(_ completion: (() -> ())? = nil) {
         assertInitialized()
@@ -105,7 +95,7 @@ extension Repository {
         var products: [Product] = []
         switch store {
         case .catalogue:
-            products = model?.catalogueProducts ?? []
+            products = model?.catalogue ?? []
         case .wishlist:
             break
         case .cart:
@@ -114,12 +104,38 @@ extension Repository {
         return products[i]
     }
     
-    func item(withId: Int, in: Store) -> Product? {
-        
-        
-        
+    func item(withId id: Int, in store: Store) -> Product? {
+        switch store {
+        case .catalogue:
+            return model?.catalogueItemWithID(id: id)
+        case .wishlist:
+            break
+        case .cart:
+            break
+        }
+
         return nil
     }
+    
+    func addProduct(product: Product, to store: Store, _ completion: (() -> ())? = nil) {
+        switch store {
+        case .catalogue:
+            break
+        case .cart:
+            api?.POSTToCart(productId: product.id) { response in
+                self.model?.reduceStockLevel(for: product.id, nil)
+                self.model?.addProductToCart(productID: product.id, nil)
+            }
+            completion?()
+        case .wishlist:
+            break
+        }
+        
+        
+    }
+
+    
+    
 
 }
 
@@ -140,41 +156,7 @@ extension Repository: API {
     }
     
 
-    /**
-     GET, parse and store a list of products from the server
-     */
-//    func GETProducts(completion: @escaping (HTTPURLResponse) -> ()) {
-//        assertInitialized()
-//
-//        let url = URL(string: "\(APIroot!)/products")
-//
-//        let dataTask = session.dataTask(with: url!) { data, response, error in
-//            if let error = error {
-//                print("DataTask error: \(error.localizedDescription)")
-//            }
-//            else if
-//                let data = data,
-//                let response = response as? HTTPURLResponse,
-//                response.statusCode == 200
-//            {
-//                // Parse response
-//                let catalogue = try! Repository.shared.decoder.decode(CatalogueResponse.self, from: data)
-//
-//                for product in catalogue {
-//                    Repository.shared.catalogue[product.id] = product
-//                }
-//
-//                // Call the completion handler
-//                DispatchQueue.main.async {
-//                    completion(response)
-//                }
-//            }
-//        }
-//        dataTask.resume()
-//    }
 
-// Unused at present, not required for this exercise
-//    func GETProductDetails() {}
 
     /**
      POST the addition of a product to the shopping cart

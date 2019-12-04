@@ -112,6 +112,6 @@ extension CartViewController: ProductCellDelegate {
 // MARK: - <BadgeableTab>
 
 extension CartViewController: BadgeableTab {
-    var badgeCount: Int? { Repository.shared.cart.count }
+    var badgeCount: Int? { return Repository.shared.cart.count }
 }
 

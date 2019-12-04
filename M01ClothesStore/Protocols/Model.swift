@@ -15,12 +15,16 @@ enum Store {
 }
 
 protocol Model {
-    var catalogueProducts: [Product] { get }
+    var catalogue: [Product] { get }
+    var wishlist: [Product] { get }
+    var cart: [Product] { get }
+    
     func addProductToCatalogue(_ product: Product, _ completion: (() -> ())?)
     func addProductToCart(productID: Int, _ completion: (() -> ())?)
     func removeProductFromCart(index: Int, _ completion: (() -> ())?)
     func toggleWishlistInclusion(productId: Int, _ completion: (() -> ())?)
     func removeFromWishlist(productId: Int, _ completion: (() -> ())?)
     func moveFromWishlistToCart(productId: Int, _ completion: (() -> ())?)
-    func catalogueItemWithID(id: Int) -> Product
+    func catalogueItemWithID(id: Int) -> Product?
+    func reduceStockLevel(for id: Int,  _ completion: (() -> ())?)
 }

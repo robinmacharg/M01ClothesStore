@@ -17,9 +17,9 @@ class CatalogueViewController: UIViewController {
             UINib(nibName: "ProductCell", bundle: Bundle.main),
             forCellReuseIdentifier: Constants.UI.ProductCell)
         
-        Repository.shared.GETProducts(completion: { response in
+        Repository.shared.loadCatalogue {
             self.tableView.reloadData()
-        })
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,7 +36,7 @@ extension CatalogueViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell,
-            let product = Repository.shared.item(at: indexPath.row, in: .catalogue)  //catalogueItemWithID(id: Repository.shared.orderedCatalogueKeys[indexPath.row])
+            let product = Repository.shared.item(at: indexPath.row, in: .catalogue)
         {
             // Visibility
             
@@ -85,29 +85,40 @@ extension CatalogueViewController: ProductCellDelegate {
 
     // Add to cart
     func RHSButtonTapped(sender: ProductCell, productID: Int) {
-        Repository.shared.addProductToCart(productID: productID) {
-            if let rowIndex = sender.rowIndex {
-                self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)
+        if let product = Repository.shared.item(withId: productID, in: .catalogue) {
+            Repository.shared.addProduct(product: product, to: .cart) {
+                if let rowIndex = sender.rowIndex {
+                    self.tableView.reloadRows(
+                        at: [IndexPath(row: rowIndex, section: 0)],
+                        with: .none)
+                }
             }
-            
-            (self.tabBarController as? TabBarController)?.updateAppearance()
         }
+        self.controller?.updateAppearance()
+        
+//        Repository.shared.addProductToCart(productID: productID) {
+//            if let rowIndex = sender.rowIndex {
+//                self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)
+//            }
+//            
+//            (self.tabBarController as? TabBarController)?.updateAppearance()
+//        }
     }
     
     // Add to wishlist
     func LHSButtonTapped(sender: ProductCell, productID: Int) {
-        Repository.shared.toggleWishlistInclusion(productId: productID) {
-            if let rowIndex = sender.rowIndex {
-                self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)
-            }
-            
-            self.controller?.updateAppearance()
-        }
+//        Repository.shared.toggleWishlistInclusion(productId: productID) {
+//            if let rowIndex = sender.rowIndex {
+//                self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)
+//            }
+//            
+//            self.controller?.updateAppearance()
+//        }
     }
 }
 
 // MARK: - <BadgeableTab>
 
 extension CatalogueViewController: BadgeableTab {
-    var badgeCount: Int? { nil }
+    var badgeCount: Int? { return nil }
 }

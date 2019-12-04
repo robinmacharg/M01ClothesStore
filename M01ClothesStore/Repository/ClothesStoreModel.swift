@@ -9,7 +9,7 @@
 import Foundation
 
 class ClothesStoreModel: Model {
-    
+
     private var catalogue: [Int:Product] = [:] // ID:Product
     private var cart: [Product] = []
     private var wishlist: [Int:Product] = [:] // ID:Product
@@ -20,18 +20,20 @@ class ClothesStoreModel: Model {
         }
     }
 
-    var catalogueProducts: [Product] { Array(catalogue.values) }
+    var catalogue: [Product] { return Array(catalogue.values) }
     
     func catalogueItemWithID(id: Int) -> Product? {
-        
+        return catalogue[id]
     }
     
     func addProductToCatalogue(_ product: Product, _ completion: (() -> ())? = nil) {
         catalogue[product.id] = product
     }
     
-    func addProductToCart(productID: Int, _ completion: (() -> ())? = nil) {
-        
+    func addProductToCart(productID id: Int, _ completion: (() -> ())? = nil) {
+        if let product = catalogueItemWithID(id: id) {
+            cart.append(product)
+        }
     }
     
     func removeProductFromCart(index: Int, _ completion: (() -> ())? = nil) {
@@ -53,5 +55,11 @@ class ClothesStoreModel: Model {
     
     func moveFromWishlistToCart(productId: Int, _ completion: (() -> ())? = nil) {
         
+    }
+    
+    func reduceStockLevel(for id: Int,  _ completion: (() -> ())? = nil) {
+        var product = catalogueItemWithID(id: id)
+        product?.stock -= 1
+        catalogue[id] = product
     }
 }

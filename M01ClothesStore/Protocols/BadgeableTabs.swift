@@ -24,6 +24,6 @@ protocol BadgeableTab where Self: UIViewController {
 }
 
 extension BadgeableTab {
-    var controller: BadgedTabsTabController? { self.tabBarController as? BadgedTabsTabController}
+    var controller: BadgedTabsTabController? { return self.tabBarController as? BadgedTabsTabController}
 }
 
