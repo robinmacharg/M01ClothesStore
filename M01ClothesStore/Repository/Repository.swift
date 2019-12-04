@@ -19,38 +19,51 @@ public class Repository {
     
     static let shared = Repository()
     private init() {
-        self.session = URLSession(configuration: .default)
-        self.decoder = JSONDecoder()
-        self.encoder = JSONEncoder()
+//        self.session = URLSession(configuration: .default)
+//        self.decoder = JSONDecoder()
+//        self.encoder = JSONEncoder()
     }
     
     // MARK: - Properties
     
     // Private
     
-    private let session:  URLSession
-    private let encoder: JSONEncoder
-    private let decoder: JSONDecoder
+    private var initialised: Bool = false
+//    private let session:  URLSession
+//    private let encoder: JSONEncoder
+//    private let decoder: JSONDecoder
 
+    private var api: API? = nil
+    private var model: Model? = nil
+    
     // Public
 
-    var APIroot: String?
+//    var APIroot: String?
     
-    var catalogue: [Int:Product] = [:] // ID:Product
+//    var catalogue: [Int:Product] = [:] // ID:Product
     var cart: [Product] = []
     var wishlist: [Int:Product] = [:] // ID:Product
     
+    // MARK: - Initialisation
+
+    static func initalise(root: String, api: API, model: Model) {
+        Repository.shared.api = api
+        Repository.shared.model = model
+        Repository.shared.api?.APIroot = root
+        Repository.shared.initialised = true
+    }
+
     // MARK: - Utility
     
-    func assertInitialized() {
-        assert(APIroot != nil)
+    private func assertInitialized() {
+        assert(initialised)
     }
     
-    var orderedCatalogueKeys: [Int] {
-        get {
-            return catalogue.keys.sorted()
-        }
-    }
+//    var orderedCatalogueKeys: [Int] {
+//        get {
+//            return catalogue.keys.sorted()
+//        }
+//    }
     
     var cartTotal: Double {
         get { return cart.reduce(0) { (result, product) -> Double in
@@ -59,42 +72,106 @@ public class Repository {
     }
 }
 
+// MARK: - API/Model Facade
+
+extension Repository {
+    
+    var catalogueProductCount: Int { model?.catalogueProducts.count ?? 0 }
+    
+    func loadCatalogue(_ completion: (() -> ())? = nil) {
+        assertInitialized()
+        
+        api?.GETProducts(completion: { products in
+            for product in products {
+                self.model?.addProductToCatalogue(product, nil)
+            }
+            completion?()
+        })
+    }
+    
+    func removeProductFromCart(index: Int, _ completion: (() -> ())? = nil) {
+        api?.DELETEFromCart(completion: { (response) in
+            self.model?.removeProductFromCart(index: index) {
+               completion?()
+            }
+        })
+    }
+    
+    func catalogueItemWithID(id: Int) -> Product? {
+        return model?.catalogueItemWithID(id: id)
+    }
+    
+    func item(at i: Int, in store: Store) -> Product? {
+        var products: [Product] = []
+        switch store {
+        case .catalogue:
+            products = model?.catalogueProducts ?? []
+        case .wishlist:
+            break
+        case .cart:
+            break
+        }
+        return products[i]
+    }
+    
+    func item(withId: Int, in: Store) -> Product? {
+        
+        
+        
+        return nil
+    }
+
+}
+
 // MARK: - <API>
 
 extension Repository: API {
+    func GETProducts(completion: @escaping ([Product]) -> ()) {
+        
+    }
+    
+    var APIroot: String? {
+        get {
+            return ""
+        }
+        set {
+            
+        }
+    }
+    
 
     /**
      GET, parse and store a list of products from the server
      */
-    func GETProducts(completion: @escaping (HTTPURLResponse) -> ()) {
-        assertInitialized()
-        
-        let url = URL(string: "\(APIroot!)/products")
-        
-        let dataTask = session.dataTask(with: url!) { data, response, error in
-            if let error = error {
-                print("DataTask error: \(error.localizedDescription)")
-            }
-            else if
-                let data = data,
-                let response = response as? HTTPURLResponse,
-                response.statusCode == 200
-            {
-                // Parse response
-                let catalogue = try! Repository.shared.decoder.decode(CatalogueResponse.self, from: data)
-                
-                for product in catalogue {
-                    Repository.shared.catalogue[product.id] = product
-                }
-
-                // Call the completion handler
-                DispatchQueue.main.async {
-                    completion(response)
-                }
-            }
-        }
-        dataTask.resume()
-    }
+//    func GETProducts(completion: @escaping (HTTPURLResponse) -> ()) {
+//        assertInitialized()
+//
+//        let url = URL(string: "\(APIroot!)/products")
+//
+//        let dataTask = session.dataTask(with: url!) { data, response, error in
+//            if let error = error {
+//                print("DataTask error: \(error.localizedDescription)")
+//            }
+//            else if
+//                let data = data,
+//                let response = response as? HTTPURLResponse,
+//                response.statusCode == 200
+//            {
+//                // Parse response
+//                let catalogue = try! Repository.shared.decoder.decode(CatalogueResponse.self, from: data)
+//
+//                for product in catalogue {
+//                    Repository.shared.catalogue[product.id] = product
+//                }
+//
+//                // Call the completion handler
+//                DispatchQueue.main.async {
+//                    completion(response)
+//                }
+//            }
+//        }
+//        dataTask.resume()
+//    }
 
 // Unused at present, not required for this exercise
 //    func GETProductDetails() {}
@@ -104,54 +181,54 @@ extension Repository: API {
      */
     
     func POSTToCart(productId: Int, completion: @escaping (HTTPURLResponse) -> ()) {
-        assertInitialized()
-        
-        let url = URL(string: "\(APIroot!)/cart")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "content-type")
-        let cartItem = CartItem(productId: productId, count: 0)
-        let cartItemJSON = try! encoder.encode(cartItem)
-        request.httpBody = cartItemJSON
-        
-        let dataTask = session.dataTask(with: request) { _ , response, error in
-            if let error = error {
-                print("DataTask error: \(error.localizedDescription)")
-            }
-            else if
-                let response = response as? HTTPURLResponse,
-                response.statusCode == 201
-            {
-                DispatchQueue.main.async {
-                    completion(response)
-                }
-            }
-            
-        }
-        dataTask.resume()
+//        assertInitialized()
+//
+//        let url = URL(string: "\(APIroot!)/cart")!
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "POST"
+//        request.setValue("application/json", forHTTPHeaderField: "content-type")
+//        let cartItem = CartItem(productId: productId, count: 0)
+//        let cartItemJSON = try! encoder.encode(cartItem)
+//        request.httpBody = cartItemJSON
+//
+//        let dataTask = session.dataTask(with: request) { _ , response, error in
+//            if let error = error {
+//                print("DataTask error: \(error.localizedDescription)")
+//            }
+//            else if
+//                let response = response as? HTTPURLResponse,
+//                response.statusCode == 201
+//            {
+//                DispatchQueue.main.async {
+//                    completion(response)
+//                }
+//            }
+//
+//        }
+//        dataTask.resume()
     }
 
     func DELETEFromCart(completion: @escaping (HTTPURLResponse) -> ()) {
-        assertInitialized()
-        
-        let url = URL(string: "\(APIroot!)/cart/1")! // TODO: store cart# from POST requests?
-        var request = URLRequest(url: url)
-        request.httpMethod = "DELETE"
-        
-        let dataTask = session.dataTask(with: request) { _ , response, error in
-            if let error = error {
-                print("DataTask error: \(error.localizedDescription)")
-            }
-            else if
-                let response = response as? HTTPURLResponse,
-                response.statusCode == 204
-            {
-                DispatchQueue.main.async {
-                    completion(response)
-                }
-            }
-        }
-        dataTask.resume()
+//        assertInitialized()
+//
+//        let url = URL(string: "\(APIroot!)/cart/1")! // TODO: store cart# from POST requests?
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "DELETE"
+//
+//        let dataTask = session.dataTask(with: request) { _ , response, error in
+//            if let error = error {
+//                print("DataTask error: \(error.localizedDescription)")
+//            }
+//            else if
+//                let response = response as? HTTPURLResponse,
+//                response.statusCode == 204
+//            {
+//                DispatchQueue.main.async {
+//                    completion(response)
+//                }
+//            }
+//        }
+//        dataTask.resume()
     }
 }
 
@@ -159,53 +236,57 @@ extension Repository: API {
 //
 // Data Access convenience functions
 
-extension Repository: Model {
-    func addProductToCart(productID: Int, _ completion: (() -> ())? = nil) {
-        POSTToCart(productId: productID) { response in
-            if let product = self.catalogue[productID], product.stock > 0 {
-                self.catalogue[productID]!.stock -= 1
-                self.cart.append(product)
-            }
-            completion?()
-        }
-    }
-    
-    func removeProductFromCart(index: Int, _ completion: (() -> ())? = nil) {
-        DELETEFromCart { response in
-            if self.catalogue[self.cart[index].id] != nil {
-                self.catalogue[self.cart[index].id]?.stock += 1
-            }
-            self.cart.remove(at: index)
-
-            completion?()
-        }
-    }
-    
-    func toggleWishlistInclusion(productId: Int, _ completion: (() -> ())? = nil) {
-        if wishlist.keys.contains(productId) {
-            wishlist.removeValue(forKey: productId)
-        }
-        else {
-            wishlist[productId] = catalogue[productId]
-        }
-        
-        completion?()
-    }
-    
-    func removeFromWishlist(productId: Int, _ completion: (() -> ())? = nil) {
-        if wishlist.keys.contains(productId) {
-            wishlist.removeValue(forKey: productId)
-        }
-        
-        completion?()
-    }
-    
-    func moveFromWishlistToCart(productId: Int, _ completion: (() -> ())? = nil) {
-        if wishlist.keys.contains(productId) {
-            removeFromWishlist(productId: productId)
-            addProductToCart(productID: productId)
-        }
-        
-        completion?()
-    }
-}
+//extension Repository: Model {
+//    func addProductToCatalogue(product: Product, _ completion: (() -> ())?) {
+//
+//    }
+//
+//    func addProductToCart(productID: Int, _ completion: (() -> ())? = nil) {
+//        POSTToCart(productId: productID) { response in
+//            if let product = self.catalogue[productID], product.stock > 0 {
+//                self.catalogue[productID]!.stock -= 1
+//                self.cart.append(product)
+//            }
+//            completion?()
+//        }
+//    }
+//
+//    func removeProductFromCart(index: Int, _ completion: (() -> ())? = nil) {
+//        DELETEFromCart { response in
+//            if self.catalogue[self.cart[index].id] != nil {
+//                self.catalogue[self.cart[index].id]?.stock += 1
+//            }
+//            self.cart.remove(at: index)
+//
+//            completion?()
+//        }
+//    }
+//
+//    func toggleWishlistInclusion(productId: Int, _ completion: (() -> ())? = nil) {
+//        if wishlist.keys.contains(productId) {
+//            wishlist.removeValue(forKey: productId)
+//        }
+//        else {
+//            wishlist[productId] = catalogue[productId]
+//        }
+//
+//        completion?()
+//    }
+//
+//    func removeFromWishlist(productId: Int, _ completion: (() -> ())? = nil) {
+//        if wishlist.keys.contains(productId) {
+//            wishlist.removeValue(forKey: productId)
+//        }
+//
+//        completion?()
+//    }
+//
+//    func moveFromWishlistToCart(productId: Int, _ completion: (() -> ())? = nil) {
+//        if wishlist.keys.contains(productId) {
+//            removeFromWishlist(productId: productId)
+//            addProductToCart(productID: productId)
+//        }
+//
+//        completion?()
+//    }
+//}

@@ -31,12 +31,12 @@ class CatalogueViewController: UIViewController {
 
 extension CatalogueViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Repository.shared.catalogue.count
+        return Repository.shared.catalogueProductCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell,
-            let product = Repository.shared.catalogue[Repository.shared.orderedCatalogueKeys[ indexPath.row]]
+            let product = Repository.shared.item(at: indexPath.row, in: .catalogue)  //catalogueItemWithID(id: Repository.shared.orderedCatalogueKeys[indexPath.row])
         {
             // Visibility
             

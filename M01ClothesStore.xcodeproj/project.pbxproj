@@ -15,9 +15,10 @@
 		4844DBB923967FD0008E6DD5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBB823967FD0008E6DD5 /* TabBarController.swift */; };
 		4844DBBB239698CF008E6DD5 /* BadgeableTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBBA239698CF008E6DD5 /* BadgeableTabs.swift */; };
 		4844DBC32396A388008E6DD5 /* ddshop.apib in Resources */ = {isa = PBXBuildFile; fileRef = 4844DBC22396A388008E6DD5 /* ddshop.apib */; };
+		4844DBCB2397F087008E6DD5 /* ClothesStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBCA2397F087008E6DD5 /* ClothesStoreAPI.swift */; };
+		4844DBCD2397F095008E6DD5 /* ClothesStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBCC2397F095008E6DD5 /* ClothesStoreModel.swift */; };
 		48BE92C3238ECABA00A89EF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */; };
 		48BE92CA238ECABA00A89EF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BE92C8238ECABA00A89EF4 /* Main.storyboard */; };
-		48BE92CD238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92CB238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld */; };
 		48BE92CF238ECABB00A89EF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48BE92CE238ECABB00A89EF4 /* Assets.xcassets */; };
 		48BE92D2238ECABB00A89EF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BE92D0238ECABB00A89EF4 /* LaunchScreen.storyboard */; };
 		48BE92DD238ECABC00A89EF4 /* M01ClothesStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92DC238ECABC00A89EF4 /* M01ClothesStoreTests.swift */; };
@@ -58,10 +59,11 @@
 		4844DBB823967FD0008E6DD5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4844DBBA239698CF008E6DD5 /* BadgeableTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeableTabs.swift; sourceTree = "<group>"; };
 		4844DBC22396A388008E6DD5 /* ddshop.apib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ddshop.apib; sourceTree = "<group>"; };
+		4844DBCA2397F087008E6DD5 /* ClothesStoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesStoreAPI.swift; sourceTree = "<group>"; };
+		4844DBCC2397F095008E6DD5 /* ClothesStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesStoreModel.swift; sourceTree = "<group>"; };
 		48BE92BF238ECABA00A89EF4 /* M01ClothesStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = M01ClothesStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48BE92C9238ECABA00A89EF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		48BE92CC238ECABA00A89EF4 /* M01ClothesStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = M01ClothesStore.xcdatamodel; sourceTree = "<group>"; };
 		48BE92CE238ECABB00A89EF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48BE92D1238ECABB00A89EF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48BE92D3238ECABB00A89EF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -188,6 +190,8 @@
 			children = (
 				48BE930D238FBEB600A89EF4 /* DataObjects.swift */,
 				48BE9301238FB81900A89EF4 /* Repository.swift */,
+				4844DBCA2397F087008E6DD5 /* ClothesStoreAPI.swift */,
+				4844DBCC2397F095008E6DD5 /* ClothesStoreModel.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -220,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				48BE92D0238ECABB00A89EF4 /* LaunchScreen.storyboard */,
-				48BE92CB238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -388,9 +391,10 @@
 				48BE92FF238FB6EF00A89EF4 /* CartViewController.swift in Sources */,
 				48BE930E238FBEB600A89EF4 /* DataObjects.swift in Sources */,
 				48BE9306238FBDD900A89EF4 /* Model.swift in Sources */,
-				48BE92CD238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld in Sources */,
 				48BE92C3238ECABA00A89EF4 /* AppDelegate.swift in Sources */,
+				4844DBCB2397F087008E6DD5 /* ClothesStoreAPI.swift in Sources */,
 				4844DBB4239136D5008E6DD5 /* ProductCellDelegate.swift in Sources */,
+				4844DBCD2397F095008E6DD5 /* ClothesStoreModel.swift in Sources */,
 				48BE92FB238FB6CF00A89EF4 /* CatalogueViewController.swift in Sources */,
 				4844DBB223911A3E008E6DD5 /* Constants.swift in Sources */,
 				4844DBBB239698CF008E6DD5 /* BadgeableTabs.swift in Sources */,
@@ -726,19 +730,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		48BE92CB238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				48BE92CC238ECABA00A89EF4 /* M01ClothesStore.xcdatamodel */,
-			);
-			currentVersion = 48BE92CC238ECABA00A89EF4 /* M01ClothesStore.xcdatamodel */;
-			path = M01ClothesStore.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 48BE92B7238ECABA00A89EF4 /* Project object */;
 }
