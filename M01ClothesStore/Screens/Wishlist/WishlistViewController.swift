@@ -93,7 +93,7 @@ extension WishlistViewController: ProductCellDelegate {
                     }
                 }
                 
-                (self.tabBarController as? TabBarController)?.updateAppearance()
+                self.controller?.updateAppearance()
             }
         }
     }
