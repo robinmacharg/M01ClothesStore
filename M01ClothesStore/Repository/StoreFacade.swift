@@ -150,6 +150,13 @@ extension StoreFacade {
         }
     }
     
+    func isInStock(_ product: Product) -> Bool {
+        if let product = StoreFacade.shared.get(itemWithId: product.id, from: .catalogue), product.stock > 0 {
+            return true
+        }
+        return false
+    }
+    
     var cartTotal: Double {
         return model?.cartTotal ?? 0.0
     }

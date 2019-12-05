@@ -44,7 +44,7 @@ extension WishlistViewController: UITableViewDataSource {
             cell.availabilityLabel.isHidden = true
             cell.LHSButton.setImage(UIImage(named: Constants.Images.StarFilled), for: .normal)
             cell.RHSButton.setImage(UIImage(named: Constants.Images.CartAdd), for: .normal)
-            cell.RHSButton.isEnabled = !(product.stock == 0)
+            cell.RHSButton.isEnabled = StoreFacade.shared.isInStock(product)
             cell.delegate = self
             return cell
         }

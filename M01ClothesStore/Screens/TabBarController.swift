@@ -10,6 +10,8 @@ import UIKit
 
 class TabBarController: UITabBarController, BadgedTabsTabController {
     
+    // MARK: - <BadgedTabsTabController>
+    
     /**
      * Iterate over tabs, requesting badge count from suitably conforming VCs
      */
