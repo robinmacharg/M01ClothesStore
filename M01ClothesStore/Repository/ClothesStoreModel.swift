@@ -84,9 +84,15 @@ class ClothesStoreModel: Model {
                 return catalogue[catalogue.keys.sorted()[index]]
             }
         case .wishlist:
-            break
+            // Impose ID-ordering on the catalogue
+            if index < wishlist.count {
+                return wishlist[wishlist.keys.sorted()[index]]
+            }
         case .cart:
-            break
+            // Just an array
+            if index < cart.count {
+                return cart[index]
+            }
         }
         
         // Fall-through default

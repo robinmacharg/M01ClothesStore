@@ -80,6 +80,23 @@ class ClothesStoreAPI: API {
     }
     
     func DELETEFromCart(completion: @escaping (HTTPURLResponse) -> ()) {
-        
+        let url = URL(string: "\(APIroot!)/cart/1")! // TODO: store cart# from POST requests?
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+
+        let dataTask = session.dataTask(with: request) { _ , response, error in
+            if let error = error {
+                print("DataTask error: \(error.localizedDescription)")
+            }
+            else if
+                let response = response as? HTTPURLResponse,
+                response.statusCode == 204
+            {
+                DispatchQueue.main.async {
+                    completion(response)
+                }
+            }
+        }
+        dataTask.resume()
     }
 }

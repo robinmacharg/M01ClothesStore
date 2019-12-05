@@ -31,7 +31,7 @@ class CatalogueViewController: UIViewController {
 
 extension CatalogueViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return StoreFacade.shared.catalogueProductCount
+        return StoreFacade.shared.count(of: .catalogue)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

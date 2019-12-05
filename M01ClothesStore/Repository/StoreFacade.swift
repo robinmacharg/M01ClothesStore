@@ -29,7 +29,7 @@ public class StoreFacade {
     
     // Public
 //    var cart: [Product] = []
-    var wishlist: [Int:Product] = [:] // ID:Product
+//    var wishlist: [Int:Product] = [:] // ID:Product
     
     // MARK: - Initialisation
 
@@ -63,11 +63,15 @@ public class StoreFacade {
 
 extension StoreFacade {
     
-    var catalogueProductCount: Int { return model?.count(of: .catalogue) ?? 0 }
-    var wishlistCount: Int { return model?.count(of: .wishlist) ?? 0 }
-    var cartCount: Int { return model?.count(of: .cart) ?? 0 }
+//    var catalogueProductCount: Int { return model?.count(of: .catalogue) ?? 0 }
+//    var wishlistCount: Int { return model?.count(of: .wishlist) ?? 0 }
+//    var cartCount: Int { return model?.count(of: .cart) ?? 0 }
     
     // MARK: - General
+    
+    func count(of store: Store) -> Int {
+        return model?.count(of: store) ?? 0
+    }
     
     func get(itemAtIndex index: Int, from store: Store) -> Product? {
         return model?.get(itemAtIndex: index, from: store)
@@ -109,6 +113,8 @@ extension StoreFacade {
     }
     
     func toggleWishlistInclusion(id: Int, _ completion: (() -> ())? = nil) {
+        assertInitialized()
+        
         // Remove
         if model?.get(itemWithId: id, from: .wishlist) != nil {
             model?.remove(id: id, from: .wishlist, nil)
@@ -125,12 +131,37 @@ extension StoreFacade {
     
     // MARK: - Wishlist
     
+    func removeFromWishlist(id: Int, _ completion: (() -> ())? = nil) {
+        assertInitialized()
+        
+        if model?.get(itemWithId: id, from: .wishlist) != nil {
+            model?.remove(id: id, from: .wishlist, nil)
+        }
+        completion?()
+    }
     
-    
+    func moveFromWishlistToCart(id: Int, _ completion: (() -> ())? = nil) {
+        assertInitialized()
+        
+        if let product = model?.get(itemWithId: id, from: .wishlist) {
+            api?.POSTToCart(productId: id) { (response) in
+                self.model?.remove(id: id, from: .wishlist, nil)
+                self.model?.create(product, in: .cart, nil)
+                
+                if var product = self.model?.get(itemWithId: id, from: .catalogue), product.stock > 0 {
+                    product.stock -= 1
+                    self.model?.update(product: product, in: .catalogue, nil)
+                }
+                completion?()
+            }
+        }
+    }
     
     // MARK: - Cart
     
     func removeProductFromCart(index: Int, _ completion: (() -> ())? = nil) {
+        assertInitialized()
+        
         if let cartProduct = model?.get(itemAtIndex: index, from: .cart),
             var catalogueProduct = self.model?.get(itemWithId: cartProduct.id, from: .catalogue) {
             api?.DELETEFromCart { (response) in

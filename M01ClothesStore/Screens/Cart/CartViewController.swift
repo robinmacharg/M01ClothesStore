@@ -41,7 +41,7 @@ class CartViewController: UIViewController {
 
 extension CartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return StoreFacade.shared.cartCount
+        return StoreFacade.shared.count(of: .cart)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -108,6 +108,5 @@ extension CartViewController: ProductCellDelegate {
 // MARK: - <BadgeableTab>
 
 extension CartViewController: BadgeableTab {
-    var badgeCount: Int? { return StoreFacade.shared.cartCount }
+    var badgeCount: Int? { return StoreFacade.shared.count(of: .cart) }
 }
-
