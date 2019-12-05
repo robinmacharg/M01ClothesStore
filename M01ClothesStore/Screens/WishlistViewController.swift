@@ -12,10 +12,16 @@ class WishlistViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    private var cellHeight: CGFloat = 100.0
+    
     override func viewDidLoad() {
         tableView.register(
             UINib(nibName: "ProductCell", bundle: Bundle.main),
             forCellReuseIdentifier: Constants.UI.ProductCell)
+
+        cellHeight = (Bundle.main
+            .loadNibNamed(Constants.UI.ProductCell, owner: self, options: nil)?
+            .first as? UITableViewCell)?.contentView.frame.height ?? 0.0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +65,7 @@ extension WishlistViewController: UITableViewDataSource {
 
 extension WishlistViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100 // TODO: Extract from XIB
+        return cellHeight
     }
 }
 

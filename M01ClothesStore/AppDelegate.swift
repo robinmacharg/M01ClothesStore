@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootURL = "https://private-anon-b14e15b3c2-ddshop.apiary-mock.com"
         
         StoreFacade.initalise(
-            root: rootURL, // TODO: init API with rootURL?
+            root: rootURL,
             api: ClothesStoreAPI(),
             model: ClothesStoreModel())
         
