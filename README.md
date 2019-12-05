@@ -1,6 +1,8 @@
 # M01ClothesStore
 
-Technical Test for Deloitte.  See the included PDF for the full spec.  All required items have been completed; the spec has not been intentionally exceeded and this is by design.  This does mean some niceties have been omitted, e.g. count badging on cart/wishlist, selection animation, +/- UI, more nuanced UI etc.
+Technical Test for Deloitte.  See the included PDF for the full spec.  The reference implementation has been tagged `v1.0`.  Further enhancements that exceed the specification follow that tag chronologically. These notes refer to development up until `v1.0` unless explicitly otherwise noted. 
+
+All required items have been completed; the spec has not been intentionally exceeded and this is by design.  This does mean some niceties have been omitted, e.g. count badging on cart/wishlist, selection animation, +/- UI, more nuanced UI etc.
 
 ## Project structure.
 
@@ -32,6 +34,11 @@ I've used groups, delegation and protocols where appropriate.  Extensions break 
 
 ## App Structure
 
-Looking at the `Main` storyboard you'll see a single `TabBarController` with three tabs, one for each major area: Catalogue, Wishlist and Cart.  There's a central singleton Repository that handles storage concerns - local model and API access.  It implements both `API` and `Model` protocols.  There's a single common auxilliary `UITableViewCell` subclass view that makes use of a delegate protocol.  Finally, some constants are defined - structurally - in the appropriately named file. 
+- Looking at the `Main` storyboard you'll see a single `TabBarController` with three tabs, one for each major area: Catalogue, Wishlist and Cart.   The TabBarController offers delegate functionality for any contained view controller to update the badge counts for all tabs.  
+- There's a central singleton `StoreFacade` that handles storage concerns.  Local `Model`- and `API`-conforming objects are passed in during initialisation.  The facade coordinates calls between the API and Model with sensibly named methods. 
+- The `Model` offers basic CRUD operations and the minimum additional operations to prevent the facade becoming too bulky.
+- The `API` offers the required 3 (of 4) HTTP calls, detailed in the spec. and documented fully in the `ddshop.spib` Apiary file.
+- There's a single common auxilliary `UITableViewCell` subclass view that makes use of a delegate protocol.  
+- Finally, some constants are defined - structurally - in the appropriately named file. 
 
 CoreData was selected at project creation time but was not used for this exercise.

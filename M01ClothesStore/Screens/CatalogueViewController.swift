@@ -17,9 +17,9 @@ class CatalogueViewController: UIViewController {
             UINib(nibName: "ProductCell", bundle: Bundle.main),
             forCellReuseIdentifier: Constants.UI.ProductCell)
         
-        Repository.shared.GETProducts(completion: { response in
+        StoreFacade.shared.loadCatalogue {
             self.tableView.reloadData()
-        })
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,12 +31,12 @@ class CatalogueViewController: UIViewController {
 
 extension CatalogueViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Repository.shared.catalogue.count
+        return StoreFacade.shared.count(of: .catalogue)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell,
-            let product = Repository.shared.catalogue[Repository.shared.orderedCatalogueKeys[ indexPath.row]]
+            let product = StoreFacade.shared.get(itemAtIndex: indexPath.row, from: .catalogue)
         {
             // Visibility
             
@@ -52,12 +52,11 @@ extension CatalogueViewController: UITableViewDataSource {
             cell.priceLabel.text = "£\(String(format: "%.2f", product.price))"
             cell.availabilityLabel.text = "\(product.stock) Available"
             cell.RHSButton.setImage(UIImage(named: Constants.Images.CartAdd), for: .normal)
-            if Repository.shared.wishlist.keys.contains(product.id) {
-                cell.LHSButton.setImage(UIImage(named: Constants.Images.StarFilled), for: .normal)
-            }
-            else {
-                cell.LHSButton.setImage(UIImage(named: Constants.Images.StarEmpty), for: .normal)
-            }
+            
+            cell.LHSButton.setImage(UIImage(named: StoreFacade.shared.get(itemWithId: product.id, from: .wishlist) != nil
+                ? Constants.Images.StarFilled
+                : Constants.Images.StarEmpty), for: .normal)
+            
             cell.delegate = self
             
             cell.RHSButton.isEnabled = !(product.stock == 0)
@@ -85,19 +84,32 @@ extension CatalogueViewController: ProductCellDelegate {
 
     // Add to cart
     func RHSButtonTapped(sender: ProductCell, productID: Int) {
-        Repository.shared.addProductToCart(productID: productID) {
-            if let rowIndex = sender.rowIndex {
-                self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)
-            }
+        StoreFacade.shared.addProductToCart(id: productID) {
+            guard let rowIndex = sender.rowIndex else { return }
+            
+            self.tableView.reloadRows(
+                at: [IndexPath(row: rowIndex, section: 0)],
+                with: .none)
+        
+            self.controller?.updateAppearance()
         }
     }
     
     // Add to wishlist
     func LHSButtonTapped(sender: ProductCell, productID: Int) {
-        Repository.shared.toggleWishlistInclusion(productId: productID) {
+        StoreFacade.shared.toggleWishlistInclusion(id: productID) {
             if let rowIndex = sender.rowIndex {
                 self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)
             }
+
+            self.controller?.updateAppearance()
         }
     }
+}
+
+// MARK: - <BadgeableTab>
+
+extension CatalogueViewController: BadgeableTab {
+    // Never badged
+    var badgeCount: Int? { return nil }
 }

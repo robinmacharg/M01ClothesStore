@@ -9,8 +9,9 @@
 import Foundation
 
 protocol API {
-    func GETProducts(completion: @escaping (_ response: HTTPURLResponse) -> ());
-//    func GETProductDetails();
+    var APIroot: String? { get set }
+    
+    func GETProducts(completion: @escaping (_ products: [Product]) -> ());
     func POSTToCart(productId: Int, completion: @escaping (HTTPURLResponse) -> ());
     func DELETEFromCart(completion: @escaping (HTTPURLResponse) -> ());
 }

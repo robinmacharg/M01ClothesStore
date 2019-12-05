@@ -12,9 +12,13 @@
 		4844DBB223911A3E008E6DD5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBB123911A3E008E6DD5 /* Constants.swift */; };
 		4844DBB4239136D5008E6DD5 /* ProductCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBB3239136D5008E6DD5 /* ProductCellDelegate.swift */; };
 		4844DBB623967757008E6DD5 /* Deloitte - Mobile Recruitment Case Study.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 4844DBB523967757008E6DD5 /* Deloitte - Mobile Recruitment Case Study.pdf */; };
+		4844DBB923967FD0008E6DD5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBB823967FD0008E6DD5 /* TabBarController.swift */; };
+		4844DBBB239698CF008E6DD5 /* BadgeableTabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBBA239698CF008E6DD5 /* BadgeableTabs.swift */; };
+		4844DBC32396A388008E6DD5 /* ddshop.apib in Resources */ = {isa = PBXBuildFile; fileRef = 4844DBC22396A388008E6DD5 /* ddshop.apib */; };
+		4844DBCB2397F087008E6DD5 /* ClothesStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBCA2397F087008E6DD5 /* ClothesStoreAPI.swift */; };
+		4844DBCD2397F095008E6DD5 /* ClothesStoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4844DBCC2397F095008E6DD5 /* ClothesStoreModel.swift */; };
 		48BE92C3238ECABA00A89EF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */; };
 		48BE92CA238ECABA00A89EF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BE92C8238ECABA00A89EF4 /* Main.storyboard */; };
-		48BE92CD238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92CB238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld */; };
 		48BE92CF238ECABB00A89EF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48BE92CE238ECABB00A89EF4 /* Assets.xcassets */; };
 		48BE92D2238ECABB00A89EF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BE92D0238ECABB00A89EF4 /* LaunchScreen.storyboard */; };
 		48BE92DD238ECABC00A89EF4 /* M01ClothesStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92DC238ECABC00A89EF4 /* M01ClothesStoreTests.swift */; };
@@ -22,7 +26,7 @@
 		48BE92FB238FB6CF00A89EF4 /* CatalogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92FA238FB6CF00A89EF4 /* CatalogueViewController.swift */; };
 		48BE92FD238FB6E300A89EF4 /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92FC238FB6E300A89EF4 /* WishlistViewController.swift */; };
 		48BE92FF238FB6EF00A89EF4 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92FE238FB6EF00A89EF4 /* CartViewController.swift */; };
-		48BE9302238FB81900A89EF4 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE9301238FB81900A89EF4 /* Repository.swift */; };
+		48BE9302238FB81900A89EF4 /* StoreFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE9301238FB81900A89EF4 /* StoreFacade.swift */; };
 		48BE9304238FBDC800A89EF4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE9303238FBDC800A89EF4 /* API.swift */; };
 		48BE9306238FBDD900A89EF4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE9305238FBDD900A89EF4 /* Model.swift */; };
 		48BE930E238FBEB600A89EF4 /* DataObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE930D238FBEB600A89EF4 /* DataObjects.swift */; };
@@ -52,10 +56,14 @@
 		4844DBB123911A3E008E6DD5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4844DBB3239136D5008E6DD5 /* ProductCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellDelegate.swift; sourceTree = "<group>"; };
 		4844DBB523967757008E6DD5 /* Deloitte - Mobile Recruitment Case Study.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Deloitte - Mobile Recruitment Case Study.pdf"; sourceTree = "<group>"; };
+		4844DBB823967FD0008E6DD5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		4844DBBA239698CF008E6DD5 /* BadgeableTabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeableTabs.swift; sourceTree = "<group>"; };
+		4844DBC22396A388008E6DD5 /* ddshop.apib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ddshop.apib; sourceTree = "<group>"; };
+		4844DBCA2397F087008E6DD5 /* ClothesStoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesStoreAPI.swift; sourceTree = "<group>"; };
+		4844DBCC2397F095008E6DD5 /* ClothesStoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesStoreModel.swift; sourceTree = "<group>"; };
 		48BE92BF238ECABA00A89EF4 /* M01ClothesStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = M01ClothesStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48BE92C2238ECABA00A89EF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48BE92C9238ECABA00A89EF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		48BE92CC238ECABA00A89EF4 /* M01ClothesStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = M01ClothesStore.xcdatamodel; sourceTree = "<group>"; };
 		48BE92CE238ECABB00A89EF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48BE92D1238ECABB00A89EF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48BE92D3238ECABB00A89EF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,7 +76,7 @@
 		48BE92FA238FB6CF00A89EF4 /* CatalogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueViewController.swift; sourceTree = "<group>"; };
 		48BE92FC238FB6E300A89EF4 /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		48BE92FE238FB6EF00A89EF4 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
-		48BE9301238FB81900A89EF4 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		48BE9301238FB81900A89EF4 /* StoreFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFacade.swift; sourceTree = "<group>"; };
 		48BE9303238FBDC800A89EF4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		48BE9305238FBDD900A89EF4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		48BE930D238FBEB600A89EF4 /* DataObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataObjects.swift; sourceTree = "<group>"; };
@@ -105,6 +113,7 @@
 			children = (
 				48BE9310238FCFA600A89EF4 /* README.md */,
 				4844DBB523967757008E6DD5 /* Deloitte - Mobile Recruitment Case Study.pdf */,
+				4844DBC22396A388008E6DD5 /* ddshop.apib */,
 				48BE92C1238ECABA00A89EF4 /* M01ClothesStore */,
 				48BE92DB238ECABC00A89EF4 /* M01ClothesStoreTests */,
 				48BE92E6238ECABC00A89EF4 /* M01ClothesStoreUITests */,
@@ -160,9 +169,10 @@
 			isa = PBXGroup;
 			children = (
 				48BE92C8238ECABA00A89EF4 /* Main.storyboard */,
-				48BE92F7238FB68F00A89EF4 /* Catalogue */,
-				48BE92F8238FB69800A89EF4 /* Wishlist */,
-				48BE92F9238FB6AD00A89EF4 /* Cart */,
+				4844DBB823967FD0008E6DD5 /* TabBarController.swift */,
+				48BE92FA238FB6CF00A89EF4 /* CatalogueViewController.swift */,
+				48BE92FC238FB6E300A89EF4 /* WishlistViewController.swift */,
+				48BE92FE238FB6EF00A89EF4 /* CartViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -171,40 +181,17 @@
 			isa = PBXGroup;
 			children = (
 				48BE930D238FBEB600A89EF4 /* DataObjects.swift */,
-				48BE9301238FB81900A89EF4 /* Repository.swift */,
+				48BE9301238FB81900A89EF4 /* StoreFacade.swift */,
+				4844DBCA2397F087008E6DD5 /* ClothesStoreAPI.swift */,
+				4844DBCC2397F095008E6DD5 /* ClothesStoreModel.swift */,
 			);
 			path = Repository;
-			sourceTree = "<group>";
-		};
-		48BE92F7238FB68F00A89EF4 /* Catalogue */ = {
-			isa = PBXGroup;
-			children = (
-				48BE92FA238FB6CF00A89EF4 /* CatalogueViewController.swift */,
-			);
-			path = Catalogue;
-			sourceTree = "<group>";
-		};
-		48BE92F8238FB69800A89EF4 /* Wishlist */ = {
-			isa = PBXGroup;
-			children = (
-				48BE92FC238FB6E300A89EF4 /* WishlistViewController.swift */,
-			);
-			path = Wishlist;
-			sourceTree = "<group>";
-		};
-		48BE92F9238FB6AD00A89EF4 /* Cart */ = {
-			isa = PBXGroup;
-			children = (
-				48BE92FE238FB6EF00A89EF4 /* CartViewController.swift */,
-			);
-			path = Cart;
 			sourceTree = "<group>";
 		};
 		48BE9300238FB79600A89EF4 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
 				48BE92D0238ECABB00A89EF4 /* LaunchScreen.storyboard */,
-				48BE92CB238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -215,6 +202,7 @@
 				48BE9303238FBDC800A89EF4 /* API.swift */,
 				48BE9305238FBDD900A89EF4 /* Model.swift */,
 				4844DBB3239136D5008E6DD5 /* ProductCellDelegate.swift */,
+				4844DBBA239698CF008E6DD5 /* BadgeableTabs.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -338,6 +326,7 @@
 				4844DBAE239117E5008E6DD5 /* ProductCell.xib in Resources */,
 				48BE9311238FCFA600A89EF4 /* README.md in Resources */,
 				48BE92CA238ECABA00A89EF4 /* Main.storyboard in Resources */,
+				4844DBC32396A388008E6DD5 /* ddshop.apib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,17 +352,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				48BE9304238FBDC800A89EF4 /* API.swift in Sources */,
+				4844DBB923967FD0008E6DD5 /* TabBarController.swift in Sources */,
 				4844DBB02391181B008E6DD5 /* ProductCell.swift in Sources */,
-				48BE9302238FB81900A89EF4 /* Repository.swift in Sources */,
+				48BE9302238FB81900A89EF4 /* StoreFacade.swift in Sources */,
 				48BE92FD238FB6E300A89EF4 /* WishlistViewController.swift in Sources */,
 				48BE92FF238FB6EF00A89EF4 /* CartViewController.swift in Sources */,
 				48BE930E238FBEB600A89EF4 /* DataObjects.swift in Sources */,
 				48BE9306238FBDD900A89EF4 /* Model.swift in Sources */,
-				48BE92CD238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld in Sources */,
 				48BE92C3238ECABA00A89EF4 /* AppDelegate.swift in Sources */,
+				4844DBCB2397F087008E6DD5 /* ClothesStoreAPI.swift in Sources */,
 				4844DBB4239136D5008E6DD5 /* ProductCellDelegate.swift in Sources */,
+				4844DBCD2397F095008E6DD5 /* ClothesStoreModel.swift in Sources */,
 				48BE92FB238FB6CF00A89EF4 /* CatalogueViewController.swift in Sources */,
 				4844DBB223911A3E008E6DD5 /* Constants.swift in Sources */,
+				4844DBBB239698CF008E6DD5 /* BadgeableTabs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,19 +698,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		48BE92CB238ECABA00A89EF4 /* M01ClothesStore.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				48BE92CC238ECABA00A89EF4 /* M01ClothesStore.xcdatamodel */,
-			);
-			currentVersion = 48BE92CC238ECABA00A89EF4 /* M01ClothesStore.xcdatamodel */;
-			path = M01ClothesStore.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 48BE92B7238ECABA00A89EF4 /* Project object */;
 }

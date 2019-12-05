@@ -8,10 +8,22 @@
 
 import Foundation
 
+enum Store {
+    case catalogue
+    case wishlist
+    case cart
+}
+
 protocol Model {
-    func addProductToCart(productID: Int, _ completion: (() -> ())?)
-    func removeProductFromCart(index: Int, _ completion: (() -> ())?)
-    func toggleWishlistInclusion(productId: Int, _ completion: (() -> ())?)
-    func removeFromWishlist(productId: Int, _ completion: (() -> ())?)
-    func moveFromWishlistToCart(productId: Int, _ completion: (() -> ())?)
+    // CRUD operations
+    func create(_ product: Product, in: Store, _ completion: (() -> ())?)
+    func get(itemWithId: Int, from: Store) -> Product?
+    func get(itemAtIndex: Int, from: Store) -> Product?
+    func update(product: Product, in: Store, _ completion: (() -> ())?)
+    func remove(at: Int, from: Store, _ completion: (() -> ())?)
+    func remove(id: Int, from: Store, _ completion: (() -> ())?)
+    
+    // Other operations
+    func count(of: Store) -> Int
+    var cartTotal: Double { get }
 }

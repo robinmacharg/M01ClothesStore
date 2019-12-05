@@ -30,30 +30,25 @@ class CartViewController: UIViewController {
     // MARK: - Helpers
     
     func updateCartTotal() {
-        let items = Repository.shared.cart.count
-        let itemText = items == 1 ? "item" : "items"
-        cartTotalLabel.text = "Total (\(items) \(itemText)): £\(Repository.shared.cartTotal)"
+        let count = StoreFacade.shared.count(of: .cart)
+        let itemText = StoreFacade.shared.count(of: .cart) == 1 ? "item" : "items"
+        cartTotalLabel.text = "Total (\(count) \(itemText)): £\(StoreFacade.shared.cartTotal)"
     }
-    
 }
 
 // MARK: - <UITableViewDataSource>
 
 extension CartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Repository.shared.cart.count
+        return StoreFacade.shared.count(of: .cart)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell,
+            let product = StoreFacade.shared.get(itemAtIndex: indexPath.row, from: .cart)
         {
-            let product = Repository.shared.cart[indexPath.row]
-            
-            // Visibility
-            
             cell.RHSButton.isHidden = false
             cell.LHSButton.isHidden = true
-            
             cell.rowIndex = indexPath.row
             cell.ID = product.id
             cell.productNameLabel.text = product.name
@@ -84,9 +79,7 @@ extension CartViewController: UITableViewDelegate {
 extension CartViewController: ProductCellDelegate {
     func RHSButtonTapped(sender: ProductCell, productID: Int) {
         if let index = sender.rowIndex {
-            Repository.shared.removeProductFromCart(index: index) {
-                
-                // Async completion block:
+            StoreFacade.shared.removeProductFromCart(index: index) {
 
                 // Update the header total
                 self.updateCartTotal()
@@ -104,8 +97,15 @@ extension CartViewController: ProductCellDelegate {
                 }
                 
                 self.tableView.endUpdates()
+                
+                self.controller?.updateAppearance()
             }
         }
     }
 }
 
+// MARK: - <BadgeableTab>
+
+extension CartViewController: BadgeableTab {
+    var badgeCount: Int? { return StoreFacade.shared.count(of: .cart) }
+}

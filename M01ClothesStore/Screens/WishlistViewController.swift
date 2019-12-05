@@ -16,10 +16,6 @@ class WishlistViewController: UIViewController {
         tableView.register(
             UINib(nibName: "ProductCell", bundle: Bundle.main),
             forCellReuseIdentifier: Constants.UI.ProductCell)
-        
-        Repository.shared.GETProducts(completion: { response in
-            self.tableView.reloadData()
-        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,20 +27,15 @@ class WishlistViewController: UIViewController {
 
 extension WishlistViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Repository.shared.wishlist.count
+        return StoreFacade.shared.count(of: .wishlist)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell,
-            let product = Repository.shared.wishlist[Repository.shared.wishlist.keys.sorted()[ indexPath.row]]
+            let product = StoreFacade.shared.get(itemAtIndex: indexPath.row, from: .wishlist)
         {
-            // Visibility
-               
             cell.RHSButton.isHidden = false
             cell.LHSButton.isHidden = false
-            
-            // Values
-            
             cell.rowIndex = indexPath.row
             cell.ID = product.id
             cell.productNameLabel.text = product.name
@@ -53,11 +44,8 @@ extension WishlistViewController: UITableViewDataSource {
             cell.availabilityLabel.isHidden = true
             cell.LHSButton.setImage(UIImage(named: Constants.Images.StarFilled), for: .normal)
             cell.RHSButton.setImage(UIImage(named: Constants.Images.CartAdd), for: .normal)
-            
-            cell.RHSButton.isEnabled = !(product.stock == 0)
-            
+            cell.RHSButton.isEnabled = StoreFacade.shared.isInStock(product)
             cell.delegate = self
-            
             return cell
         }
             
@@ -75,16 +63,39 @@ extension WishlistViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - <ProductCellDelegate>
+
 extension WishlistViewController: ProductCellDelegate {
+
+    func LHSButtonTapped(sender: ProductCell, productID id: Int) {
+        if let index = sender.rowIndex {
+            
+            StoreFacade.shared.removeFromWishlist(id: id) {
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                self.tableView.endUpdates()
+
+                // Decrement index of every - visible - row above deletion index
+                // Addition of new items (via Catalogue VC) will cause a complete reload
+                for case let cell as ProductCell in self.tableView.visibleCells {
+                    if let cellIndex = cell.rowIndex, cellIndex > index {
+                        cell.rowIndex! -= 1
+                    }
+                }
+
+                self.controller?.updateAppearance()
+            }
+        }
+    }
     
     func RHSButtonTapped(sender: ProductCell, productID: Int) {
         if let index = sender.rowIndex {
-            Repository.shared.moveFromWishlistToCart(productId: productID)
+            StoreFacade.shared.moveFromWishlistToCart(id: productID)
             {
                 self.tableView.beginUpdates()
                 self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
                 self.tableView.endUpdates()
-            
+
                 // Decrement index of every - visible - row above deletion index
                 // Addition of new items (via Catalogue VC) will cause a complete reload
                 for case let cell as ProductCell in self.tableView.visibleCells {
@@ -92,28 +103,15 @@ extension WishlistViewController: ProductCellDelegate {
                         cell.rowIndex! -= 1
                     }
                 }
+
+                self.controller?.updateAppearance()
             }
         }
     }
-    
-    func LHSButtonTapped(sender: ProductCell, productID: Int) {
-        if let index = sender.rowIndex {
-            
-            // Implicit removal
-            Repository.shared.removeFromWishlist(productId: productID)
-            {
-                self.tableView.beginUpdates()
-                self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-                self.tableView.endUpdates()
-            
-                // Decrement index of every - visible - row above deletion index
-                // Addition of new items (via Catalogue VC) will cause a complete reload
-                for case let cell as ProductCell in self.tableView.visibleCells {
-                    if let cellIndex = cell.rowIndex, cellIndex > index {
-                        cell.rowIndex! -= 1
-                    }
-                }
-            }
-        }
-    }
+}
+
+// MARK: - <BadgeableTab>
+
+extension WishlistViewController: BadgeableTab {
+    var badgeCount: Int? { return StoreFacade.shared.count(of: .wishlist) }
 }

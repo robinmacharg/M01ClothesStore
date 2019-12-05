@@ -1,0 +1,164 @@
+FORMAT: 1A
+
+# dd_shop
+The Shop API is a *simple shop* service.
+
+# Group Products
+Product related resources of the **Shop API**
+
+## Products Collection [/products]
+### List all Products [GET]
++ Response 200 (application/json)
+
+        [
+          {
+            "productId": 1,
+            "name": "Almond Toe Court Shoes, Patent Black",
+            "category": "Women's Footwear",
+            "price": 99,
+            "oldPrice": null,
+            "stock": 5
+          },
+          {
+            "productId": 2,
+            "name": "Suede Shoes, Blue",
+            "category": "Women's Footwear",
+            "price": 42,
+            "oldPrice": null,
+            "stock": 4
+          },
+          {
+            "productId": 3,
+            "name": "Leather Driver Saddle Loafers, Tan",
+            "category": "Men's Footwear",
+            "price": 34,
+            "oldPrice": null,
+            "stock": 12
+          },
+          {
+            "productId": 4,
+            "name": "Flip Flops, Red",
+            "category": "Men's Footwear",
+            "price": 19,
+            "oldPrice": null,
+            "stock": 6
+          },
+          {
+            "productId": 5,
+            "name": "Flip Flops, Blue",
+            "category": "Men's Footwear",
+            "price": 19,
+            "oldPrice": null,
+            "stock": 0
+          },
+          {
+            "productId": 6,
+            "name": "Gold Button Cardigan, Black",
+            "category": "Women's Casualwear",
+            "price": 167,
+            "oldPrice": null,
+            "stock": 6
+          },
+          {
+            "productId": 7,
+            "name": "Cotton Shorts, Medium Red",
+            "category": "Women's Casualwear",
+            "price": 30,
+            "oldPrice": null,
+            "stock": 5
+          },
+          {
+            "productId": 8,
+            "name": "Fine Stripe Short Sleeve Shirt, Grey",
+            "category": "Men's Casualwear",
+            "price": 49.99,
+            "oldPrice": null,
+            "stock": 9
+          },
+          {
+            "productId": 9,
+            "name": "Fine Stripe Short Sleeve Shirt, Green",
+            "category": "Men's Casualwear",
+            "price": 39.99,
+            "oldPrice": 49.99,
+            "stock": 3
+          },
+          {
+            "productId": 10,
+            "name": "Sharkskin Waistcoat, Charcoal",
+            "category": "Men's Formalwear",
+            "price": 75,
+            "oldPrice": null,
+            "stock": 2
+          },
+          {
+            "productId": 11,
+            "name": "Lightweight Patch Pocket Blazer, Deer",
+            "category": "Men's Formalwear",
+            "price": 175,
+            "oldPrice": null,
+            "stock": 1
+          },
+          {
+            "productId": 12,
+            "name": "Bird Print Dress, Black",
+            "category": "Women's Formalwear",
+            "price": 270,
+            "oldPrice": null,
+            "stock": 10
+          },
+          {
+            "productId": 13,
+            "name": "Mid Twist Cut-Out Dress, Pink",
+            "category": "Women's Formalwear",
+            "price": 540,
+            "oldPrice": null,
+            "stock": 5
+          }
+        ]
+
+## Product [/products/{productId}]
+A single Product object with all its details
+
++ Parameters
+    + productId (required, number, `1`) ... Numeric `productId` of the Product to perform action with. Has example value.
+
+### Retrieve a Product [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            ETag: "e3e824c6-6358-4dcf-b16b-03555004a8c1"
+
+    + Body
+
+            {
+              "productId": 1,
+              "name": "Almond Toe Court Shoes, Patent Black",
+              "category": "Women's Footwear",
+              "price": 99,
+              "oldPrice": null,
+              "stock": 5
+            }
+
+# Group Cart
+Shopping Cart related resources of the **Shop API**
+
+## Shopping Cart [/cart]
+### Add a Product to Cart [POST]
++ Request (application/json)
+
+        { "productId": 123 }
+
++ Response 201 (application/json)
+
+        { "cartId": 1, "productId": 123 }
+
+## Cart Item [/cart/{cartId}]
+A single Cart item.
+
++ Parameters
+    + cartId (required, number, `1`) ... Numeric `cartId` of the Product to perform action with. Has example value.
+    
+### Remove a Product from Cart [DELETE]
++ Response 204
