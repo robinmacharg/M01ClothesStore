@@ -13,13 +13,18 @@ class CartViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var cartTotalLabel: UILabel!
     
+    private var cellHeight: CGFloat = 100.0
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         tableView.register(
             UINib(nibName: "ProductCell", bundle: Bundle.main),
             forCellReuseIdentifier: Constants.UI.ProductCell)
-
+        
+        cellHeight = (Bundle.main
+            .loadNibNamed(Constants.UI.ProductCell, owner: self, options: nil)?
+            .first as? UITableViewCell)?.contentView.frame.height ?? 0.0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +75,7 @@ extension CartViewController: UITableViewDataSource {
 
 extension CartViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return cellHeight
     }
 }
 
