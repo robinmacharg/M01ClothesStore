@@ -10,8 +10,9 @@ import UIKit
 
 class TabBarController: UITabBarController, BadgedTabsTabController {
     
-    // TODO: move this to a protocol
-    // Iterate over tabs, requesting badge count from suitably conforming VCs
+    /**
+     * Iterate over tabs, requesting badge count from suitably conforming VCs
+     */
     func updateAppearance() {
         guard let items = self.tabBar.items?.enumerated() else { return }
 

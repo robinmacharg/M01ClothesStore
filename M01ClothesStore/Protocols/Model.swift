@@ -15,22 +15,15 @@ enum Store {
 }
 
 protocol Model {
+    // CRUD operations
     func create(_ product: Product, in: Store, _ completion: (() -> ())?)
-    func remove(at: Int, from: Store, _ completion: (() -> ())?)
-    func remove(id: Int, from: Store, _ completion: (() -> ())?)
-    func update(product: Product, in: Store, _ completion: (() -> ())?)
-    func delete(product: Product, from: Store, _ completion: (() -> ())?)
-    
-    func count(of: Store) -> Int
-    
     func get(itemWithId: Int, from: Store) -> Product?
     func get(itemAtIndex: Int, from: Store) -> Product?
+    func update(product: Product, in: Store, _ completion: (() -> ())?)
+    func remove(at: Int, from: Store, _ completion: (() -> ())?)
+    func remove(id: Int, from: Store, _ completion: (() -> ())?)
     
-    
-    
-//    func toggleWishlistInclusion(productId: Int, _ completion: (() -> ())?)
-//    func removeFromWishlist(productId: Int, _ completion: (() -> ())?)
-//    func moveFromWishlistToCart(productId: Int, _ completion: (() -> ())?)
-//    func itemWithID(id: Int, in: Store) -> Product?
-//    func setStockLevel(for id: Int,  _ completion: (() -> ())?)
+    // Other operations
+    func count(of: Store) -> Int
+    var cartTotal: Double { get }
 }

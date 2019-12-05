@@ -108,14 +108,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4844DBB723967FB2008E6DD5 /* TabBar  */ = {
-			isa = PBXGroup;
-			children = (
-				4844DBB823967FD0008E6DD5 /* TabBarController.swift */,
-			);
-			path = "TabBar ";
-			sourceTree = "<group>";
-		};
 		48BE92B6238ECABA00A89EF4 = {
 			isa = PBXGroup;
 			children = (
@@ -177,10 +169,10 @@
 			isa = PBXGroup;
 			children = (
 				48BE92C8238ECABA00A89EF4 /* Main.storyboard */,
-				4844DBB723967FB2008E6DD5 /* TabBar  */,
-				48BE92F7238FB68F00A89EF4 /* Catalogue */,
-				48BE92F8238FB69800A89EF4 /* Wishlist */,
-				48BE92F9238FB6AD00A89EF4 /* Cart */,
+				4844DBB823967FD0008E6DD5 /* TabBarController.swift */,
+				48BE92FA238FB6CF00A89EF4 /* CatalogueViewController.swift */,
+				48BE92FC238FB6E300A89EF4 /* WishlistViewController.swift */,
+				48BE92FE238FB6EF00A89EF4 /* CartViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -194,30 +186,6 @@
 				4844DBCC2397F095008E6DD5 /* ClothesStoreModel.swift */,
 			);
 			path = Repository;
-			sourceTree = "<group>";
-		};
-		48BE92F7238FB68F00A89EF4 /* Catalogue */ = {
-			isa = PBXGroup;
-			children = (
-				48BE92FA238FB6CF00A89EF4 /* CatalogueViewController.swift */,
-			);
-			path = Catalogue;
-			sourceTree = "<group>";
-		};
-		48BE92F8238FB69800A89EF4 /* Wishlist */ = {
-			isa = PBXGroup;
-			children = (
-				48BE92FC238FB6E300A89EF4 /* WishlistViewController.swift */,
-			);
-			path = Wishlist;
-			sourceTree = "<group>";
-		};
-		48BE92F9238FB6AD00A89EF4 /* Cart */ = {
-			isa = PBXGroup;
-			children = (
-				48BE92FE238FB6EF00A89EF4 /* CartViewController.swift */,
-			);
-			path = Cart;
 			sourceTree = "<group>";
 		};
 		48BE9300238FB79600A89EF4 /* Misc */ = {

@@ -30,11 +30,10 @@ class CartViewController: UIViewController {
     // MARK: - Helpers
     
     func updateCartTotal() {
-//        let items = StoreFacade.shared.cart.count
-//        let itemText = items == 1 ? "item" : "items"
-//        cartTotalLabel.text = "Total (\(items) \(itemText)): £\(StoreFacade.shared.cartTotal)"
+        let count = StoreFacade.shared.count(of: .cart)
+        let itemText = StoreFacade.shared.count(of: .cart) == 1 ? "item" : "items"
+        cartTotalLabel.text = "Total (\(count) \(itemText)): £\(StoreFacade.shared.cartTotal)"
     }
-    
 }
 
 // MARK: - <UITableViewDataSource>

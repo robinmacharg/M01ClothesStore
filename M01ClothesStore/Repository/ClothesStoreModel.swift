@@ -10,17 +10,13 @@ import Foundation
 
 class ClothesStoreModel: Model {
     
+    // MARK: - Stores
+    
     private var catalogue: [Int:Product] = [:] // ID:Product
     private var wishlist: [Int:Product] = [:] // ID:Product
     private var cart: [Product] = []
     
-    func count(of store: Store) -> Int {
-        switch store {
-        case .catalogue: return catalogue.count
-        case .wishlist: return wishlist.count
-        case .cart: return cart.count
-        }
-    }
+    // MARK: - CRUD operations
     
     func create(_ product: Product, in store: Store, _ completion: (() -> ())? = nil) {
         switch store {
@@ -33,36 +29,6 @@ class ClothesStoreModel: Model {
         case .cart:
             cart.append(product)
         }
-    }
-    
-    func remove(at: Int, from store: Store, _ completion: (() -> ())? = nil) {
-        
-    }
-    
-    func remove(id: Int, from store: Store, _ completion: (() -> ())? = nil) {
-        switch store {
-        case .catalogue:
-            catalogue.removeValue(forKey: id)
-        
-        case .wishlist:
-            wishlist.removeValue(forKey: id)
-
-        default:
-            fatalError("Can't remove items in: \(store) by key")
-        }
-    }
-    
-    func update(product: Product, in store: Store, _ completion: (() -> ())? = nil) {
-        switch store {
-        case .catalogue:
-            catalogue[product.id] = product
-        default:
-            fatalError("Can't update items in: \(store)")
-        }
-    }
-    
-    func delete(product: Product, from: Store, _ completion: (() -> ())? = nil) {
-        
     }
     
     func get(itemWithId id: Int, from store: Store) -> Product? {
@@ -99,54 +65,53 @@ class ClothesStoreModel: Model {
         return nil
     }
     
+    func update(product: Product, in store: Store, _ completion: (() -> ())? = nil) {
+        switch store {
+        case .catalogue:
+            catalogue[product.id] = product
+        default:
+            fatalError("Can't update items in: \(store)")
+        }
+    }
 
+    func remove(at index: Int, from store: Store, _ completion: (() -> ())? = nil) {
+        switch store {
+        case .cart:
+            cart.remove(at: index)
+            
+        default:
+            fatalError("Not implemented for: \(store)")
+        }
+    }
+    
+    func remove(id: Int, from store: Store, _ completion: (() -> ())? = nil) {
+        switch store {
+        case .catalogue:
+            catalogue.removeValue(forKey: id)
+        
+        case .wishlist:
+            wishlist.removeValue(forKey: id)
 
-//    var orderedCatalogueKeys: [Int] {
-//        get {
-//            return catalogue.keys.sorted()
-//        }
-//    }
-//
-//    var catalogue: [Product] { return Array(catalogue.values) }
-//
-//    func catalogueItemWithID(id: Int) -> Product? {
-//        return catalogue[id]
-//    }
-//
-//    func addProductToCatalogue(_ product: Product, _ completion: (() -> ())? = nil) {
-//        catalogue[product.id] = product
-//    }
-//
-//    func addProductToCart(productID id: Int, _ completion: (() -> ())? = nil) {
-//        if let product = catalogueItemWithID(id: id) {
-//            cart.append(product)
-//        }
-//    }
-//
-//    func removeProductFromCart(index: Int, _ completion: (() -> ())? = nil) {
-//        if catalogue[cart[index].id] != nil {
-//            catalogue[cart[index].id]?.stock += 1
-//        }
-//        cart.remove(at: index)
-//
-//        completion?()
-//    }
-//
-//    func toggleWishlistInclusion(productId: Int, _ completion: (() -> ())? = nil) {
-//
-//    }
-//
-//    func removeFromWishlist(productId: Int, _ completion: (() -> ())? = nil) {
-//
-//    }
-//
-//    func moveFromWishlistToCart(productId: Int, _ completion: (() -> ())? = nil) {
-//
-//    }
-//
-//    func reduceStockLevel(for id: Int,  _ completion: (() -> ())? = nil) {
-//        var product = catalogueItemWithID(id: id)
-//        product?.stock -= 1
-//        catalogue[id] = product
-//    }
+        default:
+            fatalError("Can't remove items in: \(store) by key")
+        }
+    }
+    
+    // MARK: - Other operations
+    
+    func count(of store: Store) -> Int {
+        switch store {
+        case .catalogue: return catalogue.count
+        case .wishlist: return wishlist.count
+        case .cart: return cart.count
+        }
+    }
+    
+    // It's simpler to expose this directly from the model than iterate over the cart
+    // with the model primative methods
+    var cartTotal: Double {
+        get { return cart.reduce(0) { (result, product) -> Double in
+            return result + product.price
+        }}
+    }
 }
