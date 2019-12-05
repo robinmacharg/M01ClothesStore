@@ -15,16 +15,22 @@ enum Store {
 }
 
 protocol Model {
-    var catalogue: [Product] { get }
-    var wishlist: [Product] { get }
-    var cart: [Product] { get }
+    func create(_ product: Product, in: Store, _ completion: (() -> ())?)
+    func remove(at: Int, from: Store, _ completion: (() -> ())?)
+    func remove(id: Int, from: Store, _ completion: (() -> ())?)
+    func update(product: Product, in: Store, _ completion: (() -> ())?)
+    func delete(product: Product, from: Store, _ completion: (() -> ())?)
     
-    func addProductToCatalogue(_ product: Product, _ completion: (() -> ())?)
-    func addProductToCart(productID: Int, _ completion: (() -> ())?)
-    func removeProductFromCart(index: Int, _ completion: (() -> ())?)
-    func toggleWishlistInclusion(productId: Int, _ completion: (() -> ())?)
-    func removeFromWishlist(productId: Int, _ completion: (() -> ())?)
-    func moveFromWishlistToCart(productId: Int, _ completion: (() -> ())?)
-    func catalogueItemWithID(id: Int) -> Product?
-    func reduceStockLevel(for id: Int,  _ completion: (() -> ())?)
+    func count(of: Store) -> Int
+    
+    func get(itemWithId: Int, from: Store) -> Product?
+    func get(itemAtIndex: Int, from: Store) -> Product?
+    
+    
+    
+//    func toggleWishlistInclusion(productId: Int, _ completion: (() -> ())?)
+//    func removeFromWishlist(productId: Int, _ completion: (() -> ())?)
+//    func moveFromWishlistToCart(productId: Int, _ completion: (() -> ())?)
+//    func itemWithID(id: Int, in: Store) -> Product?
+//    func setStockLevel(for id: Int,  _ completion: (() -> ())?)
 }

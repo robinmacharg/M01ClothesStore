@@ -10,14 +10,13 @@ import Foundation
 
 /**
  A Singleton data access respository.
- TODO: Provide injection-configurable backend web API access and local Model data access.
  */
 
-public class Repository {
+public class StoreFacade {
 
     // MARK: - Singleton
     
-    static let shared = Repository()
+    static let shared = StoreFacade()
     private init() {}
     
     // MARK: - Properties
@@ -35,10 +34,10 @@ public class Repository {
     // MARK: - Initialisation
 
     static func initalise(root: String, api: API, model: Model) {
-        Repository.shared.api = api
-        Repository.shared.model = model
-        Repository.shared.api?.APIroot = root
-        Repository.shared.initialised = true
+        StoreFacade.shared.api = api
+        StoreFacade.shared.model = model
+        StoreFacade.shared.api?.APIroot = root
+        StoreFacade.shared.initialised = true
     }
 
     // MARK: - Utility
@@ -53,86 +52,142 @@ public class Repository {
 //        }
 //    }
     
-    var cartTotal: Double {
-        get { return cart.reduce(0) { (result, product) -> Double in
-            return result + product.price
-        }}
-    }
+//    var cartTotal: Double {
+//        get { return cart.reduce(0) { (result, product) -> Double in
+//            return result + product.price
+//        }}
+//    }
 }
 
 // MARK: - API/Model Facade
 
-extension Repository {
+extension StoreFacade {
     
-    var catalogueProductCount: Int { return model?.catalogue.count ?? 0 }
-    var wishlistCount: Int { return model?.wishlist.count ?? 0 }
-    var cartCount: Int { return model?.cart.count ?? 0 }
+    var catalogueProductCount: Int { return model?.count(of: .catalogue) ?? 0 }
+    var wishlistCount: Int { return model?.count(of: .wishlist) ?? 0 }
+    var cartCount: Int { return model?.count(of: .cart) ?? 0 }
+    
+    // MARK: - General
+    
+    func get(itemAtIndex index: Int, from store: Store) -> Product? {
+        return model?.get(itemAtIndex: index, from: store)
+    }
+
+    func get(itemWithId id: Int, from store: Store) -> Product? {
+        return model?.get(itemWithId: id, from: store)
+    }
+    
+    
+    // MARK: - Catalogue
     
     func loadCatalogue(_ completion: (() -> ())? = nil) {
         assertInitialized()
         
         api?.GETProducts(completion: { products in
             for product in products {
-                self.model?.addProductToCatalogue(product, nil)
+                self.model?.create(product, in: .catalogue, nil)
             }
             completion?()
         })
     }
+    
+    func addProductToCart(id: Int, _ completion: (() -> ())? = nil) {
+        assertInitialized()
+        
+        if var product = model?.get(itemWithId: id, from: .catalogue), product.stock > 0 {
+            
+            // Update stock values immediately
+            product.stock -= 1
+            self.model?.update(product: product, in: .catalogue, nil)
+            
+            api?.POSTToCart(productId: id, completion: { (response) in
+                self.model?.create(product, in: .cart, nil)
+                
+                completion?()
+            })
+        }
+    }
+    
+    func toggleWishlistInclusion(id: Int, _ completion: (() -> ())? = nil) {
+        // Remove
+        if model?.get(itemWithId: id, from: .wishlist) != nil {
+            model?.remove(id: id, from: .wishlist, nil)
+        }
+            
+        // Add
+        else {
+            if let product = model?.get(itemWithId: id, from: .catalogue) {
+                model?.create(product, in: .wishlist, nil)
+            }
+        }
+        completion?()
+    }
+    
+    // MARK: - Wishlist
+    
+    
+    
+    
+    // MARK: - Cart
     
     func removeProductFromCart(index: Int, _ completion: (() -> ())? = nil) {
-        api?.DELETEFromCart(completion: { (response) in
-            self.model?.removeProductFromCart(index: index) {
-               completion?()
+        if let cartProduct = model?.get(itemAtIndex: index, from: .cart),
+            var catalogueProduct = self.model?.get(itemWithId: cartProduct.id, from: .catalogue) {
+            api?.DELETEFromCart { (response) in
+                self.model?.delete(product: cartProduct, from: .cart, nil)
+                catalogueProduct.stock += 1
+                self.model?.update(product: catalogueProduct, in: .catalogue, nil)
+                completion?()
             }
-        })
-    }
-    
-    func catalogueItemWithID(id: Int) -> Product? {
-        return model?.catalogueItemWithID(id: id)
-    }
-    
-    func item(at i: Int, in store: Store) -> Product? {
-        var products: [Product] = []
-        switch store {
-        case .catalogue:
-            products = model?.catalogue ?? []
-        case .wishlist:
-            break
-        case .cart:
-            break
         }
-        return products[i]
     }
     
-    func item(withId id: Int, in store: Store) -> Product? {
-        switch store {
-        case .catalogue:
-            return model?.catalogueItemWithID(id: id)
-        case .wishlist:
-            break
-        case .cart:
-            break
-        }
-
-        return nil
-    }
-    
-    func addProduct(product: Product, to store: Store, _ completion: (() -> ())? = nil) {
-        switch store {
-        case .catalogue:
-            break
-        case .cart:
-            api?.POSTToCart(productId: product.id) { response in
-                self.model?.reduceStockLevel(for: product.id, nil)
-                self.model?.addProductToCart(productID: product.id, nil)
-            }
-            completion?()
-        case .wishlist:
-            break
-        }
-        
-        
-    }
+//    func catalogueItemWithID(id: Int) -> Product? {
+//        return model?.itemWithID(id: id)
+//    }
+//
+//    func item(at i: Int, in store: Store) -> Product? {
+//        var products: [Product] = []
+//        switch store {
+//        case .catalogue:
+//            products = model?.catalogue ?? []
+//        case .wishlist:
+//            break
+//        case .cart:
+//            break
+//        }
+//        return products[i]
+//    }
+//
+//    func item(withId id: Int, in store: Store) -> Product? {
+//        switch store {
+//        case .catalogue:
+//            return model?.itemWithID(id: id)
+//        case .wishlist:
+//            break
+//        case .cart:
+//            break
+//        }
+//
+//        return nil
+//    }
+//
+//    func addProduct(product: Product, to store: Store, _ completion: (() -> ())? = nil) {
+//        switch store {
+//        case .catalogue:
+//            break
+//        case .cart:
+//            api?.POSTToCart(productId: product.id) { response in
+//                self.model?.setStockLevel(for: product.id, nil)
+//                self.model?.addProductToCart(productID: product.id, nil)
+//            }
+//            completion?()
+//        case .wishlist:
+//            break
+//        }
+//
+//
+//    }
 
     
     
@@ -141,19 +196,19 @@ extension Repository {
 
 // MARK: - <API>
 
-extension Repository: API {
-    func GETProducts(completion: @escaping ([Product]) -> ()) {
-        
-    }
-    
-    var APIroot: String? {
-        get {
-            return ""
-        }
-        set {
-            
-        }
-    }
+extension StoreFacade {
+//    func GETProducts(completion: @escaping ([Product]) -> ()) {
+//
+//    }
+//
+//    var APIroot: String? {
+//        get {
+//            return ""
+//        }
+//        set {
+//
+//        }
+//    }
     
 
 
@@ -162,7 +217,7 @@ extension Repository: API {
      POST the addition of a product to the shopping cart
      */
     
-    func POSTToCart(productId: Int, completion: @escaping (HTTPURLResponse) -> ()) {
+//    func POSTToCart(productId: Int, completion: @escaping (HTTPURLResponse) -> ()) {
 //        assertInitialized()
 //
 //        let url = URL(string: "\(APIroot!)/cart")!
@@ -188,9 +243,9 @@ extension Repository: API {
 //
 //        }
 //        dataTask.resume()
-    }
+//    }
 
-    func DELETEFromCart(completion: @escaping (HTTPURLResponse) -> ()) {
+//    func DELETEFromCart(completion: @escaping (HTTPURLResponse) -> ()) {
 //        assertInitialized()
 //
 //        let url = URL(string: "\(APIroot!)/cart/1")! // TODO: store cart# from POST requests?
@@ -211,7 +266,7 @@ extension Repository: API {
 //            }
 //        }
 //        dataTask.resume()
-    }
+//    }
 }
 
 // MARK: - <Model>

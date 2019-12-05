@@ -26,7 +26,7 @@
 		48BE92FB238FB6CF00A89EF4 /* CatalogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92FA238FB6CF00A89EF4 /* CatalogueViewController.swift */; };
 		48BE92FD238FB6E300A89EF4 /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92FC238FB6E300A89EF4 /* WishlistViewController.swift */; };
 		48BE92FF238FB6EF00A89EF4 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE92FE238FB6EF00A89EF4 /* CartViewController.swift */; };
-		48BE9302238FB81900A89EF4 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE9301238FB81900A89EF4 /* Repository.swift */; };
+		48BE9302238FB81900A89EF4 /* StoreFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE9301238FB81900A89EF4 /* StoreFacade.swift */; };
 		48BE9304238FBDC800A89EF4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE9303238FBDC800A89EF4 /* API.swift */; };
 		48BE9306238FBDD900A89EF4 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE9305238FBDD900A89EF4 /* Model.swift */; };
 		48BE930E238FBEB600A89EF4 /* DataObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BE930D238FBEB600A89EF4 /* DataObjects.swift */; };
@@ -76,7 +76,7 @@
 		48BE92FA238FB6CF00A89EF4 /* CatalogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueViewController.swift; sourceTree = "<group>"; };
 		48BE92FC238FB6E300A89EF4 /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		48BE92FE238FB6EF00A89EF4 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
-		48BE9301238FB81900A89EF4 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		48BE9301238FB81900A89EF4 /* StoreFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFacade.swift; sourceTree = "<group>"; };
 		48BE9303238FBDC800A89EF4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		48BE9305238FBDD900A89EF4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		48BE930D238FBEB600A89EF4 /* DataObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataObjects.swift; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				48BE930D238FBEB600A89EF4 /* DataObjects.swift */,
-				48BE9301238FB81900A89EF4 /* Repository.swift */,
+				48BE9301238FB81900A89EF4 /* StoreFacade.swift */,
 				4844DBCA2397F087008E6DD5 /* ClothesStoreAPI.swift */,
 				4844DBCC2397F095008E6DD5 /* ClothesStoreModel.swift */,
 			);
@@ -386,7 +386,7 @@
 				48BE9304238FBDC800A89EF4 /* API.swift in Sources */,
 				4844DBB923967FD0008E6DD5 /* TabBarController.swift in Sources */,
 				4844DBB02391181B008E6DD5 /* ProductCell.swift in Sources */,
-				48BE9302238FB81900A89EF4 /* Repository.swift in Sources */,
+				48BE9302238FB81900A89EF4 /* StoreFacade.swift in Sources */,
 				48BE92FD238FB6E300A89EF4 /* WishlistViewController.swift in Sources */,
 				48BE92FF238FB6EF00A89EF4 /* CartViewController.swift in Sources */,
 				48BE930E238FBEB600A89EF4 /* DataObjects.swift in Sources */,

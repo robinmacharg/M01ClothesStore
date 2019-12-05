@@ -17,9 +17,9 @@ class WishlistViewController: UIViewController {
             UINib(nibName: "ProductCell", bundle: Bundle.main),
             forCellReuseIdentifier: Constants.UI.ProductCell)
         
-        Repository.shared.GETProducts(completion: { response in
-            self.tableView.reloadData()
-        })
+//        StoreFacade.shared.GETProducts(completion: { response in
+//            self.tableView.reloadData()
+//        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,12 +31,12 @@ class WishlistViewController: UIViewController {
 
 extension WishlistViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Repository.shared.wishlist.count
+        return StoreFacade.shared.wishlist.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.ProductCell, for: indexPath) as? ProductCell,
-            let product = Repository.shared.wishlist[Repository.shared.wishlist.keys.sorted()[ indexPath.row]]
+            let product = StoreFacade.shared.wishlist[StoreFacade.shared.wishlist.keys.sorted()[ indexPath.row]]
         {
             // Visibility
                
@@ -125,5 +125,5 @@ extension WishlistViewController: ProductCellDelegate {
 // MARK: - <BadgeableTab>
 
 extension WishlistViewController: BadgeableTab {
-    var badgeCount: Int? { return Repository.shared.wishlist.count }
+    var badgeCount: Int? { return StoreFacade.shared.wishlistCount }
 }
