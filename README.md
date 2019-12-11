@@ -2,7 +2,7 @@
 
 Technical Test for Deloitte.  See the included PDF for the full spec.  The reference implementation has been tagged `v1.0`.  Further enhancements that exceed the specification follow that tag chronologically. These notes refer to development up until `v1.0` unless explicitly otherwise noted. 
 
-All required items have been completed; the spec has not been intentionally exceeded and this is by design.  This does mean some niceties have been omitted, e.g. count badging on cart/wishlist, selection animation, +/- UI, more nuanced UI etc.
+All required items have been completed; the spec has not been intentionally exceeded and this is by design.  This does mean some niceties have been omitted, e.g. count badging on cart/wishlist, selection animation, +/- UI, more nuanced UI etc.  While the functional spec has not been exceeded I have invested additional effort on revisiting the architecture and (you could argue) overengineering the app structure.  This is intentional; I was not addressing how *fast* I could code, but rather how *well*.  The Git history shows the evolution, and without concrete time constraints I had the leeway to (try and) do things right.
 
 ## Project structure.
 
