@@ -160,4 +160,12 @@ extension StoreFacade {
     var cartTotal: Double {
         return model?.cartTotal ?? 0.0
     }
+    
+    // MARK: - Change Subscriptions
+    
+    func subscribeForModelChanges(_ changeHandler: (() -> ())?) {
+        model?.subscribeForChanges(changeHandler)
+    }
+    
+    
 }

@@ -26,4 +26,5 @@ protocol Model {
     // Other operations
     func count(of: Store) -> Int
     var cartTotal: Double { get }
+    func subscribeForChanges(_ changeHandler: (() -> ())?)
 }

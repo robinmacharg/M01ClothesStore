@@ -81,6 +81,7 @@
 		48BE9305238FBDD900A89EF4 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		48BE930D238FBEB600A89EF4 /* DataObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataObjects.swift; sourceTree = "<group>"; };
 		48BE9310238FCFA600A89EF4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9571D828239997D400140147 /* NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = NOTES.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +112,7 @@
 		48BE92B6238ECABA00A89EF4 = {
 			isa = PBXGroup;
 			children = (
+				9571D828239997D400140147 /* NOTES.md */,
 				48BE9310238FCFA600A89EF4 /* README.md */,
 				4844DBB523967757008E6DD5 /* Deloitte - Mobile Recruitment Case Study.pdf */,
 				4844DBC22396A388008E6DD5 /* ddshop.apib */,

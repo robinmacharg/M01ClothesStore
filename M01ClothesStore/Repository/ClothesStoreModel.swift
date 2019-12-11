@@ -114,4 +114,10 @@ class ClothesStoreModel: Model {
             return result + product.price
         }}
     }
+    
+    // MARK: - Change notifications
+    
+    func subscribeForChanges(_ changeHandler: (() -> ())?) {
+        
+    }
 }
