@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ * Display the wishlist in a table
+ */
 class WishlistViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!

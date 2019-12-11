@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ * Display the shopping cart in a table
+ */
 class CartViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!

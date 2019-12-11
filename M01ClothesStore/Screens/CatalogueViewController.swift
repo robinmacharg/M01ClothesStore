@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ * Display the product catalogue in a table
+ */
 class CatalogueViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
